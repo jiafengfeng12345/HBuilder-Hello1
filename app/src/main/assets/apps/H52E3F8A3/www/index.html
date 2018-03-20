@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="fonts/iconfont.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .head {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: #95d1c6;
+            z-index: 999;
+        }
+
+        .head .logo-wrapper {
+            width: 60px;
+            height: 60px;
+        }
+
+        .head .logo {
+            width: 34px;
+            height: 34px;
+            border-radius: 20px;
+            margin-left: 13px;
+            margin-top: 13px;
+        }
+
+        .head .search-wrapper {
+            position: absolute;
+            left: 60px;
+            right: 60px;
+            top: 15px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.1);
+            text-align: center;
+            line-height: 30px;
+            border-radius: 100px;
+            color: rgba(7, 17, 27, 0.4);
+            font-size: 15px;
+        }
+
+        .head .comments-wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 60px;
+            width: 60px;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .head .comments {
+            margin-top: 20px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .body {
+            padding-top: 60px;
+            padding-bottom: 52px;
+        }
+
+        .body .lunBo {
+            width: 100%;
+            height: 140px;
+        }
+
+        .body .lunBo .mui-slider {
+            height: 140px;
+        }
+
+        .mui-slider-indicator .mui-indicator {
+            background-color: #fb9075;
+            opacity: 0.2;
+            box-shadow: none;
+        }
+
+        .mui-slider-indicator .mui-active.mui-indicator {
+            background-color: #fb9075;
+            opacity: 1;
+            box-shadow: none;
+        }
+
+        .body .operation {
+            height: 110px;
+            background-color: #ffffff;
+        }
+
+        .operation .operation-item {
+            width: 33%;
+            float: left;
+            height: 110px;
+        }
+
+        .operation-item .operation-img-wrapper {
+            width: 100%;
+            height: 50px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .operation-item .operation-img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .operation-item .operation-name-wrapper {
+            width: 100%;
+            margin-top: 4px;
+            height: 17px;
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #666666;
+            text-align: center;
+        }
+
+        .body .showImg1-wrapper {
+            width: 100%;
+            height: 154px;
+        }
+
+        .body .showImg1 {
+            width: 100%;
+            height: 100%;
+        }
+
+        .body .showImg2-wrapper {
+            width: 100%;
+            height: 108px;
+        }
+
+        .body .showImg2 {
+            width: 100%;
+            height: 100%;
+        }
+
+        .body .classify {
+            background-color: white;
+            margin-top: 9px;
+            width: 100%;
+        }
+
+        .classify .classify-name-wrapper {
+            width: 100%;
+            height: 61px;
+            padding-top: 21px;
+            font-family: PingFangSC-Regular;
+            font-size: 18px;
+            color: #333333;
+            text-align: center;
+        }
+
+        .classify .classify-list {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .classify .classify-item {
+            width: 50%;
+            float: left;
+        }
+
+        .classify .classify-item:nth-child(odd) {
+            padding-left: 10px;
+            padding-right: 5px;
+        }
+
+        .classify .classify-item:nth-child(even) {
+            padding-left: 5px;
+            padding-right: 10px;
+        }
+
+        .classify-item .product-data {
+            width: 100%;
+            height: 261px;
+        }
+
+        .product-data .product-img-wrapper {
+            width: 100%;
+            height: 172px;
+        }
+
+        .product-data .product-img {
+            width: 100%;
+            height: 100%;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+
+        .product-data .product-info-wrapper {
+            width: 100%;
+            overflow: hidden;
+            height: 36px;
+            background: #c5ddd8;
+            line-height: 36px;
+            text-align: center;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+
+        .product-data .product-info {
+            font-family: PingFangSC-Regular;
+            font-size: 10px;
+            color: #669289;
+        }
+
+        .product-data .product-name-wrapper {
+            margin-top: 8px;
+            height: 25px;
+            line-height: 25px;
+            color: RGBA(7, 17, 27, 0.6);
+            font-size: 16px;
+        }
+
+        .product-data .product-price-wrapper {
+            height: 20px;
+            width: 100%;
+            line-height: 20px;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #b4282d;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="head">
+    <div class="logo-wrapper">
+        <img src="image/logo@3x.png" class="logo">
+    </div>
+    <div class="search-wrapper">
+        <i class="iconfont icon-sousuo"></i><span>毛巾</span>
+    </div>
+    <div class="comments-wrapper">
+        <img src="image/xiaoxi@3x.png" class="comments" id="comments">
+    </div>
+</div>
+<div class="body mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <div class="lunBo" id="slider">
+            <!--<div class="mui-slider">
+                <div class="mui-slider-group mui-slider-loop" >-->
+                    <!--轮播图-->
+                <!--</div>
+                <div class="mui-slider-indicator adListSpan">
+                    <div class="mui-indicator mui-active"></div>
+                    <div class="mui-indicator"></div>
+                </div>
+            </div>-->
+        </div>
+        <div class="operation">
+            <div class="operation-item" id="rankinglist">
+                <div class="operation-img-wrapper">
+                    <img src="image/rexiao@3x.png" class="operation-img">
+                </div>
+                <div class="operation-name-wrapper" id="hot">
+                    <span class="operation-name-wrapper">热门推荐</span>
+                </div>
+            </div>
+            <div class="operation-item" id="collect">
+                <div class="operation-img-wrapper">
+                    <img src="image/shoucang@3x.png" class="operation-img">
+                </div>
+                <div class="operation-name-wrapper">
+                    <span class="operation-name-wrapper">我的收藏</span>
+                </div>
+            </div>
+            <div class="operation-item" id="order">
+                <div class="operation-img-wrapper">
+                    <img src="image/dingdan@3x.png" class="operation-img">
+                </div>
+                <div class="operation-name-wrapper">
+                    <span class="operation-name-wrapper">我的订单</span>
+                </div>
+            </div>
+        </div>
+        <div class="showImg1-wrapper">
+            <img src="image/show/show1.png" class="showImg1">
+        </div>
+        <div class="showImg2-wrapper">
+            <img src="image/show/show2.png" class="showImg2">
+        </div>
+        <div class="content">
+        	
+        </div>
+        <!--<div class="classify one">
+            <div class="classify-name-wrapper">
+                <span class="classify-name">人气推荐</span>
+            </div>
+            <div class="classify-list">
+                <div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="image/product/product1.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="image/product/product2.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="image/product/product1.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!--<div class="classify two">
+            <div class="classify-name-wrapper">
+                <span class="classify-name">浴巾</span>
+            </div>
+            <div class="classify-list">
+                <!--<div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="image/product/product1.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="image/product/product2.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <div class="classify three">
+            <div class="classify-name-wrapper">
+                <span class="classify-name">云毯</span>
+            </div>
+            <div class="classify-list">
+                <!--<div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="image/product/product1.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>-->
+                <!--<div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="image/product/product2.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<nav class="bottom">
+    <a class="bottom-item" id="index">
+        <div class="bottom-img-wrapper">
+            <img src="image/home_sel@3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>首页</span>
+        </div>
+    </a>
+    <a class="bottom-item" id="cart">
+        <div class="bottom-img-wrapper">
+            <img src="image/gouwuche @3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>购物车</span>
+        </div>
+    </a>
+    <a class="bottom-item" id="info">
+        <div class="bottom-img-wrapper">
+            <img src="image/wode @3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>我的</span>
+        </div>
+    </a>
+</nav>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/base.js"></script>
+<script type="text/javascript" charset="utf-8">
+    mui.ready(function () {
+        $.ajax({
+            type: "get",
+            url: IP + "/api/ad/list.html",
+            dataType: "json",
+            success: function (data) {
+                var arr = data.content;
+                var html = "";
+                var count = data.total;
+                html =  
+			                '<div class="mui-slider-group mui-slider-loop" >';
+			    
+                for (var i = 0; i<count; i++) {
+                    html += '' +
+                        '<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img\n' +
+                        '                            src="'+arr[i].path+'"/></a></div>';
+
+                }
+			    
+                for (var i = 0; i<count; i++) {
+                    html += '' +
+                        '<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img\n' +
+                        '                            src="'+arr[i].path+'"/></a></div>';
+
+                }
+			    
+			    html +=      '<!--轮播图-->'+
+			    
+			                '</div>' +
+			                '<div class="mui-slider-indicator adListSpan">' +
+			                    '<div class="mui-indicator mui-active"></div>' +
+			                    '<div class="mui-indicator"></div>' +
+			                '</div>' ;
+            			        
+                $("#slider").html(html);
+                var gallery = document.getElementById("slider");
+                gallery.classList.add('mui-slider');
+                mui('#slider').slider({
+                    interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+                });
+                
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+        $.ajax({
+            type: "get",
+            url: IP + "/api/goods/list.html",
+            dataType: "json",
+            success: function (data) {
+                var arr = data.content;
+                var spe = [];
+                var html = "";
+                var flg = 0;
+                for (var i = 0; i < arr.length; i++) {
+                	for (var j = 0; j < arr.length - 1; j++){
+                		if(arr[i].categoryId > arr[j].categoryId){
+                			spe = arr[i];
+                			arr[i] = arr[j];
+                			arr[j] = spe;
+                		}
+                	}
+				}
+                var lei = 0;
+                
+                for (var k = 0; k < arr.length; k++) {
+                	if(k != 0 && lei != arr[k].categoryId){
+                		html += 	'</div>' +
+							'</div>';
+							html += '<div class="classify">' +
+					            '<div class="classify-name-wrapper">' +
+					                '<span class="classify-name">' + arr[k].categoryName + '</span>' +
+					            '</div>'+
+					            '<div class="classify-list">';
+                		lei = arr[k].categoryId;
+                	} else if(k === 0) {
+                		html = '<div class="classify">' +
+					            '<div class="classify-name-wrapper">' +
+					                '<span class="classify-name">' + arr[k].categoryName + '</span>' +
+					            '</div>'+
+					            '<div class="classify-list">';
+                	}
+                	
+					html +=     
+						                '<div class="classify-item" dataid="' + arr[k].id + '">' +
+						                    '<div class="product-data">' +
+						                        '<div class="product-img-wrapper">' +
+						                            '<img src="' + arr[k].image + '" class="product-img">' + 
+						                        '</div>' +
+						                        '<div class="product-info-wrapper">' +
+						                            '<span class="product-info">' + arr[k].caption + '</span>' +
+						                        '</div>' +
+						                        '<div class="product-name-wrapper">' +
+						                            '<span class="product-price">' + arr[k].name + '</span>' +
+						                        '</div>' +
+						                        '<div class="product-price-wrapper">' +
+						                            '<span class="product-price">￥' + arr[k].price + '</span>' +
+						                        '</div>' +
+						                    '</div>' +
+						                '</div>' ;
+					
+                }
+                if (arr.length !== 0) {
+                	html += 	'</div>' +
+							'</div>';
+                }
+                
+                $(".content").html(html);
+            },
+            error: function (data) {
+                alert("错误");
+            }
+        });
+
+    })
+
+    function goPage(page, data, isNew) {
+        if (isNew === true)
+            isNew = true;
+        else
+            isNew = false;
+        mui.openWindow({
+            url: page,
+            id: page,
+            extras: {
+                data: data
+            },
+            createNew: isNew
+        });
+    }
+
+    function goPageWithOutAnimate(page) {
+        var thisId = plus.webview.currentWebview().id;
+        mui.openWindow({
+            url: page,
+            id: page,
+            show: {
+                aniShow: "none"
+            },
+            styles: {
+                scrollIndicator: 'none'
+            },
+            extras: {
+                "preId": thisId
+            }
+        });
+    }
+
+    function plusReady() {
+        if (mui.os.ios) {
+            plus.navigator.setStatusBarBackground("#95D1C6");
+        }
+    	//如果本地有登陆信息，则自动登录
+        var username = plus.storage.getItem("phone");
+        var pw = plus.storage.getItem("password");
+        if(username != null && pw != null){
+        	$.ajax({
+        		type:"get",
+        		url: IP + "/api/user/login.html",
+        		data:{
+        			phone:username,
+        			password:pw
+        		},
+        		dataType:"json",
+        		success:function(result){
+        			if(result.type == 'success') {
+						console.log("自动登录成功");
+					} else {
+						console.log("自动登录失败");
+					}
+        		},
+        		error:function(){
+        			console.log("errorInfo: login");
+        		}
+        	});
+        }
+    }
+
+    window.addEventListener("init", function () {
+        if (mui.os.ios) {
+            plus.navigator.setStatusBarBackground("#95D1C6");
+        }
+    });
+
+    document.addEventListener("plusready", plusReady, false);
+    $("#cart").on("tap", function () {
+        $.ajax({
+            type: "get",
+            url: IP + "/api/user/check.html",
+            dataType: "json",
+            success: function (data) {
+                if (data == false) {
+                    target = "cart";
+                    goPage("account/login.html", target);
+                }
+                else {
+                    goPage("cart/index.html");
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+    var target = "";
+    $("#info").on("tap", function () {
+        $.ajax({
+            type: "get",
+            url: IP + "/api/user/check.html",
+            dataType: "json",
+            success: function (data) {
+                if (data == false) {
+                    target = "info";
+                    goPage("account/login.html", target);
+                }
+                else {
+                    goPage("info/index.html");
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+    $("#collect").on("tap", function () {
+        $.ajax({
+            type: "get",
+            url: IP + "/api/user/check.html",
+            dataType: "json",
+            success: function (data) {
+                if (data == false) {
+                    target = "favorites";
+                    goPage("account/login.html", target);
+                }
+                else {
+                    goPage("favorites.html");
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+    $("#order").on("tap", function () {
+        $.ajax({
+            type: "get",
+            url: IP + "/api/user/check.html",
+            dataType: "json",
+            success: function (data) {
+                if (data == false) {
+                    target = "order";
+                    goPage("account/login.html", target);
+                }
+                else {
+                    goPage("order/order.html");
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+    $("#comments").on("tap", function () {
+        $.ajax({
+            type: "get",
+            url: IP + "/api/user/check.html",
+            dataType: "json",
+            success: function (data) {
+                if (data == false) {
+                    target = "message";
+                    goPage("account/login.html", target);
+                }
+                else {
+                    goPage("message.html");
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+
+    })
+</script>
+<script>
+    mui('.mui-scroll-wrapper').scroll({
+        indicators: true,
+        deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+    });
+    var gallery = mui('.mui-slider');
+    gallery.slider({
+        interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+    });
+    $(".content").on("tap", ".classify-item", function () {
+        var dataid = $(this).attr("dataid");
+        goPage("product.html", dataid);
+    });
+
+    $(".search-wrapper").bind("tap", function () {
+        goPageWithOutAnimate("search/index.html");
+    });
+    $("#rankinglist").on("tap",function(){
+    	goPage('rankinglist.html');
+    })
+</script>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../fonts/iconfont.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <style type="text/css">
+    	body,html{
+    		height: 100%;
+		    margin: 0px;
+		    padding: 0px;
+		    overflow: hidden;
+		    -webkit-touch-callout: none;
+		    -webkit-user-select: none;
+    	}
+    </style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>意见反馈</span>
+    </div>
+    <div class="edit-wrapper edit-action">
+        提交
+    </div>
+</nav>
+<div class="mui-content" style="padding-top: 60px;background-color: #f8f8f8;">
+    <div class="mui-content-padded" style="margin: 5px;background-color: #f8f8f8;">
+        <div class="mui-input-row" style="margin: 10px 5px;">
+            <textarea id="textarea" rows="10" placeholder="对我们网站、商品、服务、你还有什么建议吗？你还希望在我们这买到什么？请告诉我们..."></textarea>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			}
+		});
+	}
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+		plus.webview.currentWebview().setStyle({
+			scrollIndicator: "none"
+		});
+	}
+	document.addEventListener("touchmove",function(e){e.preventDefault();});
+	document.addEventListener("plusready", plusReady, false);
+
+</script>
+</html>

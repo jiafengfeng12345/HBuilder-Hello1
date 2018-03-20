@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="../weui/style/weui.css"/>
+    <link rel="stylesheet" href="../css/base.css" />
+    <style>
+        body {
+            color: #515151;
+        }
+        .info .name {
+            font-size: 15px;
+            height: 16px;
+        }
+        .info .phone {
+            font-size: 15px;
+        }
+        .info .moren {
+            font-size: 10px;
+            padding: 1px 4px;
+            border: 1px solid #83c76d;
+            text-align: center;
+            border-radius: 3px;
+            color: #83c76d;
+        }
+        .info .address {
+            font-size: 14px;
+            color: grey;
+        }
+        .acount .weui-cell{
+            font-size: 15px;
+        }
+        .product .image {
+            width:60px;
+            height: 60px;
+            margin-right:10px;
+            display:block;
+        }
+        .product .name {
+            font-size: 15px;
+        }
+        .product .detail {
+            font-size: 13px;
+            color: #ccc;
+        }
+        .product .price {
+            color: #b4282d;
+        }
+        .product .num {
+            color: #515151;
+        }
+        .bottom {
+            position: fixed;
+            bottom: 0;
+            height: 60px;
+            width: 100%;
+            background-color: white;
+            border-top: 1px solid #e5e5e5;
+            line-height: 60px;
+            z-index: 999;
+        }
+        .bottom p {
+            float: left;
+            color: #b4282d;
+            padding-left: 20px;
+        }
+        .bottom .pay {
+            display: block;
+            float: right;
+            width: 120px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+	        background-color: #ddd;
+        }
+
+	    .bottom .pay.active{
+		    background-color: #95d1c6;
+		    color: white;
+	    }
+
+        .orderMemo{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            text-indent: 15px;
+            border: 0;
+            outline: none;
+            /*-webkit-tap-highlight-color: ;*/
+        }
+    </style>
+</head>
+<body>
+    <nav class="head">
+        <div class="back-wrapper mui-action-back">
+            <img src="../image/left@3x.png" class="back">
+        </div>
+        <div class="title-wrapper">
+            <span>订单结算</span>
+        </div>
+    </nav>
+    <div style="padding-top: 44px; padding-bottom: 60px;width: 100%;">
+        <div class="weui-cells info" style="width: 100%;">
+            <a class="weui-cell weui-cell_access" style="width: 100%">
+                <!--<div class="weui-cell__hd" style="width: 18%;">
+                    <p class="name">洪东楗</p>
+                    <span class="moren">默认</span>
+                </div>
+                <div class="weui-cell__bd" style="width: 82%;">
+                    <p class="phone">17858936127</p>
+                    <p class="address">浙江大学宁波理工学院</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+                -->
+	            <div class="weui-cell__hd" style="width: 100%;">
+		            <p class="addAddr" style="height: 40px;line-height: 40px;">添加收货地址</p>
+	            </div>
+	            <div class="weui-cell__ft">
+	            </div>
+            </a>
+        </div>
+        <div class="weui-cells weui-cells_checkbox acount">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>商品合计</p>
+                </div>
+                <div class="weui-cell__ft checkout_totalAmount">￥0.00</div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>运费</p>
+                </div>
+                <div class="weui-cell__ft checkout_freight">￥0.00</div>
+            </div>
+        </div>
+        <div class="weui-cells product">
+            <!--<div class="weui-cell">
+                <div class="weui-cell__hd"><img class="image" src="../image/product/product1.png" ></div>
+                <div class="weui-cell__bd">
+                    <p class="name">加勒比纯棉浴巾</p>
+                    <p class="detail">紫罗兰</p>
+                    <p class="price">￥29.99</p>
+                </div>
+                <div class="weui-cell__ft num">x1</div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><img class="image" src="../image/product/product2.png" ></div>
+                <div class="weui-cell__bd">
+                    <p class="name">加勒比纯棉浴巾</p>
+                    <p class="detail">紫罗兰</p>
+                    <p class="price">￥29.99</p>
+                </div>
+                <div class="weui-cell__ft num">x1</div>
+            </div>-->
+        </div>
+        <div class="weui-cells memo">
+            <textarea class="orderMemo" placeholder="备注"></textarea>
+        </div>
+    </div>
+    <div class="bottom">
+        <p>应付：￥<span></span></p>
+        <span class="btn pay">去付款</span>
+    </div>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../weui/js/zepto.min.js"></script>
+    <script type="text/javascript" src="../weui/js/jweixin.js"></script>
+    <script src="../weui/js/weui.min.js"></script>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/base.js"></script>
+    <script type="text/javascript">
+		function goPage(page, data){
+			mui.openWindow({
+				url:page,
+				id:page,
+				extras: data
+			});
+		}
+
+		var flag = 0;
+		function selectAddrCallback(addrInfo) {
+			// 地址
+			var addrHtml =
+				'<div class="weui-cell__hd" style="padding-right: 16px;">' +
+					'<p class="name" receiverid="'+ addrInfo.addrId +'">' + addrInfo.consignee + '</p>' +
+					(addrInfo.isDefault == "true" ? '<span class="moren">默认</span>' : '') +
+				'</div>' +
+				'<div class="weui-cell__bd">' +
+					'<p class="phone">' + addrInfo.phone + '</p>' +
+					'<p class="address">' + addrInfo.address + '</p>' +
+				'</div>' +
+				'<div class="weui-cell__ft">' +
+				'</div>';
+			$(".weui-cell_access").html(addrHtml);
+			$(".pay").addClass("active");
+		}
+		var cartoken = "";
+		function plusReady(){
+//			var opener = plus.webview.currentWebview().opener();
+//			setTimeout(function(){
+//				opener.close('none');
+//			},450);
+			if (mui.os.ios) {
+				plus.navigator.setStatusBarBackground("#95D1C6");
+			}
+			var self = plus.webview.currentWebview();
+			var spe = self.data;
+			flag = spe.lei;
+			flag1 = spe.spe;
+			if(self.delOpener){
+//				self.opener().close("none");
+			}
+
+			$(".weui-cell_access").on("tap", function () {
+				goPage('../address/list.html',{
+					addrMode:'select',
+					returnWebviewId: self.id,
+					returnCallbackName: "selectAddrCallback"
+				});
+			});
+
+			cartoken = self.data;
+			if(spe.spe == 1){
+			    var orderData = flag.order;
+			    var defaultReceiverId = flag.defaultReceiverId;
+			    if(defaultReceiverId != null && defaultReceiverId != ""){
+				    // 地址
+				    var addrHtml =
+					    '<div class="weui-cell__hd" style="padding-right: 16px;">' +
+						    '<p class="name" receiverid="'+ flag.defaultReceiverId+'">' + orderData.consignee + '</p>' +
+						    '<span class="moren">默认</span>' +
+					    '</div>' +
+					    '<div class="weui-cell__bd">' +
+						    '<p class="phone">' + orderData.phone + '</p>' +
+						    '<p class="address">' + orderData.areaName + orderData.address + '</p>' +
+					    '</div>' +
+					    '<div class="weui-cell__ft">' +
+					    '</div>';
+				    $(".weui-cell_access").html(addrHtml);
+				    $(".pay").addClass("active");
+			    }else {
+				    $(".pay").attr("msg", "请先选择一个收货地址");
+			    }
+
+			    // 统计总价，拼接订单Item项
+			    var totalprice = 0;
+			    var orderItemHtml = "";
+			    for(var i in orderData.orderItems){
+			    	var item = orderData.orderItems[i];
+			    	// 统计总价
+				    totalprice += item.subtotal;
+				    // 拼接规格项
+				    var detail = "";
+				    for(var j in item.specificationValue){
+				    	var subDetail = item.specificationValue[j];
+				    	detail += subDetail.value + " ";
+				    }
+				    // 拼接显示的订单项html
+				    orderItemHtml +=
+					    '<div class="weui-cell">' +
+						    '<div class="weui-cell__hd">' +
+						        '<img class="image" src="'+ item.thumbnail +'" >' +
+						    '</div>' +
+						    '<div class="weui-cell__bd">' +
+							    '<p class="name">' + item.name + '</p>' +
+							    '<p class="detail">' + detail + '</p>' +
+							    '<p class="price">￥' + item.price + '</p>' +
+						    '</div>' +
+					        '<div class="weui-cell__ft num">x' + item.quantity + '</div>' +
+					    '</div>';
+			    }
+			    // 显示 订单Item项
+			    $(".product").html(orderItemHtml);
+
+
+			    // 显示 商品总值
+			    $(".checkout_totalAmount").html("￥" + totalprice);
+			    // 显示 运费
+			    $(".checkout_freight").html("￥" + orderData.freight);
+			    // 显示 商品运费总计.
+			    var total = orderData.freight + totalprice;
+			    $(".bottom p span").text(total);
+			}
+			else{
+				$.ajax({
+		    		type: "get",
+		    		url: IP + "/api/order/checkout.html",
+		    		dataType: "json",
+		    		success: function(data){
+					    var orderData = data.order;
+	
+					    var defaultReceiverId = data.defaultReceiverId;
+					    if(defaultReceiverId != null && defaultReceiverId != ""){
+						    // 地址
+						    var addrHtml =
+							    '<div class="weui-cell__hd" style="padding-right: 16px;">' +
+								    '<p class="name" receiverid="'+ data.defaultReceiverId+'">' + orderData.consignee + '</p>' +
+								    '<span class="moren">默认</span>' +
+							    '</div>' +
+							    '<div class="weui-cell__bd">' +
+								    '<p class="phone">' + orderData.phone + '</p>' +
+								    '<p class="address">' + orderData.areaName + orderData.address + '</p>' +
+							    '</div>' +
+							    '<div class="weui-cell__ft">' +
+							    '</div>';
+						    $(".weui-cell_access").html(addrHtml);
+						    $(".pay").addClass("active");
+					    }else {
+						    $(".pay").attr("msg", "请先选择一个收货地址");
+					    }
+	
+					    // 统计总价，拼接订单Item项
+					    var totalprice = 0;
+					    var orderItemHtml = "";
+					    for(var i in orderData.orderItems){
+					    	var item = orderData.orderItems[i];
+					    	// 统计总价
+						    totalprice += item.subtotal;
+						    // 拼接规格项
+						    var detail = "";
+						    for(var j in item.specificationValue){
+						    	var subDetail = item.specificationValue[j];
+						    	detail += subDetail.value + " ";
+						    }
+						    // 拼接显示的订单项html
+						    orderItemHtml +=
+							    '<div class="weui-cell">' +
+								    '<div class="weui-cell__hd">' +
+								        '<img class="image" src="'+ item.thumbnail +'" >' +
+								    '</div>' +
+								    '<div class="weui-cell__bd">' +
+									    '<p class="name">' + item.name + '</p>' +
+									    '<p class="detail">' + detail + '</p>' +
+									    '<p class="price">￥' + item.price + '</p>' +
+								    '</div>' +
+							        '<div class="weui-cell__ft num">x' + item.quantity + '</div>' +
+							    '</div>';
+					    }
+					    // 显示 订单Item项
+					    $(".product").html(orderItemHtml);
+	
+	
+					    // 显示 商品总值
+					    $(".checkout_totalAmount").html("￥" + totalprice);
+					    // 显示 运费
+					    $(".checkout_freight").html("￥" + orderData.freight);
+					    // 显示 商品运费总计.
+					    var total = orderData.freight + totalprice;
+					    $(".bottom p span").text(total);
+	
+		    		},
+		    		error: function(data){
+		    			alert("错误");
+		    		}
+		    	});
+			}
+
+		}
+		
+		document.addEventListener("plusready",plusReady,false);
+		
+		$(".pay").on("tap",function(){
+			if(!$(this).hasClass("active")){
+				mui.toast($(this).attr("msg"));
+				return false;
+			}
+
+			var receiverid = $(".weui-cell__hd .name").attr("receiverid");
+			var memo = $(".orderMemo").val();
+			
+			if(flag1 == 1){
+				$.ajax({
+					type:"get",
+					url: IP + "/api/order/create2.html",
+					dataType: "json",
+					data:{
+						productId: flag.order.orderItems[0].productId,
+						receiverId: flag.receiverId
+					},
+					success: function(data){
+						if(data.message.type == "success"){
+							var sn = data.sn;
+							mui.toast("下单成功, 等待支付");
+							goPage("payment.html", {
+								orderSn: sn,
+								totalAmount: $(".bottom p span").text(),
+								delOpener: true
+							});
+						}else{
+							mui.toast("下单失败");
+						}
+					},
+					error: function(e){
+						mui.toast('网络错误');
+					}
+				});
+			}else{
+				$.ajax({
+					type:"get",
+					url:IP + "/api/order/create.html",
+					data: {
+						cartToken: cartoken,
+						receiverId: receiverid,
+						memo: memo
+					},
+					dataType: "json",
+					success: function(data){
+						if(data.message.type == "success"){
+							// 订单号
+							var sn = data.sn;
+							mui.toast("下单成功, 等待支付");
+							goPage("payment.html", {
+								orderSn: sn,
+								totalAmount: $(".bottom p span").text(),
+								delOpener: true
+							});
+						}else{
+							mui.toast(data.message.content);
+						}
+					},
+					error: function(data){
+						mui.toast("网络错误");
+					}
+				});
+			}
+		})
+   </script>
+</body>
+</html>

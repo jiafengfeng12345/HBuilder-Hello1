@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/oauth.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="1697799b395232823e7425a64e50e2f7e64ab03d">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/oauth_8a441524cd8e666052f48d62f75eda92d4b89827.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/speech_ifly.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="ad33b31f33ef5e328da0d415fd088c5931130a88">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/speech_ifly_42e3cb259c0baa50bd42cfa71aa479bd05438ddd.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/support-v4-19.1.0_13af3cb38f3926ec26321e939f96b413aafa1af6.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/gif.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="3b86e72dbf272c69b3acd5e552066d9f521e9616">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/gif_3e4e392fd63e22caef3a5bb41e6f37831ae84318.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/sinaweibo4.1.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="150db4f7f50eeca5cd95b87b0bb0337dbc2bdffb">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/sinaweibo4.1_04156238e8ad752fe8ed18978da35ee27a7f8073.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/my-nineoldandroids-2.4.0.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="fa202f70b9e42e2ad90e0cb9cdc573e701c254ac">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/my-nineoldandroids-2.4.0_23e81955562e17572d8794771e2d440918dc93ea.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/device.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="53e84e5cf76a31bc1331c3543a1825eec31c8e84">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/device_d9f0eaa04920bb45ba0dea51441fa33b9d58faee.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/MiPush_SDK_Client_3_1_2.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="be4a7a20473c8e53375e59bef1af1bccaf1a7276">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/MiPush_SDK_Client_3_1_2_04ab3faa8d56dacebe701684379284657e8e254a.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/my-imageloader.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="a514eb78d2b8a290e4f05a444417b23024aa36ef">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/my-imageloader_62ac834e80f3df116b8d592d2f467a62805b849c.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/nopermission.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="e3766a4d60f1136d07e87f81141b4d27fdb71b10">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/nopermission_9e8de80bf2380c3c16adb75a429cb82a4f59138c.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/payment-weixin.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="80f53be4dc3bfb984e9ee5c856df67903467ab39">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/payment-weixin_540b2b1763ea56ea7366e3a7f8ad5ccf9b4713cc.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/alipaySingle-20161222.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="795c38473dc8c277a8a07694592e13d7e7601108">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/alipaySingle-20161222_0d2ae9aa4edc873d50ea368bbe2c09156d039de7.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/speech.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="0b28e917df605002ff0d65f926d43df1cb2c6a85">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/speech_5f5572744d665c111c4ea37530bf4b4200aa8bf0.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/qq_mta-sdk-1.6.2.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="c184c69f43b1fe46390f7123717c65bd844bccb6">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/qq_mta-sdk-1.6.2_a561d374a317ac297cd432869ccfa6912c5490c8.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/oauth-miui.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="dff4dd450e6ce0a679b24a20b4501366c4e003fa">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/oauth-miui_d9327c50ed8689ad1463eccbdfa560d0e8c8511c.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/map-baidu.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="be3e2932fba5cd6e97f0b3dd2dad8ff3de0ece65">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/map-baidu_e72325ef95ffcb2553ef0192ca09fd31cc1a968d.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/tx_weibo_sdk-httpclient-3.0.1.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="d6364bcc1b2b2aa69d008602d36a700453648560">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/tx_weibo_sdk-httpclient-3.0.1_e0a7f146cda069a400645d36349cb2a13b4da4af.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/MapApiLocation_1.3.3.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="71e7604372d8a66689ff8df047e9a748e19a5169">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/MapApiLocation_1.3.3_47bcefd87649e38a1bae47569c4111f9acd42212.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/tx_wx.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="11b09244aedaa51bfd09269637be7c32c60da314">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/tx_wx_f304b040795fa3e65a52022d85032bf923120989.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/ui.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="7e861cae727e85436ab59be1992b35bf09d1e980">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/ui_2ddc6aae6ebcb08ce640aea48a8184fe317afba6.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/file.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="2bd16cf598af9d17c723254d2ad5f2b8bb8f824a">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/file_72128f22929abfe4e5fd2fd1fa095319d14c2dd2.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/barcode.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="6cd1a0c41fc44db4dfdd531b0751f56fa5414725">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/barcode_98fd2d09f3074db058e5361cd19d88e5847ad1af.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/qq_sdk_v3.1.0.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="84c7cf027dfd4517eb51d5898999a7f2f74f99cc">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/qq_sdk_v3.1.0_e40ad762ac0be9bbbb9197632c728dbd9e26158d.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/nativeui.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="88eea4f5ae8ed2a666139cda83eefa901ab05945">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/nativeui_bfe473e3d83de4bcc9aef412d73d762f2d0ae3d0.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/oauth-sina.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="c639aef92e6ec50728eea349bcde8382e1e80317">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/oauth-sina_599362cfa530a057be1718c90b36c755f7547ebf.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/share-sina.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="b9068e6de8c123551dd0a9d39f42f3f095bfcc33">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/share-sina_350f9e986d0660323863a1379eac6afdfadbd4dc.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/payment-alipay.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="421cfb12d7f16e6eac93ab0ea4e2e3599560712f">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/payment-alipay_d35aa9ccb32070146d90c58ddde793953ec16767.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/xhr.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="87736ec0f3a3e3464895d461c76a9b63fb295abc">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/xhr_71a373e3b87fef16e304bf399e27e079c29936f1.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/share-tencent.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="3340b71f32c335e9c812f0939cc256492ee7c42e">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/share-tencent_8f0f6e32d3f5f99ce9972718179b81e9b2fe2d84.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/gallery.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="714e63446f6b1cb74ff5d5bafbdb444af373ffe0">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/gallery_98ff0caa36078aea2e501e476d3cf2897d4a5491.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/geolocation-amap.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="7acbd31eb906f64ea009312e2e4d892a0a81dbc7">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/geolocation-amap_3e278b00432ed16f6409fa1819220a243a5a0d1b.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/nativeObj.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="7218a1c0056e068c41b13f88425122776ca8c8f2">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/nativeObj_efc9f4c653586098d33a3d10d696eff57386cdd6.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/aps-igexin.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="46c72de4d55a27ef938da6803b811242c17f3f36">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/aps-igexin_83cc5caa450b2a814ffc13ca60fc7e114dc261a7.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/payment.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="43fac4160d93e93d2fd011d85b821dae6a1b67a9">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/payment_393d66df19bd7de32db479508e344ad0ac3232ec.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/downloader.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="cab73bafa4ddc4e998d5a26347d333d6023b8fd9">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/downloader_dca4e0f813506074b20c1b42df0ebef4c5274d34.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/geolocation-system.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="90dafdf52b8402febbb8cdba9928114ef295c7fb">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/geolocation-system_aca02c1d759656a7ec8caaf8dbd211a88b9366d2.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/share-weixin.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="55fe44f335c3722691a151f40a90e80c59708ed3">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/share-weixin_8e0c2d9081e69a331e4a0da68763aa06dba676e6.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/GetuiSDK2.10.3.5.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="d70dcea02114e0414060311e3733db5c40498b58">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/GetuiSDK2.10.3.5_59e625727a8c5b1bf21adc1bd58338ea2d0d2eea.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/tx_weibo_sdk_component.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="17d672bf657b4d848d1b33782496fc0dd972072c">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/tx_weibo_sdk_component_2407ee50a7bd90ac163cfd6f29c88e92f88d28ee.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/audio.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="010d4d642d22c1838d2351bb2edea5d2042ce238">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/audio_6697c5c8e1778438ecb3ac88022d23dd2ae9c527.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/share.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="8687450f233b8eeb503e78b15f6a1b98ba230855">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/share_8f77008a3399a8024336546ffdc28340c7578b00.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/umeng-analytics-v6.0.1.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="aab9085bca0c26dcb9cb11837a5f5e22cc102a5e">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/umeng-analytics-v6.0.1_07fdd4b4cf64951d3126368c541c260ea17df024.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/tx_weibo_sdk.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="33921321a220f3927929217aeed32befede21502">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/tx_weibo_sdk_ea8cb74831fb6f287a464d397e0f497c82bee9a5.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/oauth-qq.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="049e2b7bb2d26b83f095b54ceff282e1167f0aa0">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/oauth-qq_7d5d733fbf39d71cda1e2fa652b2c4b3b10acb15.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/oauth-weixin.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="a6c9de495c8d2328152b8fc44379501e6ea28a1b">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/oauth-weixin_d6efe9a9bc647ead4742c956b5ed5961d4821620.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/alipayutdid.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="4345fa0a5a7768f2f9c86aaab7db9e2906765193">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/alipayutdid_03744bb874f05fe0a676db928ac840bbc35ee210.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/uploader.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="dac60a6fc486e60279bb6e009e155242b3f68762">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/uploader_37c2f56e6fb0611385d325da0332024974768b73.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/contacts.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="eaf9b2c17dbc13ea2a497618751589ab5468d00b">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/contacts_b02a0dbaf2dadc21b03f73369f24987009709920.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/mysonic.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="3a1c178b9af7ece0c4cca02beb7a2a9bb694d9a1">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/mysonic_7b9c14ecae48a1eadc07801c42008a09702dfda0.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/aps.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="d0eb398ff6b977751bf11c63ed96b2964e6f4f08">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/aps_8aa1d91f87f4b0db33de9494fd4231d2b51e988e.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/pdr.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="5e2f6e66cf60aca5ce683c3c4f3d78f59c88b30b">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/pdr_2dfaf5ee74bef1317685101f89710c04df723b0b.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/xiaomi-oauth.1.6.6.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="2f8a6148dee5840be149828710ce4248dc283e34">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/xiaomi-oauth.1.6.6_a9beb3823e3905be4d714b39c815787420b9acf1.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/geolocation-baidu.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="9dc88c5071554ec9ab770087ff2bba41a97eb911">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/geolocation-baidu_0fb71cfd6bf8504f325eab85ec00013c371f9425.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/navigatorui.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="2466f7f07c17dfe88b124eef1daeef71f8caab84">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/navigatorui_2bfe893fa4ad8cd784ee7720386db63bff77d32e.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/Msc.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="994d12017bc2c9ba570180cde5500689d134e6e6">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/Msc_63091fa236fabf01c7c21e1d5844e982be9130f9.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/invocation.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="0cfd9a3b2e1dbe88e655cbc323a02f8e58e13ce9">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/invocation_2b85c7369cc4cea03fdbd8ec521c68b82f247945.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/camera.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="16849851f0063089aaf4e30fc58277442d3cf4ef">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/camera_937c5bbf3de515a7a25c2f3456ffa56cf2bba836.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/messaging.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="edf066a8ded322a6519890167404f6e49e1d5ae1">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/messaging_2153ea964612287572774fcf88695aa83b667afb.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/share-qq.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="341945c713b8bcd718ddcde45e58db5be9f6ef40">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/share-qq_8315cd66ee592d1e569e81ec4acd9b8833ec9d68.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/sensor.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="ef79f3437cc6292ca2491eb7ca2bb179114faefb">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/sensor_1ef90e61ada11623e14004ef362ee1223ebe5311.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/geolocation.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="be7fde2cdb5d16aa8dcf33f33b6455aa96d30fa2">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/geolocation_d27794f3cfd66665e8673934ed4f6766814645c5.jar" />
+    </item>
+    <item
+        jar="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/libs/statistics-umeng.jar"
+        jumboMode="false"
+        revision="27.0.3"
+        sha1="f97263252824982cf1ebf52e025d633362ed4cba">
+        <dex dex="/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/pre-dexed/release/statistics-umeng_d33400a7d486fd2f38f4f266dfd5e8842e5dfe76.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hello MUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/mui.min.css">
+    <link rel="stylesheet" href="../weui/style/weui.css"/>
+    <link rel="stylesheet" href="../css/base.css" />
+    <script src="../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>var h5pullDown = true;</script>
+    <script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        #cart-list #pullrefresh {
+            top: 60px;
+            bottom: 100px;
+            background-color: #f5f5f5;
+        }
+        #cart-list .weui-cells {
+            margin-top: 0;
+        }
+        .mui-table-view:before {
+            height: 0;
+        }
+        .mui-table-view:after {
+            height: 0;
+        }
+        .weui-cells_checkbox .weui-cell__hd {
+            padding-right: 0;
+        }
+        .no_data {
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f5f5f5;
+        }
+        .no_data img {
+            width: 80px;
+            height: 80px;
+        }
+        .no_data p {
+            font-size: 15px;
+            color: grey;
+            padding-top: 5px;
+            margin-bottom: 0;
+        }
+        .weui-cell:last-child {
+            /*border-bottom: 1px solid #e5e5e5;*/
+        }
+        .weui-cells:after {
+            border-width: 0;
+        }
+        .detail img {
+            width: 60px;
+            height: 60px;
+            float: left;
+        }
+        .detail div {
+            float: left;
+            margin-left: 10px;
+        }
+        .detail .title {
+            font-size: 13px;
+            color: #515151;
+            margin-bottom: 0px;
+        }
+        .detail .guige {
+            margin-bottom: 0px;
+        }
+        .detail .price {
+            margin-bottom: 0px;
+            font-size: 16px;
+            color: #b4282d;
+        }
+        .mui-numbox {
+            padding: 0 25px;
+            width: 80px;
+            height: 25px;
+        }
+        .mui-numbox [class*=btn-numbox], .mui-numbox [class*=numbox-btn] {
+            width: 25px;
+        }
+        .weui-cells_checkbox .weui-check:checked + .weui-icon-checked:before {
+            color: #95D1C6;
+        }
+        .bottom {
+            position: fixed;
+            bottom: 50px;
+            z-index: 999;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .bottom .num{
+            font-size: 15px;
+            color: #515151;
+        }
+        .bottom .price {
+            display: block;
+            height: 50px;
+            position: absolute;
+            right: 130px;
+            line-height: 50px;
+            font-size: 16px;
+            color: #b4282d;
+        }
+        .bottom .btn {
+            display: block;
+            /* float: right; */
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            width: 120px;
+            color: white;
+            background-color: #CCCCCC;
+            position: absolute;
+            right: 0;
+        }
+        .bottom .btn.active {
+            color: white;
+            background-color: #B4282D;
+        }
+        .bottom .weui-cell {
+            padding: 0 0 0 20px;
+            height: 50px;
+        }
+        .mui-scroll-wrapper {
+            bottom: 50px;
+        }
+        .edit_div {
+            display: none;
+        }
+        .check {
+            height: 60px;
+            line-height: 60px;
+        }
+
+	    .default_div, .edit_div{
+		    display: none;
+	    }
+
+	    .default_div.active, .edit_div.active{
+		    display: flex;
+	    }
+    </style>
+</head>
+
+<body id="cart-list">
+<nav class="head">
+    <div class="title-wrapper">
+        <span>购物车</span>
+    </div>
+    <div class="edit-wrapper edit-action">
+        编辑
+    </div>
+</nav>
+
+<!--下拉刷新容器-->
+<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <!--数据列表-->
+        <div class="mui-table-view mui-table-view-chevron">
+
+            <div class="weui-cells weui-cells_checkbox cart_list">
+
+                <!--<div class="no_data">-->
+                <!--<img src="../image/product/no_data.png">-->
+                <!--<p>暂无订单信息哦~</p>-->
+                <!--</div>-->
+
+                <!--<div class="weui-cell">-->
+                <!--<div class="weui-cell__hd check">-->
+                <!--<input type="checkbox" class="weui-check" checked="checked">-->
+                <!--<i class="weui-icon-checked"></i>-->
+                <!--</div>-->
+                <!--<div class="weui-cell__bd detail">-->
+                <!--<img src="../image/yifu.png">-->
+                <!--<div style="float: left">-->
+                <!--<p class="title">女士长袖</p>-->
+                <!--<p class="guige">39码；深棕</p>-->
+                <!--<p class="price">￥99.99</p>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="mui-numbox" data-numbox-min='0'>-->
+                <!--&lt;!&ndash;"-"按钮，点击可减小当前数值&ndash;&gt; -->
+                <!--<button class="mui-btn mui-numbox-btn-minus" type="button">-</button>-->
+                <!--<input class="mui-numbox-input" type="number" />-->
+                <!--&lt;!&ndash; "+"按钮，点击可增大当前数值 &ndash;&gt;-->
+                <!--<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>-->
+                <!--</div>-->
+                <!---->
+                <!--</div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui-cells weui-cells_checkbox bottom">
+    <!--<div class="no_data">-->
+    <!--<img src="../image/product/no_data.png">-->
+    <!--<p>暂无订单信息哦~</p>-->
+    <!--</div>-->
+    <div class="weui-cell default_div active">
+        <div class="weui-cell__hd" style="height: 50px;line-height: 50px;">
+            <input type="checkbox" class="weui-check">
+            <i class="weui-icon-checked"></i>
+        </div>
+        <span class="num">已选(<span class="selectedItemQuantity">0</span>)</span>
+        <span class="price selectedItemAmount"></span>
+        <span class="order btn">下单</span>
+    </div>
+    <div class="weui-cell edit_div">
+        <div class="weui-cell__hd" style="height: 50px;line-height: 50px;">
+            <input type="checkbox" class="weui-check">
+            <i class="weui-icon-checked"></i>
+        </div>
+        <span class="num">已选(<span class="selectedItemQuantity">0</span>)</span>
+        <span class="removeSelect btn">删除选中</span>
+    </div>
+</div>
+<nav class="bottom">
+    <a class="bottom-item" id="index">
+        <div class="bottom-img-wrapper">
+            <img src="../image/home@3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>首页</span>
+        </div>
+    </a>
+    <a class="bottom-item" id="cart">
+        <div class="bottom-img-wrapper">
+            <img src="../image/gouwuche_sel@3x@3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>购物车</span>
+        </div>
+    </a>
+    <a class="bottom-item" id="info">
+        <div class="bottom-img-wrapper">
+            <img src="../image/wode @3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>我的</span>
+        </div>
+    </a>
+</nav>
+<script src="../js/base.js"></script>
+<script>
+
+	function no_data() {
+		$(".weui-cells:after").css("borderWidth","0px");
+		var html = 
+			'<div class="no_data">' +
+				'<img src="../image/no_data.png">' +
+				'<p>暂无订单信息哦~</p>' +
+			'</div>';
+		$(".cart_list").html(html);
+	}
+	mui.init({
+		pullRefresh: {
+			container: '#pullrefresh',
+			down: {
+				callback: pulldownRefresh
+			}
+		}
+	});
+	/**
+	 * 下拉刷新具体业务实现
+	 */
+	function pulldownRefresh() {
+		cartInit();
+		setTimeout(function() {
+			mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+			mui('#pullrefresh').pullRefresh().refresh(true);
+		}, 1500);
+	}
+	function goPage(page, data, isNew) {
+        if (isNew === true)
+            isNew = true;
+        else
+            isNew = false;
+        mui.openWindow({
+            url: page,
+            id: page,
+            extras: {
+                data: data
+            },
+            createNew: isNew
+        });
+		setTimeout(function(){
+			plus.webview.currentWebview().close('none');
+		},550);
+	}
+
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+		var self = plus.webview.currentWebview();
+		var flag = self.data;
+		if(flag == 1){
+			var back = '<div class="back-wrapper mui-action-back">' +
+					       '<img src="../image/left@3x.png" class="back">' +
+					   '</div>';
+			$(".head").prepend(back);
+		}
+	}
+	document.addEventListener("plusready", plusReady, false);
+
+	$("#index").on("tap",function () {
+		goPage("../index.html",{
+			delOpener: true
+       });
+	});
+	$(".mui-scroll").on("tap", ".detail", function(){
+		var cartItemId = $(this).parent().attr("data-id");
+		$.ajax({
+			type:"get",
+			url:IP + "/api/cart/view.html",
+			dataType: 'json',
+			data: {
+				"cartItemId":  cartItemId
+			},
+			success: function(data){
+				var dataid = data.goods.id;
+				goPage("../product.html", dataid);
+			},
+			error: function(){
+				mui.toast("网络错误");
+			}
+		});
+	});
+	var target = "";
+	$("#info").on("tap",function () {
+		$.ajax({
+			type: "get",
+			url: IP + "/api/user/check.html",
+			dataType: "json",
+			success: function(data){
+				if(data == false){
+					target = "info";
+					goPage("../account/login.html", {
+						data: target,
+						delOpener: true
+                    });
+				}
+				else{
+					goPage("../info/index.html", {
+						delOpener: true
+                    });
+				}
+			},
+			error: function(data){
+
+			}
+		});
+	});
+</script>
+<script>
+	// 计算勾选的cartItem数量和总价格
+	function calcCartItem() {
+
+		var totalSelectedQuantity = 0;
+		var totalSelectedAmount = 0;
+		var allChecked = true;
+		var hasCheckedItem = false;
+
+		var cartItems = $(".cart_list").find(".weui-cell");
+		for(var i = 0; i < cartItems.length; i++){
+			var cartItemDom = $(cartItems[i]);
+
+			var itemId = cartItemDom.attr("data-id");
+			var itemPrice = Number( cartItemDom.find(".price").text().replace("￥", "") );
+			var quantity = cartItemDom.find(".mui-numbox-input").val();
+			var checked = cartItemDom.find(".check .weui-check")[0].checked;
+			if(checked){
+				hasCheckedItem = true;
+				totalSelectedQuantity += Number(quantity);
+				totalSelectedAmount += Number(itemPrice * quantity);
+			}else{
+				allChecked = false;
+			}
+		}
+
+		// 设置总数量
+		$(".selectedItemQuantity").text(totalSelectedQuantity);
+		// 设置总金额
+		$(".selectedItemAmount").text('￥' + totalSelectedAmount);
+
+		// 全选按钮，根据当前模式判断是哪个全选按钮
+		var selectAllDom = $(".default_div").hasClass("active") ? $(".default_div .weui-check") : $(".edit_div .weui-check");
+		selectAllDom.prop("checked", allChecked);
+
+		// 操作按钮 可操作高亮，不可操作变灰
+		var actionBtnDom = $(".default_div").hasClass("active") ? $(".order") : $(".removeSelect");
+		if(hasCheckedItem){
+			actionBtnDom.addClass("active");
+		}else{
+			actionBtnDom.removeClass("active");
+		}
+	}
+
+	// 选中或者取消勾选（更新服务器状态）
+	function cartItemCheckedUpdate(cartItemId, callback) {
+		$.ajax({
+			url: IP + "/api/cart/check.html",
+			type: "get",
+			dataType: "json",
+			data: {
+				id: cartItemId
+			},
+			success: function (data) {
+				if(data.message.type == "success"){
+					callback();
+				}else{
+					mui.toast(data.message.content);
+				}
+			},
+			error: function () {
+				mui.toast("网络错误");
+			}
+		});
+	}
+
+	// 设置所有的Item项选中或者不选中
+	function setAllItemCheckBox(checkFlag, updateServerFlag) {
+		// 是否上传服务器，默认否
+		updateServerFlag = updateServerFlag || false;
+		// 全部勾选
+		var cartItems = $(".cart_list").find(".weui-cell");
+		for(var i = 0; i < cartItems.length; i++){
+			var cartItemDom = $(cartItems[i]);
+			var checkDom = cartItemDom.find(".check");
+			var checkboxDom = cartItemDom.find(".check .weui-check");
+			var checked = checkboxDom.prop("checked");
+			if(checked != checkFlag){
+				checkDom.trigger("tap");
+			}
+		}
+	}
+
+	// 初始化购物车
+	function cartInit() {
+
+		// 从编辑模式切换成普通模式
+		var name = $(".edit-action").html();
+		if (name.trim() === "取消") {
+			$(".edit-action").html("编辑");
+			$(".edit_div").removeClass("active");
+			$(".default_div").addClass("active");
+		}
+
+		// 获取购物车列表，并显示总数量、总价格
+		$.ajax({
+			type:"get",
+			url:IP + "/api/cart/list.html",
+			dataType: "json",
+			success: function(data){
+				var totalQuantity = 0;
+				var cartItemHtml = "";
+				for(var i in data.cartItems){
+					var item = data.cartItems[i];
+					// 统计数量
+					totalQuantity += item.quantity;
+
+					// 拼接规格列表
+					var guigeHtml = "";
+					for(var j = 0; j < item.specificationValue.length; j++){
+						var guigeItem = item.specificationValue[j];
+						guigeHtml += guigeItem.value + " ";
+					}
+
+					// 拼接购物车Item
+					cartItemHtml +=
+						'<div class="weui-cell" data-id="'+ item.id +'">' +
+							'<div class="weui-cell__hd check">' +
+								'<input type="checkbox" class="weui-check" ' + (item.checked ? 'checked="checked"' : '') + '>' +
+								'<i class="weui-icon-checked"></i>' +
+							'</div>' +
+							'<div class="weui-cell__bd detail">' +
+								'<img src="' + item.image + '">' +
+								'<div style="float: left;">' +
+									'<p class="title">' + item.name  + '</p>' +
+									'<p class="guige">' + guigeHtml + '</p>' +
+									'<p class="price">￥' + item.price + '</p>' +
+								'</div>' +
+							'</div>' +
+							'<div class="mui-numbox" data-numbox-min="1">' +
+								' <!--"-"按钮，点击可减小当前数值--> ' +
+								'<button class="mui-btn mui-numbox-btn-minus" type="button">-</button>' +
+								'<input class="mui-numbox-input" type="number" value="' + item.quantity + '"/>' +
+								'<!-- "+"按钮，点击可增大当前数值 -->' +
+								'<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>' +
+							'</div>' +
+						'</div>';
+				}
+				$(".cart_list").attr("cartoken",data.token);
+				$(".cart_list").html(cartItemHtml);
+
+				// 初始化加减器
+				mui(".mui-numbox").numbox();
+
+				// 设置勾选数量和总价格
+				calcCartItem();
+			},
+			error: function(data){
+				mui.toast("错误");
+			}
+		});
+	}
+	cartInit();
+
+	// 购物车Item 勾选事件
+	$(".cart_list").on("tap", ".check", function () {
+		var cartItemDom = $(this).parent();
+		var cartItemId = cartItemDom.attr("data-id");
+		var checkbox = $(this).find(".weui-check");
+		var checked = checkbox[0].checked;
+
+		// 正常模式下需要把勾选操作同步到服务器
+		if($(".default_div").hasClass("active")){
+			cartItemCheckedUpdate(cartItemId, function () {
+				checkbox.prop("checked", !checked);
+				calcCartItem();
+			});
+		}else{
+			// 编辑模式下直接勾选
+			checkbox.prop("checked", !checked);
+			calcCartItem();
+		}
+	});
+
+	// 普通模式、编辑模式切换
+	$(".edit-action").bind("tap",function(){
+		var name = $(this).html();
+		if (name.trim() === "编辑") {
+			$(this).html("取消");
+			$(".default_div").removeClass("active");
+			$(".edit_div").addClass("active");
+			setAllItemCheckBox(false);
+		} else {
+			$(this).html("编辑");
+			$(".default_div .weui-check").prop("checked",true);
+			$(".edit_div").removeClass("active");
+			$(".default_div").addClass("active");
+			cartInit();
+		}
+	});
+
+	// 普通模式 全选按钮 点击事件
+	$(".default_div .weui-cell__hd").bind("tap",function () {
+		// 全选按钮
+		var selectAllDom = $(".default_div .weui-check");
+		var checkFlag = selectAllDom[0].checked;
+		setAllItemCheckBox(!checkFlag, true);
+	});
+
+	// 编辑模式 全选按钮 点击事件
+	$(".edit_div .weui-cell__hd").bind("tap",function () {
+		// 全选按钮
+		var selectAllDom = $(".edit_div .weui-check");
+		var checkFlag = selectAllDom[0].checked;
+		setAllItemCheckBox(!checkFlag);
+	});
+
+	// "删除选中"按钮 点击事件
+	$(".removeSelect").on("tap",function () {
+		if(!$(this).hasClass("active")){
+			return false;
+		}
+
+		$(".cart_list .weui-cell").each(function () {
+			var flag = $(this).find("input[type=checkbox]").get(0).checked;
+			var dataId = $(this).attr("data-id");
+			var itemDom = $(this);
+			if (flag) {
+				$.ajax({
+					type:"get",
+					url:IP + "/api/cart/delete.html",
+					data: {
+						id: dataId
+					},
+					dataType: "json",
+					success: function(data){
+						if(data.message.type == "success"){
+							itemDom.remove();
+							calcCartItem();
+							mui.toast("删除成功");
+						}else{
+							mui.toast(data.message.content);
+						}
+					},
+					error: function(data){
+						mui.toast("错误");
+					}
+				});
+			}
+		});
+	});
+
+	// 修改购物车Item
+	function editCartItem(postData) {
+		$.ajax({
+			type:"get",
+			url:IP + "/api/cart/update.html",
+			data: postData,
+			dataType: "json",
+			success: function(data){
+				if(data.message.type == "success"){
+					// 设置总数量
+					$(".selectedItemQuantity").text(data.quantity);
+					// 设置总金额
+					$(".selectedItemAmount").text('￥' + data.effectivePrice);
+				}else{
+					// 修改失败
+					mui.toast(data.message.content);
+					// 刷新购物车
+					cartInit();
+				}
+			},
+			error: function(data){
+				mui.toast("网络错误");
+			}
+		});
+	}
+
+	// 购物车 数量增加减少按钮点击
+	$(".cart_list").on("tap",".mui-numbox-btn-plus, .mui-numbox-btn-minus", function(){
+		// 加减器
+		var addSubDom = $(this).parent();
+		// 购物车项
+		var cartItemDom = $(this).parent().parent();
+
+		var itemId = cartItemDom.attr("data-id");
+		var itemPrice = Number( cartItemDom.find(".price").html().replace("￥", "") );
+		var quantity = addSubDom.find(".mui-numbox-input").val();
+		var checked = cartItemDom.find(".weui-check")[0].checked;
+
+		editCartItem({
+			id: itemId,
+			quantity: quantity
+		});
+	});
+
+	//下单
+	$(".order").on("tap",function(){
+		$.ajax({
+			type:"get",
+			url:IP + "/api/cart/list.html",
+			dataType: "json",
+			success: function(data){
+				if(data.cartItems.length > 0){
+					if($(".order").hasClass("active")){
+						$.ajax({
+							type: "get",
+							url: IP + "/api/user/check.html",
+							dataType: "json",
+							success: function(data){
+								var token =$(".cart_list").attr("cartoken");
+								if(data == false){
+									target = "checkout";
+									goPage("../account/login.html", {
+										data: target,
+										delOpener: true
+									});
+								}
+								else{
+									goPage("checkout.html", {
+										data: token,
+										delOpener: true
+									});
+								}
+							},
+							error: function(data){
+								alert("错误");
+							}
+						});
+					}else{
+
+					}
+				}else{
+					mui.toast("请把商品加入购物车~");
+				}
+			},
+			error: function(data){
+				alert("错误");
+			}
+		});
+	});
+</script>
+</body>
+
+</html>
+

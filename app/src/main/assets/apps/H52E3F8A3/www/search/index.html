@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../fonts/iconfont.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <style>
+
+		 nav.search {
+            padding: 8px 18px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            border-bottom: 1px solid #d9d9d9;
+            background-color: white;
+        }
+        nav.search .search-input {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -moz-box-flex: 1;
+            -moz-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            height: 32px;
+            background-color: #f4f4f4;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            border-radius: 5px;
+        }
+        nav.search .search-input .icon-sousuo {
+            font-size: 19px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 32px;
+            padding-left: 5px;
+            color: rgba(7,17,27,0.5);
+        }
+        nav.search .search-input .icon-qingchu {
+            font-size: 19px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 32px;
+            padding-right: 5px;
+            color: rgba(7,17,27,0.5);
+            display: none;
+        }
+        nav.search .search-input input {
+            height: 100%;
+            color: rgba(0,0,0,0.8);
+            background-color: transparent;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -moz-box-flex: 1;
+            -moz-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            border-width: 0;
+            outline: none;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            font-size: 15px;
+        }
+        nav.search .search-cancel {
+            padding-left: 14px;
+            height: 32px;
+            line-height: 32px;
+            font-size: 14px;
+            color: #333333;
+        }
+        nav.search .search-cancel {
+             padding-left: 14px;
+             height: 32px;
+             line-height: 32px;
+             font-size: 14px;
+             color: #333333;
+         }
+        .history {
+        	visibility: hidden;
+            padding: 0 18px 10px 20px;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+            background-color: white;
+        }
+        .history .history-name {
+        	display: inline-block;
+        	width: 91%;
+            height: 20px;
+            line-height: 20px;
+            color: #999;
+            font-size: 15px;
+            margin-bottom: 0;
+            padding-top: 10px;
+            margin-bottom: 10px;
+        }
+        .history span{
+			color: #999;
+		}
+		.history span i{
+			font-size: 18px;
+		}
+        .history-list {
+
+        }
+        .history-list-item {
+            display: inline-block;
+            cursor: pointer;
+            padding: 1px 7px;
+            border: 1px solid #999;
+            font-size: 13px;
+            color: #333;
+            margin-top: 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+        .history-list-item:active {
+            color: black;
+        }
+
+        .search-list {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            color: #333333;
+            background-color: white;
+            display: none;
+        }
+        .search-list .search-list-item {
+            height: 45px;
+            line-height: 45px;
+            padding-left: 18px;
+        }
+        .search-list .search-list-item a {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-bottom: 1px solid #d9d9d9;
+            color: #333333;
+            font-family: PingFangSC-Light,helvetica,'Heiti SC';
+        }
+
+        .search-list .search-list-item:last-child a {
+            border-width:0;
+        }
+    </style>
+</head>
+<body>
+<nav class="search">
+	<div class="search-input">
+        <i class="iconfont icon-sousuo"></i>
+        <input type="text" placeholder="爆款毛巾">
+        <i class="iconfont icon-qingchu"></i>
+	</div>
+		
+    <a class="search-cancel search-cancel-action">
+        	取消
+    </a>
+</nav>
+<!--<div class="history" id="btn">
+    <p class="history-name">历史记录</p>
+    <span><i class="iconfont icon-shanchu"></i></span>
+    <div class="history-list">
+    </div>
+</div>-->
+<ul class="search-list">
+    <li class="search-list-item">
+        <a>浴巾</a>
+    </li>
+    <li class="search-list-item">
+        <a>云毯</a>
+    </li>
+    <!--<li class="search-list-item">
+        <a>围巾围巾围巾</a>
+    </li>-->
+</ul>
+</body>
+<script src="../js/base.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+	var histories = [];
+	
+	mui.ready(function(){
+		$(".search-input input").val("");
+	});
+	
+	function goPage(page, data, isNew) {
+		var thisId = plus.webview.currentWebview().id;
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			}
+		});
+	}
+
+	// input自动聚焦
+	var nativeWebview, imm, InputMethodManager;
+	var initNativeObjects = function() {
+		if (mui.os.android) {
+			var main = plus.android.runtimeMainActivity();
+			var Context = plus.android.importClass("android.content.Context");
+			InputMethodManager = plus.android.importClass("android.view.inputmethod.InputMethodManager");
+			imm = main.getSystemService(Context.INPUT_METHOD_SERVICE);
+		} else {
+			nativeWebview = plus.webview.currentWebview().nativeInstanceObject();
+		}
+	};
+	var showSoftInput = function() {
+		var nativeWebview = plus.webview.currentWebview().nativeInstanceObject();
+		if (mui.os.android) {
+			//强制当前webview获得焦点
+			plus.android.importClass(nativeWebview);
+			nativeWebview.requestFocus();
+			imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
+		} else {
+			nativeWebview.plusCallMethod({
+				"setKeyboardDisplayRequiresUserAction": false
+			});
+		}
+		setTimeout(function() {
+			$(".search input").focus();
+		}, 300);
+	};
+
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#ffffff");
+		}
+		plus.webview.currentWebview().setStyle({
+			softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+		});
+		initNativeObjects();
+		showSoftInput();
+		loadSearchHistory();
+	}
+	document.addEventListener("plusready", plusReady, false);
+
+	window.addEventListener("init", function() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#ffffff");
+		}
+		initNativeObjects();
+		showSoftInput();
+		loadSearchHistory();
+	});
+
+	//删除搜索记录按钮
+	$(".history span").on("tap",function(){
+		deleteSearchHistory();
+	});
+	
+	// 清除
+	$(".icon-qingchu").bind("tap", function () {
+		$(".search input").val("");
+		$(".search input").blur();
+		$(".search-list").hide();
+		$(".history").show();
+		$(this).hide();
+	});
+
+	// 点击搜索出的列表
+	$(".search-list .search-list-item").bind("tap", function () {
+		var content = $(this).text().trim();
+		addSearchHistory($(".search-list .search-list-item a").html());
+		$(".search input").blur();
+		searchAjax(content);
+		goPage("list.html", content);
+	});
+
+	// 取消
+	$(".search-cancel-action").bind("tap",function () {
+        var preId = plus.webview.currentWebview().preId;
+        var id = plus.webview.getWebviewById(preId);
+		mui.fire(id,"init");
+		mui.back();
+	});
+
+	// 输入
+    $(".search input").bind("input propertychange",function () {
+		var value = $(this).val();
+        if (value.length > 0) {
+			$(".history").hide();
+			$(".search-list").show();
+			$(".search .icon-qingchu").show();
+        } else {
+			$(".search-list").hide();
+			$(".history").show();
+			$(".search .icon-qingchu").hide();
+        }
+	});
+
+	function searchAjax(content){
+		$.ajax({
+			url: IP + '/api/goods/search.html',
+			type: 'post',
+			dataType: 'json',
+			data: {
+				pageNumber: 1,
+				pageSize: 3,
+				name: content
+			},
+			success: function(data){
+				console.log(JSON.stringify(data));
+				goPage("list.html", content);
+			},
+			error: function(){
+				mui.toast('网络错误2');
+			}
+		});
+	};
+
+    // 搜索确认
+    $(".search input").keyup(function (event) {
+    	if($(".search input").val() == "" || $(".search input").val() == null){
+    		mui.toast("请输入关键字");
+    	}
+    	else{
+    		if (event.keyCode === 13) {
+				$(".search input").blur();
+				addSearchHistory($(this).val());
+				var content = $(this).val();
+				searchAjax(content);
+			}
+    	}
+	});
+
+    function loadSearchHistory() {
+        var obj = JSON.parse(plus.storage.getItem("histories"));
+		if (obj !== null) {
+			histories = obj.histories;
+		}
+		if (histories !== null &&  histories.length !== 0) {
+			$(".history").css("visibility","visible");
+			showSearchHistory();
+		}
+	}
+
+    function addSearchHistory(text) {
+    	for (var i=0; i<histories.length; i++) {
+    		var item = histories[i];
+    		if (item === text) {
+    			return;
+           }
+        }
+		histories.push(text);
+		var obj = {
+			histories: histories
+		};
+		plus.storage.setItem('histories', JSON.stringify(obj));
+		var history = '<a class="history-list-item">'+text+'</a>';
+		$(".history-list-item").prepend(history);
+		// 点击历史项
+		$(".history-list-item:first-child").bind("tap", function () {
+			$(".search input").blur();
+			goPage("list.html");
+		});
+	}
+
+	//删除搜索记录
+	function deleteSearchHistory(){
+		$(".history").css("visibility","hidden");
+		var obj = {
+			histories:[]
+		};
+		histories = [];
+		plus.storage.setItem('histories', JSON.stringify(obj));
+		showSearchHistory();
+	}
+
+	//点击history区域，input不失去焦点
+//	var btn = document.getElementById("btn");
+//		btn.onmousedown = function(event){
+//			event.preventDefault();
+//	};
+
+	function showSearchHistory() {
+		$(".history-list").empty();
+		var html = '';
+        for (var i = histories.length-1;i >= 0;i--) {
+			html += '<a class="history-list-item">'+histories[i]+'</a>';
+		}
+		$(".history-list").html(html);
+		
+		// 点击历史项
+		$(".history-list-item").bind("tap", function () {
+			$(".search input").blur();
+			goPage("list.html");
+		});
+	}
+
+</script>
+</html>
+

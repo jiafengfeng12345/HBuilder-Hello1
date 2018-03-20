@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="../css/ydui.css"/>
+    <link rel="stylesheet" href="../weui/style/weui.css"/>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../fonts/iconfont.css" />
+    <style>
+        input[type=text] {
+            font-size: 15px;
+            color: #515151;
+        }
+        p {
+            color: #515151;
+            font-size: 15px;
+        }
+        .bottom {
+            position: fixed;
+            height: 50px;
+            background-color: white;
+            bottom: 0;
+            width: 100%;
+        }
+        .bottom span {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            float: left;
+            width: 50%;
+            text-align: center;
+            font-size: 15px;
+            color: #515151;
+        }
+        .bottom span:last-child {
+            background-color: #95d1c6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>编辑地址</span>
+    </div>
+</nav>
+<div style="padding-top: 60px;">
+    <form id="addrEditForm">
+        <input type="hidden" id="addrId" name="id" value="">
+        <input type="hidden" id="areaId" name="areaId" value="">
+        <input type="hidden" id="isDefault" name="isDefault" value="false">
+        <input type="hidden" id="zipCode" name="zipCode" value="000000">
+
+        <div class="weui-cells weui-cells_checkbox" style="margin-top: 0;">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input class="weui-input city" type="text" name="areaName" placeholder="省份、城市、区县" readonly/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input class="weui-input address" type="text" name="address" placeholder="详细地址，如街道、楼盘号等" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input class="weui-input name" type="text" name="consignee" placeholder="姓名" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input class="weui-input tel" type="text" name="phone" placeholder="手机号" />
+                </div>
+            </div>
+            <label class="weui-cell moren">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" class="weui-check" id="isDefaultCheckbox" />
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>设为默认地址</p>
+                </div>
+            </label>
+        </div>
+    </form>
+</div>
+<div class="bottom">
+    <span class="mui-action-back">取消</span><span class="save">保存</span>
+</div>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../weui/js/zepto.min.js"></script>
+<script type="text/javascript" src="../weui/js/jweixin.js"></script>
+<script src="../weui/js/weui.min.js"></script>
+<script src="../js/city.js"></script>
+<script src="../js/ydui.cityselect.js"></script>
+<script src="../js/ydui.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript">
+	function goPage(page){
+		mui.openWindow({
+			url:page,
+			id:page
+		});
+	}
+
+	// 设置区域id
+	function setAreaId(areaName) {
+		$.ajax({
+			url: IP + "/api/receiver/getAreaId.html",
+			type: "get",
+			data:{
+				name: areaName
+			},
+			success: function (data) {
+				console.log(data);
+				$("#areaId").val(data);
+				$(".city").val(areaName);
+			},
+			error: function () {
+				mui.toast("网络繁忙");
+			}
+		});
+	}
+
+	function plusReady(){
+		if (mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+		var self = plus.webview.currentWebview();
+		var addressId = self.data;
+
+		$.ajax({
+			type:"get",
+			url:IP + "/api/receiver/list.html",
+			dataType: "json",
+			success: function(data){
+				for(var i in data.content){
+					var item = data.content[i];
+					if(item.id == addressId){
+						$("#addrId").val(addressId);
+						if(item.isDefault){
+							$("#isDefaultCheckbox").click();
+                        }
+						$(".name").val(item.consignee);
+						$(".tel").val(item.phone);
+						setAreaId(item.areaName);
+						$(".address").val(item.address);
+					}
+				}
+			},
+			error: function(data){
+				mui.toast("网络繁忙");
+			}
+		});
+	}
+	document.addEventListener("plusready",plusReady,false);
+</script>
+<script>
+	var $target = $('.city');
+
+	$target.citySelect();
+
+	$target.on('click', function (event) {
+		event.stopPropagation();
+		$target.citySelect('open');
+	});
+
+	$target.on('done.ydui.cityselect', function (ret) {
+		var t_provance = ret.provance;
+		var t_city = ret.city == "全境" ? "" : ret.city;
+		var t_area = ret.area == "全区" ? "" : ret.area;
+		var areaName = t_provance + t_city + t_area;
+		console.log(areaName);
+		var areaSelectDom = $(this);
+		setAreaId(areaName, areaSelectDom);
+	});
+
+	$(".moren").bind("tap",function(){
+		var flag = $(this).find("input").get(0).checked;
+		$("#isDefault").val(!flag);
+	});
+	
+    //手机号正则验证
+	function testPhone(tel){
+		if(tel == "" || tel == null){
+			mui.toast("请填写手机号");
+			return false;
+		}
+		else{
+			var rePhone=  /^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
+			if(rePhone.test(tel)){
+				return true;
+			}else{
+				mui.toast("手机号码格式错误");
+				return false;
+			}
+		}
+	}
+
+	//姓名验证
+	function testName(name){
+		if(name == "" || name == null){
+			mui.toast("请填写姓名");
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+
+	//地址验证
+	function testAddress(city,address){
+		if(address == "" || address == null || city == "" || city == null){
+			mui.toast("请将信息填写完整");
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
+	$(".save").on("tap", function(){
+		var name = $(".name").val();
+		var tel = $(".tel").val();
+		var city = $(".city").val();
+		var address = $(".address").val();
+		console.log($("#addrEditForm").serialize());
+		if(testName(name) && testPhone(tel) && testAddress(city, address)){
+            $.ajax({
+                type:"get",
+                url:IP + "/api/receiver/update.html",
+                dataType: "json",
+                data: $("#addrEditForm").serialize(),
+                success: function(data){
+                    if(data.type == "success"){
+                    	var curWebview = plus.webview.currentWebview();
+                    	var addrList = curWebview.opener();
+	                    addrList.evalJS("getAddrList()");
+	                    plus.webview.show(addrList, "auto", 600, function () {
+		                    mui.toast("保存成功");
+		                    curWebview.close("none");
+	                    });
+                    }
+                    else{
+                        mui.toast("保存失败");
+                    }
+                },
+                error: function(data){
+                    alert("错误");
+                }
+            });
+
+		}
+	})
+</script>
+</body>
+</html>

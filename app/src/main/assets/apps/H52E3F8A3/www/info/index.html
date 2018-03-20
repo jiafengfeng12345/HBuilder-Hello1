@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../fonts/iconfont.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <style type="text/css">
+    	html,body{
+    		width: 100%;
+    		background-color: #EEEEEE
+    	}
+    	.mui-ios header{
+			padding-top: 8px !important;
+		}
+
+		.mui-android header{
+			padding-top: 10px !important;
+		}
+    	.app-header{
+    		position: fixed;
+    		width: 100%;
+    		height: 60px;
+    		background-color: #95d1c6;	
+    	}
+    	.clearfloat after:{
+    		content: ".";
+    		display: block;
+    		height: 0;
+    		visibility: hidden;
+    		clear: both;
+    	}
+    	.info-top{
+    		padding-top: 15px;
+			height: 100%;		
+    	}
+    	.info-center{
+    		padding-top: 55px;
+    	}
+    	.info-top p{
+			display: inline-block;
+		    padding-top: 4px;
+			width: 100%;
+    		color: #FFFFFF;
+    		font-size: 18px;
+    		font-family: PingFangSC-Regular;
+		    text-align: center;
+    	}
+    	.icon-shezhi{
+		    position: absolute;
+		    top: 21px;
+		    left: 10px;
+    		float: left;
+    		padding-left: 10px;
+    		color: #fff!important;
+    	}
+    	.icon-xiaoxi{
+		    position: absolute;
+		    top: 21px;
+		    right: 10px;
+    		float: right;
+    		padding-right: 16px;
+    		color: #fff!important;
+    	}
+    	.profile{
+    		height: 160px;
+    		text-align: center;
+			background-image: url(../image/background@3x.png);
+			background-size: cover;
+			padding-top: 25px;
+    	}
+    	.iconfont{
+    		font-size: 24px;
+    		color: #222222;
+    	}
+    	.icon-qianwang{
+    		float: right;
+    		padding-right: 7px;
+    		font-size:20px!important;   		
+    		color: #D3D3D3!important;
+    	}
+    	.icon-yiwancheng{
+    		font-size: 20px!important;
+    	}
+    	.icon-tubiaozhizuomoban{
+    		font-size: 80px!important;
+    		color: #DDDDDD!important;
+    	}
+		.realprofile{
+			float: left;
+			margin-top: 18px;
+			margin-left: 10%;
+			height: 80px;
+			width: 80px;
+		}
+		.realprofile a {
+			width: 100%;
+			height: 100%;
+		}
+		.realprofile a img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			background-color: white;
+		}
+		.username{
+			float: left;
+			margin-top: 50px;
+			margin-left: 25px;
+			height: 20px;
+			line-height: 20px;
+			font-size: 15px;
+			color: #fff;
+		}
+		.twobar{
+			float: right;
+			margin-top: 40px;
+			margin-right: 30px;
+		}
+		.mystate{
+			width: 100%;
+			height: 70px;
+			padding-top: 10px;
+			background-color: #FFFFFF;
+		}
+		.mystate:after{
+			content: ".";
+			height: 0;
+			display: block;
+			visibility: hidden;
+			clear: both;
+		}
+		.span_style{
+			font-size: 12px;
+			color: #333333;
+		}
+		.list-l{
+			display: inline-block;
+			float: left;
+			width: 25%;
+			padding: 10px 0 0 0;
+			margin-right: 0;
+			text-align: center;
+		}
+		.list-l span:first-child{
+			display: block;
+		}
+		.list-s{
+			width: 97%;
+			height: 45px;
+			line-height: 45px;
+			margin-left: 12px;
+			border-bottom: 1px solid rgba(224,224,224,0.5);
+		}
+		.operation-line span{
+			color: #333333;
+			font-size: 16px!important;
+			font-family: "PingFangSC-Regular";	
+		}
+		.operation-line{
+			margin-top: 15px;
+			border: 1px solid #e0e0e0;
+			background-color: #FFFFFF;
+		}
+		.mui-scrollbar {
+            display: none !important;
+        }
+        .operation-line a:last-child .list-s{
+        	border-bottom: none!important;
+        }
+        .twobar img{
+        	height: 40px;
+        	width: 40px;
+        }
+        .logout{
+        	height: 46px;
+        	line-height: 46px;
+        	margin-top: 15px;
+        	margin-bottom: 49px;
+        	text-align: center;
+        	color: #95D1C6;
+        	font-size: 16px;
+        	background: #FFF;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="bottom">
+    <a class="bottom-item" id="index">
+        <div class="bottom-img-wrapper">
+            <img src="../image/home@3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>首页</span>
+        </div>
+    </a>
+    <a class="bottom-item" id="cart">
+        <div class="bottom-img-wrapper">
+            <img src="../image/gouwuche @3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>购物车</span>
+        </div>
+    </a>
+    <a class="bottom-item" id="info">
+        <div class="bottom-img-wrapper">
+            <img src="../image/wode_sel@3x.png">
+        </div>
+        <div class="bottom-name-wrapper">
+            <span>我的</span>
+        </div>
+    </a>
+</nav>
+
+	<div class="app-header">
+		<div class="info-top">
+			<a href="javascript:goPage('info.html')"><i class="iconfont icon-shezhi"></i></a>
+			<p>我的</p>
+			<a href="javascript:goPage('../message.html')"><i class="iconfont icon-xiaoxi"></i></a>
+		</div>
+	</div>
+	
+	<div class="info-center">
+		<div class="profile clearfloat">
+			<div class="realprofile">
+				<a href="javascript:goPage('info.html')">
+					<img src="../image/user@3x.png">
+				</a>
+				<!--<a href="javascript:goPage('info.html')">-->
+					<!--<img src="../image/user@3x.png">-->
+				<!--</a>-->
+			</div>
+			<div class="username">
+				<span></span>
+			</div>
+			
+			<div class="twobar">
+				<img src="../image/erweima@3x.png"  />
+			</div>
+		</div>
+		
+		<div class="mystate">
+			<div class="list-l">
+				<a href="javascript:showOrderList('pending_payment')">
+					<span><i class="iconfont icon-daifukuan"></i></span>
+					<span class="span_style">待付款</span>
+				</a>
+			</div>
+			<div class="list-l">
+				<a href="javascript:showOrderList('pending_deliver')">
+					<span><i class="iconfont icon-yifukuan"></i></span>
+					<span class="span_style" >待收货</span>
+				</a>
+			</div>
+			<div class="list-l">
+				<a href="javascript:showOrderList('pending_evaluate')">
+					<span><i class="iconfont icon-icon-test"></i></span>
+					<span class="span_style">评价</span>
+				</a>
+			</div>
+			<div class="list-l">
+				<a href="javascript:showOrderList('finished')">
+					<span><i class="iconfont icon-yiwancheng"></i></span>
+					<span class="span_style">已完成</span>
+				</a>
+			</div>
+		</div>
+		
+		<div class="operation-line">
+			<a href="javascript:goPage('../order/order.html')">
+				<div class="list-s">
+					<span>我的订单</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+
+			<a href="javascript:goPage('../favorites.html')">
+				<div class="list-s">
+					<span>我的收藏</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+			
+			<a href="javascript:goPage('commission.html')">
+				<div class="list-s">
+					<span>我的佣金</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+			
+		</div>
+		
+		<div class="operation-line">
+			<a href="javascript:goPage('distributorApplication.html')" id="imGoDistributorApplication">
+				<div class="list-s">
+					<span>分销客申请</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+			
+			<a href="javascript:goPage('code.html')">
+				<div class="list-s">
+					<span>邀请码</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+			
+			<a href="javascript:goPage('../address/list.html')">
+				<div class="list-s">
+					<span>地址管理</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+
+			<a href="javascript:goPage('../account/phoneVerification.html')">
+				<div class="list-s">
+					<span>修改密码</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+
+			<a href="javascript:goPage('feedback.html')">
+				<div class="list-s">
+					<span>意见反馈</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+			
+			<!--<a href="">-->
+				<!--<div class="list-s">-->
+					<!--<span>在线客服</span>-->
+					<!--<i class="iconfont icon-qianwang"></i>-->
+				<!--</div>-->
+			<!--</a>-->
+			
+		</div>
+		
+		<div class="operation-line">
+			<a href="javascript:clear();">
+				<div class="list-s">
+					<span>清除缓存</span>
+					<i class="iconfont"></i>
+				</div>
+			</a>
+			<a href="javascript:goPage('about.html')">
+				<div class="list-s">
+					<span>关于APP</span>
+					<i class="iconfont icon-qianwang"></i>
+				</div>
+			</a>
+			
+		</div>
+		
+		<div class="logout">退出登录</div>
+	</div>
+</body>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript" charset="utf-8">
+	$.ajax({
+		url: IP + "/api/profile/info.html",
+		type: "get",
+		dataType: "json",
+		success: function (data) {
+			if(data.inviter != null && data.inviter != ""){
+				$("#imGoDistributorApplication").remove();
+			}
+			$(".username span").html(data.username);
+		}
+	});
+
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			},
+			createNew: true
+		});
+	}
+	
+	$(".twobar").on("tap", function(){
+		goPage("code.html");
+	});
+		
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+//		var opener = plus.webview.currentWebview().opener();
+//		setTimeout(function(){
+//			opener.close('none');
+//		},450);
+	}
+	document.addEventListener("plusready", plusReady, false);
+	
+	$(".logout").on("tap",function(){
+		$.ajax({
+			type: "get",
+			url: IP + "/api/user/logout.html",
+			dataType: "json",
+			success: function(data){
+				mui.toast("成功登出！");
+				goPage("../account/login.html");
+				setTimeout(function(){
+					plus.webview.currentWebview().close('none');
+				},500);
+			},
+			error: function(){
+				mui.toast("登出失败");
+			}
+		});
+	})
+	
+	$("#index").on("tap",function () {
+		goPageWithOutAnimate("../index.html");
+	});
+	$("#cart").on("tap",function () {
+		goPageWithOutAnimate("../cart/index.html");
+	});
+
+	function clear() {
+		mui.toast("清除成功");
+	}
+	function showOrderList(type) {
+		goPage("../order/order.html",type);
+	}
+	$(function(){
+		FastClick.attach(document.body);
+	})
+</script>
+</html>
+
+
+

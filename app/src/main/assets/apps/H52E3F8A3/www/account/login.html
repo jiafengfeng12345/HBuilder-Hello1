@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>login</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/base.css" rel="stylesheet" />
+		<style>
+			body,
+			.mui-content,
+			.mui-bar.mui-bar-nav {
+				background-color: #f8f8f8;
+			}
+
+			.mui-content {
+				margin: 100px 40px 0px 40px;
+			}
+			
+			.mui-title,
+			.mui-bar a,
+			.mui-bar .mui-icon,
+			.forget,
+			.loginsubmit {
+				color: #8f8f94;
+			}
+
+			.mui-bar-nav {
+				box-shadow: none;
+			}
+			
+			input[type=text],input[type=tel],
+			input[type=password] {
+				padding: 50px 0px 15px 0px;
+				line-height: 18px;
+				font-size: 16px;
+				color: #333333;
+				background-color: #f8f8f8;
+				border: none;
+				border-bottom: #D7D7D7 1px solid;
+				border-radius: 0px;
+			}
+			input:focus{
+				color: #333333;/*光标的颜色*/
+			}
+			.mui-input-row .mui-input-password~.mui-icon-eye,
+			.mui-input-row .mui-input-clear~.mui-icon-clear {
+				top: 37px;
+				color: #333333;
+			}
+			.mui-input-row .mui-input-clear~.mui-icon-clear.mui-active,
+			.mui-input-row .mui-input-password~.mui-icon-eye.mui-active {
+				color: #8F8F94;
+			}
+			input::-webkit-input-placeholder {
+				font-size: 18px;
+			}
+			
+			.forget {
+				font-size: 15px;
+			}
+			
+			.loginsubmit {
+				margin-top: 60%;
+				text-align: center;
+				font-size: 25px;
+				line-height: 30px;
+			}
+
+			button, .mui-btn {
+				height: 40px;
+				background-color: #DDDDDD;
+				color: white;
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<nav class="head">
+			<div class="back-wrapper mui-action-back">
+				<img src="../image/left@3x.png" class="back">
+			</div>
+			<div class="title-wrapper">
+				<span>账号登录</span>
+			</div>
+			<div class="edit-wrapper register-action">
+				注册
+			</div>
+		</nav>
+		<div class="mui-content">
+			<div class="mui-input-row">
+				<input id="username" type="tel" class="mui-input-clear" placeholder="手机号" />
+			</div>
+			<div class="mui-input-row">
+				<input id="password" type="password" class="mui-input-password" placeholder="请输入密码" />
+			</div>
+			<a id="forget" class="forget">忘记密码？</a>
+			<div class="">
+				<button id="submit" type="button" class="mui-btn mui-disabled" style="width: 100%;margin-top: 40px;">确认</button>
+			</div>
+			<!--<div id="loginSub" class="loginsubmit">登录</div>-->
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../js/base.js" ></script>
+		<script type="text/javascript">
+			function goPage(page, data, isNew) {
+				if(isNew === true)
+					isNew = true;
+				else
+					isNew = false;
+				mui.openWindow({
+					url: page,
+					id: page,
+					extras: data,
+					createNew: isNew
+				});
+			}
+
+			$(".register-action").on('tap', function() {
+				goPage("register.html");
+			});
+
+			$("#forget").on('tap', function() {
+//				plus.storage.setItem("setPassword","resetPassword");
+				goPage("phoneVerification.html");
+			});
+
+			$('#username').bind('input propertychange', function() {
+				submitCSS();
+			});
+
+			$('#password').bind('input propertychange', function() {
+				submitCSS();
+			});
+
+			function submitCSS() {
+				var username=$("#username").val();
+				var pw=$("#password").val();
+				var len1 = username.length;
+				var len2 = pw.length;
+				if(len1>0 && len2>0) {
+					$("#submit").css("background-color", "#95D1C6");
+					$("#submit").removeClass("mui-disabled");
+
+				} else {
+					$("#submit").css("background-color", "#DDDDDD");
+					$("#submit").addClass("mui-disabled");
+				}
+			}
+
+            $("#submit").on('tap',function(){
+
+            	var username=$("#username").val();
+            	var pw=$("#password").val();
+
+				var self = plus.webview.currentWebview();
+				var target = self.data;
+				var goodId = self.goodId;
+            	$.ajax({
+            		type:"get",
+            		url: IP + "/api/user/login.html",
+            		data:{
+            			phone:username,
+            			password:pw
+            		},
+            		dataType:"json",
+            		success:function(result){
+            			if(result.type == 'success') {
+							mui.toast("登录成功");
+							var flag = 1;
+							plus.storage.setItem("phone", username);
+							plus.storage.setItem("password", pw);
+							switch(target){
+								case "info":
+									goPage("../info/index.html");
+									break;
+								case "favorites":
+									goPage("../favorites.html");
+									break;
+								case "order":
+									goPage("../order/order.html");
+									break;
+								case "message":
+									goPage("../message.html");
+									break;
+								case "product":
+									goPage("../product.html",{data: goodId, flag: flag});
+									break;
+								case "back":
+									mui.back();
+									break;
+								case "cart":
+									goPage("../cart/index.html");
+									break;
+							}
+							setTimeout(function(){
+								plus.webview.currentWebview().close('none');
+							},550);
+						} else {
+							mui.toast("登录失败: " + result.content);
+						}
+            		},
+            		error:function(){
+            			console.log("errorInfo: login");
+            		}
+            	});
+            });
+//          后台验证用户名/手机和密码是否匹配
+//          function verify(str1,str2){
+//				
+//          }
+            
+            function plusReady() {
+				plus.webview.currentWebview().setStyle({
+					softinputMode: "adjustResize"
+				});
+
+			}
+			document.addEventListener("plusready", plusReady, false);
+		</script>
+	</body>
+
+</html>

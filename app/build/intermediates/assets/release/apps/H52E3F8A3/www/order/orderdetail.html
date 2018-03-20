@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../fonts/iconfont.css"/>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.body{
+				padding-top: 65px;
+				overflow: auto;
+				zoom: 1;
+			}
+			span{
+				word-wrap: break-word;
+				font-size: 15px;
+				color: #333;
+			}
+			.body-top{
+				width: 100%;
+				height: 45px;
+				line-height: 45px;
+				background-color: #FFFFFF;
+			}
+			.packageno{
+				display: inline-block;
+				float: left;
+				padding-left: 15px;
+			}
+			.order-status{
+				float: right;
+				padding-right: 15px;
+			}
+			.order-status span{
+				color: #B52A3A;
+			}
+			.body-center{
+				width: 100%;
+			}
+			.goods-detail:first-child {
+				clear: left;
+			}
+			.goods-detail{
+				width: 100%;
+				height: 100px;
+				margin-top: 5px;
+				background-color: #FFFFFF;
+			}
+			.goods-picture{
+				display: inline-block;
+				float: left;
+				padding: 10px 0 0 15px;
+			}
+			.goods-inf{
+				float: left;
+				width: 55%;
+				height: 90px;
+				padding: 15px 0 0 10px;
+			}
+			.list-l{
+				float: left;
+				width: 100%;			
+				padding-top: 3px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.goods-count{
+				float: right;
+				padding: 15px 15px 0 0;
+			}
+			.service{
+				display: inline-block;
+				width: 45%;
+				height: 35px;
+				line-height: 35px;
+				margin: 10px 0 0 3%;
+				text-align: center;
+				border: 2px solid #E1E1E1;
+				border-radius: 2.5px;
+				-webkit-border-radius: 2.5px;
+				-moz-border-radius: 2.5px;
+			}
+			.service .iconfont{
+				padding-right: 5px;
+			}
+			.receiver{
+				margin-top: 10px;
+				background-color: #FFFFFF;
+			}
+			.receiver-inf{
+				padding-top: 10px;
+			}
+			.receiver span{
+				font-size: 14px!important;
+			}
+			.receiver-name{
+				display: inline-block;
+				width: 30%;
+				margin-left: 8%;
+			}
+			.receiver-number{
+				display: inline-block;
+				width: 30%;
+				margin-left: 24%;
+			}
+			.receiver-address{
+				width: 84%;
+				margin: 0 auto;
+				padding-top: 8px;
+				padding-bottom: 10px;
+			}
+			.receiver-address span{
+				line-height: 20px;
+			}
+			.order-item{
+				display: inline-block;
+				float: left;
+				padding: 10px 15px 10px 30px;
+				background-color: #FFFFFF;
+			}
+			.wayandprice{
+				float: left;
+				display: block;
+				padding: 10px;
+			}
+			.order-price{
+				width: 100%;
+				height: 114px;
+				margin-top: 5px;
+				background-color: #FFFFFF;
+			}
+			.order-price span{
+				display: block;
+				margin-top: 3%;
+			}
+			.order-pay{
+				width: 100%;
+				height: 40px;
+				margin-top: 5px;
+				background-color: #FFFFFF;
+			}
+			.real-pay{
+				display: inline-block;
+				float: left;
+				padding: 10px 0 0 9%;
+			}
+			.payment{
+				float: left;
+				padding: 10px 0 0 20px;
+			}
+			.order-pay span{
+				color: #B52A3A;
+			}
+	        .no_data{
+	        	position: absolute;
+	        	margin-top: 150px;
+	        	top: 50%;
+	        	left: 40%;
+	        }
+	        .no_data img{
+	        	width: 80px;
+	        	height: 80px;
+	        }
+		</style>
+	</head>
+	<body>
+		<nav class="head">
+			<div class="back-wrapper back-action">
+				<img src="../image/left@3x.png" class="back"/>
+			</div>
+			<div class="title-wrapper">
+				<span style="font-size: 18px;color: #fff;">订单详情</span>
+			</div>
+		</nav>
+		
+		<div class="body mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="body-top">
+					<div class="packageno">
+						<span>订单编号：14310698</span>
+					</div>
+					<!--<div class="order-status">
+						<span>待发货</span>
+					</div>-->
+				</div>
+			
+				<div class="body-center">
+					<div class="spe">
+						
+					</div>
+<!--					<div class="goods-detail">-->
+						<!--<div class="goods-picture">
+							<img src="../image/bag.png"/ width="80" height="80">
+						</div>
+						<div class="goods-inf">
+							<div class="list-l">
+								<span style="font-size: 16px;">韩式帆布电脑双肩包</span>
+							</div>
+							<div class="list-l">
+								<span style="color: #929292;">浅灰</span>
+							</div>
+							<div class="list-l">
+								<span>￥169.72&nbsp;&nbsp;<span style="text-decoration: line-through; color: #929292;">￥199.00</span></span>
+							</div>
+						</div>
+							
+						<div class="goods-count">
+							<span>x1</span>
+						</div>-->
+<!--					</div>-->
+				
+					<div class="receiver">
+						<!--<div class="receiver-inf">
+							<div class="receiver-name">
+								<span>收货人：张三</span>
+							</div>
+							<div class="receiver-number">
+								<span>12345678999</span>
+							</div>
+						</div>
+							
+						<div class="receiver-address">
+							<span>收货地址：浙江省 宁波市 鄞州区 浙江大学宁波理工学院30幢1单元</span>
+						</div>-->
+					</div>
+				
+					<!--<div class="order-price">
+						<div class="order-item">
+							<span>支付方式：</span>				
+							<span>商品合计：</span>
+							<span>运费：</span>
+							<span>优惠券：</span>
+						</div>
+						<div class="wayandprice">
+							<span>微信</span>
+							<span>￥203.90</span>
+							<span>￥0.00</span>
+							<span>-￥30.00</span>
+						</div>
+					</div>-->
+				
+					<div class="order-pay">
+						<!--<div class="real-pay">
+							<span>实付：</span>
+						</div>
+						<div class="payment">
+							<span>￥173.90</span>
+						</div>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<script src="../js/base.js"></script>
+<script type="text/javascript">
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	$(".back-action").on("tap", function () {
+        mui.back();
+	});
+	mui('.mui-scroll-wrapper').scroll({
+		indicators: true,
+		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+	});
+	mui.plusReady(function(){
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+		var self = plus.webview.currentWebview();
+		var content = self.data;
+		var html1 = "";
+		var html2 = "";
+		var html3 = "";
+		var html4 = "";
+		var status = "";
+	    $.ajax({
+	        url: IP + "/api/order/view.html",
+		    type: "get",
+		    dataType: "json",
+		    data: {
+		    	sn: content
+		    },
+		    success: function (data) {
+		    	console.log(JSON.stringify(data));
+		    	if(data.orderItems.length == 0){
+		    		html =
+						'<div class="no_data">' +
+							'<img src="../image/no_data.png">' +
+							'<p>暂无搜索结果哦~</p>' +
+						'</div>';
+		    	}
+			    html1 = '<div class="packageno">' +
+							'<span>订单编号：' + data.sn + '</span>' +
+						'</div>' +
+						'<div class="order-status">' +
+							'<span></span>' +
+						'</div>';
+				for(var i=0;i<data.orderItems.length;i++){
+					html2 +=	'<div class="goods-detail">'+
+									'<div class="goods-picture">' +
+										'<img src="' + data.orderItems[i].thumbnail + '" width="80" height="80">' +
+									'</div>' +
+									'<div class="goods-inf">' +
+										'<div class="list-l">' +
+											'<span style="font-size: 16px;">' + data.orderItems[i].name + '</span>' +
+										'</div>' +
+										'<div class="list-l">' +
+											'<span style="color: #929292;">' + data.orderItems[i].specificationValue[0].value + '</span>' +
+										'</div>' +
+										'<div class="list-l">' +
+											'<span>￥' + data.orderItems[i].price + '</span>' +
+										'</div>' +
+									'</div>' +
+									'<div class="goods-count">' +
+										'<span>x' + data.orderItems[i].quantity + '</span>' +
+									'</div>' +
+								'</div>';
+					status = data.status;
+				}			
+				html3 =	'<div class="receiver-inf">' +
+							'<div class="receiver-name">' +
+								'<span>收货人：' + data.consignee + '</span>' +
+							'</div>' +
+							'<div class="receiver-number">' +
+								'<span>' + data.phone + '</span>' +
+							'</div>' +
+						'</div>' +
+						'<div class="receiver-address">' +
+							'<span>收货地址：' + data.areaName + data.address +'</span>' +
+						'</div>';
+
+				html4 =	'<div class="real-pay">' +
+							'<span>实付：</span>' +
+						'</div>' +
+						'<div class="payment">' +
+							'<span>￥' + data.price + '</span>' +
+						'</div>';
+						
+				$(".body-top").html(html1);
+				$(".spe").html(html2);
+				$(".receiver").html(html3);
+				$(".order-pay").html(html4);
+				if(status == "canceled"){
+					$(".order-status span").text("已取消");
+				}else if(status == "pendingPayment"){
+					$(".order-status span").text("待付款");
+				}else if(status == "pendingRecevied"){
+					$(".order-status span").text("待收货");
+				}else if(status == "pendingRecevied"){
+					$(".order-status span").text("待评价");
+				}else if(status == "completed"){
+					$(".order-status span").text("已完成");
+				}
+		    },
+		    error: function(){
+		    	mui.toast("网络错误");
+		    }
+		})
+	})
+</script>
+</html>

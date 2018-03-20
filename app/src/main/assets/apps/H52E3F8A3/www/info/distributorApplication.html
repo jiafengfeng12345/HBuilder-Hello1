@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="../css/mui.min.css" rel="stylesheet" />
+    <link href="../css/mui.picker.min.css" rel="stylesheet" />
+    <link href="../css/base.css" rel="stylesheet" />
+    <style>
+        .IDCardGroup{
+        	height: 420px;
+        	padding: 0px 15px 10px 15px;
+        }
+        .IDCard-front{
+        	height: 130px;
+        	margin-top: 10px;
+        	/*float: left;*/
+        }
+        .IDCard-back{
+        	height: 130px;
+        	margin-top: 10px;
+        }
+        .IDCard-inHand{
+        	height: 130px;
+        	margin-top: 10px;
+        }
+        .IDCard-left{
+        	display: block;
+        	width: 100%;
+        	height: 40px;
+        	line-height: 40px;
+        	padding-left: 5px;
+        }
+        .IDCard-right{
+			display: inline-block;
+			height: 80px;
+			width: 140px;
+			background-color: #fff;
+        }
+        .IDCard-right img{
+/*			margin: 15px 40px;*/
+        }
+        .mui-input-group .mui-input-row {
+            height: 60px;
+            background-color: #fff;
+        }
+        .mui-input-group .mui-input-row input{
+            height: 60px;
+        }
+        .mui-input-row label {
+            padding: 21px 15px;
+            width: 30%;
+        }
+        .mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea {
+            width: 70%;
+        }
+        .mui-input-row .mui-input-clear~.mui-icon-clear, .mui-input-row .mui-input-password~.mui-icon-eye, .mui-input-row .mui-input-speech~.mui-icon-speech {
+            top: 20px;
+        }
+        .mui-checkbox input[type=checkbox], .mui-radio input[type=radio] {
+            top: 14px;
+        }
+        .profile-form {
+            font-weight: 300;
+            font-size: 15px;
+            background-color: rgba(233, 233, 233, 0.8);
+        }
+        .mui-checkbox label, .mui-radio .boy-label {
+            position: absolute;
+            left: 140px;
+            width: 50px;
+            padding: 0px;
+            top: 20px;
+        }
+        .mui-checkbox label, .mui-radio .girl-label {
+            position: absolute;
+            left: 240px;
+            width: 50px;
+            padding: 0px;
+            top: 20px;
+        }
+        .radio_inline{
+            display: inline-block;
+            width: 65%;
+        }
+        .radio_inline label{
+            width: 20%;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .radio_inline input[type=radio]{
+            width: 15%;
+            right: auto;
+        }
+        .result{
+        	color: red;
+        	padding-top: 19px;
+        }
+        .box{
+        	display: none;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>分销客申请</span>
+    </div>
+    <div class="edit-wrapper edit-action">
+        保存
+    </div>
+</nav>
+<div style="padding-top: 60px">
+    <div class="mui-input-group profile-form">
+        <div class="mui-input-row">
+            <label>真实姓名：</label>
+            <input type="text" class="mui-input-clear name" placeholder="请输入真实姓名">
+        </div>
+        <div class="mui-input-row">
+            <label>手机号码：</label>
+            <input type="text" class="mui-input-clear phone" placeholder="请输入手机号码">
+        </div>
+        <div class="mui-input-row">
+            <label>住所地址：</label>
+            <input type="text" class="mui-input-clear address" placeholder="请输入住所地址">
+        </div>
+        <div class="mui-input-row box">
+            <label>审核结果：</label>
+            <p class="result"></p>
+        </div>
+        <div class="IDCardGroup clearfloat">
+        	<div class="IDCard-front">
+        		<span class="IDCard-left">
+        			身份证正面：
+        		</span>
+        		<div class="IDCard-right front">
+        			<img class="IDCard-img front frontImg" height="80" width="140" src="../image/@3x.png" alt="身份证正面照片" />
+        		</div>
+        	</div>
+        	<div class="IDCard-back">
+        		<span class="IDCard-left">
+        			身份证背面：
+        		</span>
+        		<div class="IDCard-right back">
+        			<img class="IDCard-img back backImg" height="80" width="140" src="../image/@3x.png" alt="身份证背面照片" />
+        		</div>
+        	</div>
+        	<div class="IDCard-inHand">
+        		<span class="IDCard-left">
+        			手持身份证：
+        		</span>
+        		<div class="IDCard-right inHand">
+        			<img class="IDCard-img inHand inHandImg" height="80" width="140" src="../image/@3x.png" alt="手持身份证照片" />
+        		</div>
+        	</div>
+        </div>
+        <div style="height: 20px;"></div>
+    </div>
+</div>
+
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.picker.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/base.js" ></script>
+<script type="text/javascript">  
+	var name = "";
+	var phone = "";
+	var address = "";
+	var idCardFrontSrc = "";
+	var idCardBackSrc = "";
+	var idCardInHandSrc = "";
+	
+    var savePostData = {
+		"name": name,
+		"phone": phone,
+	    "address": address,
+	    "idCardFrontSrc": "",
+	    "idCardBackSrc": "",
+	    "idCardInHandSrc": "",
+	};
+
+	$(".edit-action").bind("tap",function () {
+		var defaultImg = "../image/@3x.png";
+		savePostData.name = $(".name").val();
+		savePostData.phone = $(".phone").val();
+		savePostData.address = $(".address").val();
+		idCardFrontSrc = $(".frontImg").attr("src");
+		idCardBackSrc = $(".backImg").attr("src");
+		idCardInHandSrc = $(".inHandImg").attr("src");
+		if(savePostData.name != null && savePostData.name != " "){
+			if(testPhone(savePostData.phone) === true){
+				if(savePostData.address != null && savePostData.address != " "){
+					if(idCardFrontSrc != defaultImg && idCardBackSrc != defaultImg && idCardInHandSrc != defaultImg){
+					    $.ajax({
+					    	url: IP + '/api/distributor/save.html',
+							type: 'post',
+							dataType: 'json',
+							data: savePostData,
+							success: function(data){
+								console.log(JSON.stringify(savePostData));
+								if(data.type == "success"){
+									mui.toast("保存成功");
+									$(".edit-action").remove();
+									$(".box").css("display","block");
+									$(".result").css({"color":"red","padding-top":"19px"});
+								}
+								else
+									mui.toast("不可重复申请！");
+							},
+							error: function(){
+								mui.toast('网络错误2');
+							}
+					    });
+					}else
+						mui.toast("请上传图片");
+				}else
+					mui.toast("请填写地址");
+			}else
+				mui.toast("请输入正确的手机号");
+		}else
+			mui.toast("请填写真实姓名");
+		return false;
+	});
+
+	function createUpload(path, dst, flag) {
+		plus.uploader.clear();
+		var task = plus.uploader.createUpload(IP + "/api/uploadFile/uploadFile.html", {
+				method: "POST",
+				blocksize: 204800,
+				priority: 100
+			},
+			function(t, status) {
+				console.log("t:" + JSON.stringify(t));
+				plus.nativeUI.closeWaiting();
+				// 上传完成
+				if(status == 200) {
+					var vverpResponse = JSON.parse(t.responseText);
+					if(vverpResponse.message.type == "success"){
+						// 图片的oss地址
+						var url = vverpResponse.url;
+						if(flag.hasClass("front")){
+							savePostData.idCardFrontSrc = url;
+						}
+						else if(flag.hasClass("back")){
+							savePostData.idCardBackSrc = url;
+						}
+						else if(flag.hasClass("inHand")){
+							savePostData.idCardInHandSrc = url;
+						}
+						else{
+						}
+						console.log(JSON.stringify(savePostData));
+					}
+
+					$(".IDCard-right").attr("src", path);
+					mui.toast("上传成功");
+				} else {
+					mui.toast("上传失败");
+				}
+			}
+		);
+		task.addFile(dst, {
+			key: "file"
+		});
+//		task.addData("id", $("input[name=id]").val());
+		task.start();
+	}
+
+	function compressImage(src, dst, flag) {
+		console.log(src);
+		console.log(dst);
+		plus.zip.compressImage({
+            src: src,
+            dst: dst,
+            quality: 100,
+            width: "270px",
+            height: "160px"
+        },
+        function() {
+            createUpload(src, dst, flag);
+        },
+        function(error) {
+            plus.nativeUI.closeWaiting();
+            mui.toast("压缩失败");
+        });
+	}
+	$(".IDCard-img").click(function() {
+		var flag = $(this);
+		var IDCard = $(this);
+		plus.nativeUI.actionSheet({
+			cancel: "取消",
+			buttons: [{
+				title: "相册"
+			}, {
+				title: "拍照"
+			}]
+		}, function(e) {
+			if(e.index == 1) { // 调用相册
+				plus.nativeUI.showWaiting();
+				plus.gallery.pick(function(path) {
+					/**测试**/
+					IDCard.attr("src", path);
+					// setTimeout(function(){
+					// 	plus.nativeUI.closeWaiting();
+					// },1000);
+					// return;
+					/**测试**/
+					var fileName = path.substring(path.lastIndexOf(".") + 1).toLowerCase();
+					if(fileName !== 'gif' && fileName !== 'jpeg' && fileName !== 'jpg' && fileName !== 'png' && fileName !== 'svg') {
+						plus.nativeUI.showWaiting();
+						mui.toast("文件格式不对");
+					} else {
+						var dst = "_doc/" + Date.parse(new Date()) + "." + fileName;
+						compressImage(path, dst ,flag);
+					}
+				}, function(e) {
+					plus.nativeUI.closeWaiting();
+					mui.toast("取消选择图片");
+				}, {
+					filter: "image"
+				});
+			} else if(e.index == 2) { // 调用相机
+				var cmr = plus.camera.getCamera();
+				var res = cmr.supportedImageResolutions[0];
+				var fmt = cmr.supportedImageFormats[0];
+				console.log("Resolution: " + res + ", Format: " + fmt);
+				plus.nativeUI.showWaiting();
+				//进行拍照操作
+				cmr.captureImage(function(path) {
+					//通过URL参数获取目录对象或文件对象
+						plus.io.resolveLocalFileSystemURL(path, function(entry) {
+
+                            flag.attr("src",entry.toLocalURL());
+
+							var dst = "_doc/" + Date.parse(new Date()) + "." + fmt;
+							compressImage(entry.toLocalURL(), dst, flag);
+						}, function(e) {
+							plus.nativeUI.closeWaiting();
+							mui.toast("读取失败");
+						});
+
+					},
+					function(error) {
+						plus.nativeUI.closeWaiting();
+						mui.toast(error.message);
+					}, {
+						resolution: res,
+						format: fmt
+					}
+				);
+			}
+		});
+	});
+	
+	mui.plusReady(function(){
+		$.ajax({
+			url: IP + "/api/distributor/detail.html",
+			type: "get",
+			dataType: "json",
+			success: function(data){
+				console.log("初始化ajax" + JSON.stringify(data));
+				if(data.result == "success"){
+					// todo 填入注册信息，并移除保存按钮。append一行申请状态。
+					var distributor = data.distributor;
+					$(".edit-action").remove();
+					$(".box").css("display","block");
+					$(".result").css({"color":"red","padding-top":"19px"});
+					$(".name").val(data.distributor.name);
+					$(".phone").val(data.distributor.phone);
+					$(".address").val(data.distributor.address);
+					$(".frontImg").attr('src', data.distributor.idCardFrontSrc);
+					$(".backImg").attr('src', data.distributor.idCardBackSrc);
+					$(".inHandImg").attr('src', data.distributor.idCardInHandSrc);
+					if(data.distributor.status == "pendingReview"){
+						$(".result").text("待审核");
+					}else if(data.distributor.status == "agreed"){
+						$(".result").text("已同意");
+					}else{
+						$(".result").text("已拒绝");
+					}
+					
+				}
+			},
+			error: function(){
+				mui.toast('网络错误');
+			}
+		});
+	});
+	
+//			手机号正则验证
+	function testPhone(tel){
+		var rePhone=  /^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/;
+		if(rePhone.test(tel)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>
+
+</html>

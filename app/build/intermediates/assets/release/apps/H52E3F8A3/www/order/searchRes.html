@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<title></title>
+		<style type="text/css">
+			body,html{
+				background-color: #EEEEEE;
+			}
+			span{
+				font-size: 14px;
+			}
+			.clearfloat{
+				zoom: 1;
+			}
+			.clearfloat:after{
+				content: "";
+				height: 0;
+				display: block;
+				visibility: hidden;
+				clear: both;
+			}
+	        .body {
+	            top: 50px;
+	        }
+			.list-order{
+				margin-top: 10px;
+				background-color: #FFFFFF;
+			}
+			.order-inf{
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				border-bottom: 2px solid #E0E0E0;
+			}
+			.list-order .no{
+				float: left;
+				height: 30px;
+				line-height: 30px;
+				padding-left: 17px;
+			}
+			.list-order .cancelled{
+				float: right;
+				height: 30px;
+				line-height: 30px;
+				padding-right: 17px;
+			}
+			.inf-order{
+				margin-top: 10px;
+				height: 105px;
+				border-bottom: 2px solid #E0E0E0;
+			}
+			.goods-picture{
+				display: inline-block;
+				float: left;
+				padding: 10px 17px;
+			}
+			.goods-inf{
+				float: left;
+				padding-top: 5px;
+				width: 47%;
+			}
+			.pay-status{
+				display: inline-block;
+				float: right;
+				padding-top: 55px;
+				padding-right: 17px;
+			}
+			.goods-name{
+				display: block;
+				overflow: hidden;
+				height: 40px;
+				line-height: 40px;
+				white-space: nowrap;
+				text-overflow: ellipsis;	
+			}
+			.goods-description{
+				display: block;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				padding-top: 10px!important;
+			}
+			.price-order{
+				height: 60px;
+			}
+			.price-payable{
+				float: left;
+				margin: 14px 17px;
+				height: 35px;
+				line-height: 35px;
+			}
+			.price-pay, .actionBtn{
+				float: right; 
+				margin: 13px 17px;
+				font-size: 14px;
+				width: 22.7%;
+				height: 34px;
+				line-height: 34px;
+				color: #fff;
+				text-align: center;
+				background-color: #b52a3a;
+				border-radius: 2px;
+				-webkit-border-radius: 2px;
+				box-shadow: 1px 1px 1px #e0e0e0;
+			}
+			.price-payable span{
+				background-color: #FAFAFA;
+			}
+	        .rebuy{
+	        	float: right;
+	        	background-color: #fff;
+	        	color: #515151;
+	        	font-size: 14px;
+	        	border: 1px solid #bbb;
+	        	border-radius: 2px;
+	        	-webkit-border-radius: 2px;
+	        	height: 34px;
+	        	line-height: 34px;
+	        	text-align: center;
+	        	margin: 13px 17px;
+	        	width: 22.7%;
+	        	box-shadow: 1px 1px 1px #E0E0E0;
+	        	box-sizing: content-box;
+	        }
+	        .comfirm{
+	        	float: right;
+	        	margin: 13px 17px;
+	        	width: 22.7%;
+	        	height: 34px;
+	        	line-height: 34px;
+	        	color: #B52A3A;
+	        	font-size: 14px;
+	        	text-align: center;
+	        	border-radius: 2px;
+	        	-webkit-border-radius: 2px;
+	        	box-sizing: content-box;
+	        }
+	        .logistics{
+	        	float: right;
+	        	margin: 13px 2px;
+	        	width: 22.7%;
+	        	height: 34px;
+	        	line-height: 34px;
+	        	color: #515151;
+	        	font-size: 14px;
+	        	text-align: center;
+	        	border: 1px solid #bbb;
+	        	border-radius: 2px;
+	        	-webkit-border-radius: 2px;
+	        	box-shadow: 1px 1px 1px #E0E0E0;
+	        	background-color: #fff;
+	        	box-sizing: content-box;
+	        }
+	        .evaulated{
+	        	float: right;
+	        	margin: 13px 17px;
+	        	width: 22.7%;
+	        	height: 34px;
+	        	line-height: 34px;
+	        	color: #515151;
+	        	font-size: 14px;
+	        	text-align: center;
+	        	border: 1px solid #bbb;
+	        	border-radius: 2px;
+	        	-webkit-border-radius: 2px;
+	        	background-color: #fff;
+	        	box-shadow: 1px 1px 1px #E0E0E0;
+	        	box-sizing: content-box;
+	        }
+	        .no_data{
+	        	position: absolute;
+	        	margin-top: 150px;
+	        	top: 50%;
+	        	left: 40%;
+	        }
+	        .no_data img{
+	        	width: 80px;
+	        	height: 80px;
+	        }
+		</style>
+	</head>
+	<body>
+		<nav class="head">
+			<div class="back-wrapper mui-action-back">
+				<img src="../image/left@3x.png" class="back"/>
+			</div>
+			<div class="title-wrapper">
+				<span style="font-size: 18px;">搜索结果</span>
+			</div>
+		</nav>
+		
+		<div class="body mui-scroll-wrapper">
+			<div class="mui-scroll">
+			</div>
+		</div>
+	</body>
+
+<script src="../js/base.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript">
+	mui.plusReady(function(){
+		var self = plus.webview.currentWebview();
+		var content = self.data;
+		$.ajax({
+			url: IP + '/api/order/search.html',
+			type: 'post',
+			dataType: 'json',
+			data: {
+				pageNumber: 1,
+			    searchValue: content,
+			    status: "all"
+			},
+			success: function(data){
+				console.log(JSON.stringify(data));
+				operate(data);
+			},
+			error: function(){
+				mui.toast('网络错误');
+			}
+		})
+	})
+	
+	function operate(data){
+		var dataCount = 0;
+		var html = "";
+		for(var i = 0;i<data.content.length;i++){
+			//已取消页面
+			if(data.content[i].status == "canceled"){
+				dataCount++;
+				
+				html = '<div class="list-order">' +
+							'<div class="order-inf clearfloat">' +
+								'<div class="list-order no">' +
+									'<span>订单编号:' + data.content[i].sn + '</span>' +
+								'</div>' +
+							'</div>';
+						
+				for(var j in data.content[i].orderItems){
+					html += '<div class="inf-order clearfloat" sn="'+ data.content[i].sn +'">' +
+								'<div class="goods-picture">' +
+									'<img src="'+ data.content[i].orderItems[j].thumbnail +'" width="75" height="75"/>' +
+								'</div>' +
+								'<div class="goods-inf">' +
+									'<div class="goods-name">' +
+										'<span style="background-color: #FAFAFA;">' + data.content[i].orderItems[j].name + '</span>' +
+									'</div>' +
+									'<div class="goods-description">' +
+										'<span style="color: #929292; background-color: #FAFAFA;">' + data.content[i].orderItems[j].specificationValue[0].value + '</span>' +
+									'</div>' +
+								'</div>' +
+								'<div class="pay-status">' +
+									'<span style="color: #FF0000;font-size: 15px;">已取消</span>' +
+								'</div>'+
+							'</div>';
+				}
+				html +=     '<div class="price-order" id="price-order">' +
+								'<div class="price-payable">' +
+									'<span >实付: ￥' + data.content[i].price + '</span>' +
+								'</div>' +
+//								'<div class="price-pay"><span>再次购买</span></div>' +
+							'</div>' +
+						'</div>';
+			}
+			//未付款页面
+			if(data.content[i].status == "pendingPayment"){
+				dataCount++;
+				
+				html += '<div class="list-order">' +
+							'<div class="order-inf clearfloat">' +
+								'<div class="list-order no">' +
+									'<span>订单编号:' + data.content[i].sn + '</span>' +
+								'</div>' +
+								'<div class="list-order cancelled">' +
+									'<span>取消订单</span>' +
+								'</div>' +
+							'</div>';
+						
+				for(var j in data.content[i].orderItems){
+					html += '<div class="inf-order clearfloat" sn="'+ data.content[i].sn +'">' +
+								'<div class="goods-picture">' +
+									'<img src="'+ data.content[i].orderItems[j].thumbnail +'" width="75" height="75"/>' +
+								'</div>' +
+								'<div class="goods-inf">' +
+									'<div class="goods-name">' +
+										'<span style="background-color: #FAFAFA;">' + data.content[i].orderItems[j].name + '</span>' +
+									'</div>' +
+									'<div class="goods-description">' +
+										'<span style="color: #929292; background-color: #FAFAFA;">' + data.content[i].orderItems[j].specificationValue[0].value + '</span>' +
+									'</div>' +
+								'</div>' +
+								'<div class="pay-status">' +
+									'<span style="color: #FF0000;font-size: 15px;">待付款</span>' +
+								'</div>'+
+							'</div>';
+				}
+				html +=     '<div class="price-order" id="price-order">' +
+								'<div class="price-payable">' +
+									'<span >实付: ￥' + data.content[i].price + '</span>' +
+								'</div>' +
+								'<div class="price-pay"><span>去付款</span></div>' +
+							'</div>' +
+						'</div>';
+			}
+			//待收货页面
+			else if(data.content[i].status == "pendingShipment" || data.content[i].status == "shipped"){
+				dataCount++;
+				
+				html += '<div class="list-order">' +
+							'<div class="order-inf clearfloat">' +
+								'<div class="list-order no">' +
+									'<span>订单编号:' + data.content[i].sn + '</span>' +
+								'</div>' +
+							'</div>';
+						
+				for(var j in data.content[i].orderItems){
+					html += '<div class="inf-order clearfloat" sn="'+ data.content[i].sn +'">' +
+								'<div class="goods-picture">' +
+									'<img src="'+ data.content[i].orderItems[j].thumbnail +'"/ width="75" height="75">' +
+								'</div>' +
+								'<div class="goods-inf">' +
+									'<div class="goods-name">' +
+										'<span style="background-color: #FAFAFA;">' + data.content[i].orderItems[j].name + '</span>' +
+									'</div>' +
+									'<div class="goods-description">' +
+										'<span style="color: #929292; background-color: #FAFAFA;">' + data.content[i].orderItems[j].specificationValue[0].value + '</span>' +
+									'</div>' +
+								'</div>' +
+								'<div class="pay-status">' +
+									'<span style="color: #FF0000;font-size: 15px;">待收货</span>' +
+								'</div>'+
+							'</div>';
+				}
+				html +=     '<div class="price-order" id="price-order">' +
+								'<div class="price-payable">' +
+									'<span >实付: ￥' + data.content[i].price + '</span>' +
+								'</div>' +
+								'<div class="rebuy deliver"><span>确认收货</span></div>' +
+							'</div>' +
+						'</div>';
+			
+			}
+			//待评价页面
+			else if(data.content[i].status == "received"){
+				dataCount++;
+				
+				html += '<div class="list-order">' +
+							'<div class="order-inf clearfloat" sn="'+ data.content[i].sn +'">' +
+								'<div class="list-order no">' +
+									'<span>订单编号:' + data.content[i].sn + '</span>' +
+								'</div>' +
+							'</div>';
+						
+				for(var j in data.content[i].orderItems){
+					html += '<div class="inf-order clearfloat">' +
+								'<div class="goods-picture">' +
+									'<img src="'+ data.content[i].orderItems[j].thumbnail +'"/ width="75" height="75">' +
+								'</div>' +
+								'<div class="goods-inf">' +
+									'<div class="goods-name">' +
+										'<span style="background-color: #FAFAFA;">' + data.content[i].orderItems[j].name + '</span>' +
+									'</div>' +
+									'<div class="goods-description">' +
+										'<span style="color: #929292; background-color: #FAFAFA;">' + data.content[i].orderItems[j].specificationValue[0].value + '</span>' +
+									'</div>' +
+								'</div>' +
+								'<div class="pay-status">' +
+									'<span style="color: #FF0000;font-size: 15px;">待评价</span>' +
+								'</div>'+
+							'</div>';
+				}
+				html +=     '<div class="price-order" id="price-order">' +
+								'<div class="price-payable">' +
+									'<span >实付: ￥' + data.content[i].price + '</span>' +
+								'</div>' +
+								'<div class="actionBtn evaluation"><span>去评价</span></div>' +
+								'<div class="rebuy" id="logistics"><span>查看物流</span></div>' +
+							'</div>' +
+						'</div>';
+			}
+			//已完成页面
+			else if(data.content[i].status == "completed"){
+				dataCount++;
+				
+				html += '<div class="list-order">' +
+							'<div class="order-inf clearfloat" sn="'+ data.content[i].sn +'">' +
+								'<div class="list-order no">' +
+									'<span>订单编号:' + data.content[i].sn + '</span>' +
+								'</div>' +
+							'</div>';
+						
+				for(var j in data.content[i].orderItems){
+					html += '<div class="inf-order clearfloat">' +
+								'<div class="goods-picture">' +
+									'<img src="'+ data.content[i].orderItems[j].thumbnail +'"/ width="75" height="75">' +
+								'</div>' +
+								'<div class="goods-inf">' +
+									'<div class="goods-name">' +
+										'<span style="background-color: #FAFAFA;">' + data.content[i].orderItems[j].name + '</span>' +
+									'</div>' +
+									'<div class="goods-description">' +
+										'<span style="color: #929292; background-color: #FAFAFA;">' + data.content[i].orderItems[j].specificationValue[0].value + '</span>' +
+									'</div>' +
+								'</div>' +
+								'<div class="pay-status">' +
+									'<span style="color: #FF0000;font-size: 15px;">已完成</span>' +
+								'</div>'+
+							'</div>';
+				}
+				html +=     '<div class="price-order" id="price-order">' +
+								'<div class="price-payable">' +
+									'<span >实付: ￥' + data.content[i].price + '</span>' +
+								'</div>' +
+								'<div class="rebuy" id="logistics"><span>查看物流</span></div>' +
+							'</div>' +
+						'</div>';
+			}
+			else{
+			}
+		}
+		if(dataCount == 0){
+			//无待评价订单
+			html =
+				'<div class="no_data">' +
+					'<img src="../image/no_data.png">' +
+					'<p>暂无订单信息哦~</p>' +
+				'</div>';
+		}
+		$(".mui-scroll").html(html);
+	}
+	
+	$(".mui-scroll").on("tap",".price-pay",function(){
+		if($(this).text() == "再次购买"){
+			goPage("../cart/checkout.html");
+		}
+		else{
+			var sn = $(this).parent().prev().attr("sn");
+			goPage("../cart/payment.html", {
+				orderSn: sn,
+				delOpener: true
+			});
+		}
+	});
+	$(".mui-scroll").on("tap",".evaulated",function(){
+		var orderSn = $(this).attr("data-id");
+		goPage("../evaulate.html", {orderSn: orderSn});
+	});
+	//点击查看订单详情
+	$(".mui-scroll").on("tap", ".inf-order", function(){
+		var sn = $(this).attr("sn");
+		goPage("orderdetail.html", sn);
+	});	
+	//点击查看物流
+	$(".mui-scroll").on("tap","#logistics",function(){
+		goPage("./logistics.html");
+	});
+	//点击确认收货
+	$(".mui-scroll").on("tap", ".deliver", function(){
+		var sn = $(this).parent().attr("sn");
+        var spe = $(this);
+        var btnArray = ['取消', '确定'];
+        mui.confirm('确认收货么？', function (e) {
+            if (e.index == 1) {
+	    		$.ajax({
+					url: IP + '/api/order/receive.html',
+					type: 'get',
+					dataType: 'json',
+					data: {
+						"sn": sn
+					},
+					success: function(data){
+						mui.toast(data);
+					},
+					error: function(){
+						mui.toast('网络错误');
+					}
+				});
+        	}
+            else {
+            }
+        }, 'div')
+	});
+	//点击取消订单
+	$(".mui-scroll").on("tap",".cancelled",function(){
+		var sn = $(this).parent().next().attr("sn");
+//		var html = '';
+//		html = '<span class="icon-delete" style="font-size: 23px; color: #999; padding: 5px"><i class="iconfont icon-shanchu"></i></span>';
+		$(this).parent().parent().children(".inf-order").children(".pay-status").children("span").text("已取消");
+		$(this).html(" ");
+		$(this).parent().parent().children(".price-order").children(".price-pay").children("span").text(" ").text("再次购买");
+		$.ajax({
+			url: IP + '/api/order/cancel.html',
+			type: 'get',
+			dataType: 'json',
+			data: {
+				'sn': sn 
+			},
+			success: function(data){
+				mui.toast('取消成功');
+			},
+			error: function(){
+				mui.toast('网络错误');
+			}
+		})
+	});
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+		plus.webview.currentWebview().setStyle({
+			scrollIndicator: "none"
+		});
+		var self = plus.webview.currentWebview();
+		var type = self.data;
+//		if(type == null){
+//			ajaxAll();
+//		}else{
+//			fireStatus(type);
+//		}
+	}
+	document.addEventListener("plusready", plusReady, false);
+	
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	mui('.mui-scroll-wrapper').scroll({
+		indicators: true,
+		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+	});
+</script>
+</html>

@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>set_username</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/base.css" rel="stylesheet" />
+		<style>
+			body,
+			.mui-content,
+			.mui-bar.mui-bar-nav,
+			html{
+				background-color: white;
+	    		height: 100%;
+			    margin: 0px;
+			    padding: 0px;
+			    overflow: hidden;
+			    -webkit-touch-callout: none;
+			    -webkit-user-select: none;
+			}
+			
+			.mui-bar-nav {
+				box-shadow: none;
+			}
+			
+			.mui-bar .mui-icon {
+				color: black;
+			}
+			
+			.mui-content {
+				margin: 100px 40px 0px 40px;
+			}
+			
+			button,
+			.mui-btn {
+				height: 40px;
+				background-color: #DDDDDD;
+				color: white;
+				border: none;
+			}
+			
+			input[type=text],
+			input[type=password],
+			input[type=number] {
+				padding: 50px 0px 15px 0px;
+				line-height: 18px;
+				font-size: 18px;
+				color: black;
+				border: none;
+				border-bottom: #D7D7D7 1px solid;
+				border-radius: 0px;
+			}
+			
+			.mui-input-row .mui-input-password~.mui-icon-eye,
+			.mui-input-row .mui-input-clear~.mui-icon-clear {
+				top: 37px;
+			}
+			
+			.mui-input-row .mui-input-clear~.mui-icon-clear.mui-active,
+			.mui-input-row .mui-input-password~.mui-icon-eye.mui-active {
+				color: black;
+			}
+
+
+		</style>
+	</head>
+
+	<body>
+	<nav class="head">
+		<div class="back-wrapper mui-action-back">
+			<img src="../image/left@3x.png" class="back">
+		</div>
+		<div class="title-wrapper">
+			<span>设置昵称和密码</span>
+		</div>
+	</nav>
+		<div class="mui-content">
+			<div class="mui-input-row">
+				<input id="nickname" type="text" class="mui-input-clear" placeholder="请输入昵称">
+				<p class="usernameP">昵称由3~20个汉字、字母、数字、下划线组合，不能全为数字，只有一次设置机会</p>
+			</div>
+			<div class="mui-input-row">
+				<input id="password" type="password" class="mui-input-password" placeholder="请输入密码">
+				<p class="passwordP">密码由6~25个字母、数字、符号组成</p>
+			</div>
+			<div class="">
+				<button id="submit" type="button" class="mui-btn mui-disabled" style="width: 100%;margin-top: 20px;">确认</button>
+			</div>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../js/base.js"></script>
+		<script type="text/javascript">
+			function goPage(page, data, isNew) {
+				if(isNew === true)
+					isNew = true;
+				else
+					isNew = false;
+				mui.openWindow({
+					url: page,
+					id: page,
+					extras: {
+						data: data
+					},
+					createNew: isNew
+				});
+			}
+
+			var flag = [false, false];//用于判断表单是否填写，不判断是否正确
+			var nickname;
+			var pw, phone;
+			$('#nickname').bind('input propertychange', function() {
+				flag[0] = false;
+				reUsername();
+				submitCSS();
+			});
+			$('#password').bind('input propertychange', function() {
+				flag[1] = false;
+				rePassword();
+				submitCSS();
+			});
+			$("#submit").on('tap', function() {
+				nickname = $("#nickname").val();
+				pw = $("#password").val();
+				phone = localStorage.getItem("registerPhone");//获取注册手机号码
+				var inviteCode = localStorage.getItem("inviteCode");
+				var usernameFlag=false,passwordFlag=false;
+				if(nickname.length == 0) {
+					mui.alert("请填写昵称！");
+				}else{
+					if(checkUsername(nickname)){
+						mui.alert("昵称不符合要求！");
+					}else{
+						usernameFlag=true;
+					}
+				} 
+
+				if(pw.length == 0) {
+					mui.alert("请填写密码！");
+				} else if(pw.length < 6) {
+					mui.alert("密码不能小于6位！");
+				} else if(pw.length > 25) {
+					mui.length("密码不能大于25位！");
+				}else{
+					passwordFlag=true;
+				}
+
+                if(usernameFlag==true && passwordFlag==true){
+                	$.ajax({
+						type: "get",
+						url: IP + "/api/user/register.html",
+						data: {
+							phone: phone,
+							password: pw,
+							inviteCode: inviteCode
+						},
+						dataType: "json",
+						success: function(data) {
+							if(data.type == 'error') {
+								mui.toast(data.content);
+								
+							} else {
+								mui.toast("注册成功！");
+								$.ajax({
+				            		type:"get",
+				            		url: IP + "/api/user/check.html",
+				            		data:{
+				            			"phone": phone,
+				            			password:pw
+				            		},
+				            		dataType:"json",
+				            		success:function(result){
+				            			if(result == true) {
+				            				goPage("../info/index.html");
+		            						setTimeout(function(){
+												plus.webview.currentWebview().close('none');
+											},550);
+//				            				plus.storage.setItem("token",result.data.token);
+//				            				goPage("person.html");
+//											mui.fire(plus.webview.getWebviewById("person.html"),"rePerson");
+//											plus.webview.close(plus.webview.getWebviewById("login.html"));
+//											plus.webview.close(plus.webview.getWebviewById("register.html"));
+				            			}
+				            			else{
+				            				$.ajax({
+				            					type:"get",
+				            					url:IP + "/api/user/login.html",
+												data: {
+													"phone": phone,
+													password: pw,
+													"nickname": nickname
+												},
+												dataType: "json",
+												success: function(data){
+													if(data.type == "success"){
+//														mui.toast("ajax后才登录");
+														goPage("../info/index.html");
+														setTimeout(function(){
+															plus.webview.currentWebview().close('none');
+														},550);
+													}
+												},
+												error: function(){
+//													mui.toast("通过ajax后登录失败");
+												}
+				            				});
+				            			}
+			            			},
+			            			error: function(){
+//			            				mui.toast("自动登录失败");
+			            			}
+		            		});
+							}
+						},
+						error: function() {
+							mui.toast("注册失败");
+						}
+					});
+                }
+				
+
+			});
+			//         验证用户名是否为空，不做检验
+			function reUsername() {
+				nickname = $("#nickname").val();
+				if(nickname.length == 0) {
+					flag[0] = false;
+				} else {
+					flag[0] = true;
+				}
+			}
+			//验证密码 是否为空 
+			function rePassword() {
+				pw = $("#password").val();
+				if(pw.length == 0) {
+					flag[1] = false;
+				} else {
+					flag[1] = true;
+				}
+			}
+			//验证用户名是否符合要求
+			function checkUsername (nickname){  
+	            var pattern= /^(?!(\d+)$)[\u4e00-\u9fff\w]{3,20}$/;  //用户名由3~20个汉字、字母、数字、下划线组合，不能全为数字
+	            if (nickname.match(pattern)){  
+	                return false;  //表示符合要求
+	            }else{  
+	                return true;  //表示不符合要求
+	            }  
+	        }         
+			//			按钮样式
+			function submitCSS() {
+				if(flag[0] == true && flag[1] == true) {
+					$("#submit").css("background-color", "#95D1C6");
+					$("#submit").removeClass("mui-disabled");
+
+				} else {
+					$("#submit").css("background-color", "#DDDDDD");
+					$("#submit").addClass("mui-disabled");
+				}
+
+			}
+
+////			页面跳转
+//			function goPage(page) {
+//				//				不同手机状态栏的高度
+//				var top = (Math.round(plus.navigator.getStatusbarHeight())) + 'px';
+//				//			alert(top);
+//				mui.openWindow({
+//					url: page,
+//					id: page,
+//					style: {
+//						top: top
+//					}
+//				});
+//			}
+
+			function plusReady() {
+				plus.webview.currentWebview().setStyle({
+					scrollIndicator: "none",
+					softinputMode: "adjustResize"
+				});
+			}
+			document.addEventListener("touchmove",function(e){e.preventDefault();});
+			document.addEventListener("plusready", plusReady, false);
+		</script>
+	</body>
+
+</html>

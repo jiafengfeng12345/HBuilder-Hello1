@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../fonts/iconfont.css"/>
+		<script src="../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+		<style type="text/css">
+			.body{
+				padding-top: 60px;
+				margin-top: 5px;
+			}
+			.body span{
+				font-size: 14px;
+				color: #333;
+			}
+			.logistics-title{
+				width: 100%;
+				height: 90px;
+				background-color: #fff;
+			}
+			.icon{
+				float: left;
+				margin-top: 10px;
+				margin-left: 10px;
+				width: 17%;
+				height: 80px;
+				line-height: 80px;
+				text-align: center;
+			}
+			.icon-wuliu{
+				font-size: 30px;
+			}
+			.logistics-firm,.arrive-time,.singel-num{
+				float: left;
+				width: 70%;
+				margin-bottom: 2px;
+			}
+			.logistics-firm{
+				margin-top: 15px;
+			}
+			.logistics-firm span:first-child,.singel-num span:first-child{
+				color: #666666;
+			}
+			.logistics-inf{
+				padding-top: 10px;
+				background-color: #fff;
+			}
+			.logistics-list{
+				width: 85%;
+				margin: 0 auto;
+				padding-top: 10px;
+				padding-bottom: 25px;
+			}
+			.img{
+				width: 90%;
+				margin: 0 auto;
+				background: url(../image/log.png) no-repeat left top;
+			}
+			.inf{
+				margin-top: 4px;
+			}
+			.time span{
+				color: #888888!important;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="head">
+			<div class="back-wrapper mui-action-back">
+				<img src="../image/left@3x.png" class="back"/>
+			</div>
+			<div class="title-wrapper">
+				<span>物流追踪</span>
+			</div>
+		</nav>
+		
+		<div class="body mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="logistics-title">
+					<div class="icon">
+						<span><i class="iconfont icon-wuliu"></i></span>
+					</div>
+					<div class="logistics-firm">
+						<span>物流公司：</span>
+						<span>京东快递</span>
+					</div>
+					<div class="singel-num">
+						<span>物流单号：</span>
+						<span>VB39354764455</span>
+					</div>
+					<div class="arrive-time">
+						<span>预计1月10日前送达</span>
+					</div>
+				</div>
+				
+				<div class="logistics-inf">
+					<div class="img">
+						<div class="logistics-list">
+							<div class="time">
+								<span>2018.01.09 17:30:05</span>
+							</div>
+							<div class="inf">
+								<span>货物已完成配送，感谢您选择京东配送</span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="img">
+						<div class="logistics-list">
+							<div class="time">
+								<span>2018.01.09 17:30:05</span>
+							</div>
+							<div class="inf">
+								<span>配送员开始配送，请您准备收货，配送员，胡怕，手机号，12345678999</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="img">
+						<div class="logistics-list">
+							<div class="time">
+								<span>2018.01.09 17:30:05</span>
+							</div>
+							<div class="inf">
+								<span>货物已分配，等待配送</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="img">
+						<div class="logistics-list">
+							<div class="time">
+								<span>2018.01.09 17:30:05</span>
+							</div>
+							<div class="inf">
+								<span>货物已到达 【浙江大学宁波理工学院配送派】</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="img">
+						<div class="logistics-list">
+							<div class="time">
+								<span>2018.01.09 17:30:05</span>
+							</div>
+							<div class="inf">
+								<span>货物已完成分拣，离开【宁波分拨中心】</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="img">
+						<div class="logistics-list">
+							<div class="time">
+								<span>2018.01.09 17:30:05</span>
+							</div>
+							<div class="inf">
+								<span>货物已到达 【宁波分拨中心】</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="img">
+						<div class="logistics-list">
+							<div class="time">
+								<span>2018.01.09 17:30:05</span>
+							</div>
+							<div class="inf">
+								<span>货物已完成分拣，离开【杭州分拨中心】</span>
+							</div>
+						</div>
+					</div>
+
+					<div style="height: 25px;"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		mui('.mui-scroll-wrapper').scroll({
+			indicators:true,
+			deceleration:0.0005
+		});
+	</script>
+</html>

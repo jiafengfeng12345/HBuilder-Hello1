@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>agreement</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/base.css" rel="stylesheet" />
+		<style>
+			body {
+				width: 100%;
+				overflow-y: hidden;
+				height: 100%;
+			}
+			/*.mui-bar-nav {
+				box-shadow: none;
+			}*/
+			
+			.mui-bar .mui-icon {
+				/*返回箭头*/
+				font-size: 26px;
+				color: black;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+	<nav class="head">
+		<div class="back-wrapper mui-action-back">
+			<img src="../image/left@3x.png" class="back">
+		</div>
+		<div class="title-wrapper">
+			<span>服务条款</span>
+		</div>
+	</nav>
+		<div class="mui-content">
+			
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../js/base.js" ></script>
+		<script type="text/javascript">
+			function plusReady(){
+				$.ajax({
+					type:"get",
+					url:IP + "/mobile/information/agreement.html",
+					dataType:"json",
+					success:function(result){
+						var p=result.data.agreement;
+						$(".mui-content").append(p);
+					},
+					error:function(result){
+						console.log("errorInfo"+result.errorInfo);
+					}
+				});
+			}
+			document.addEventListener('plusready', plusReady, false);
+
+		</script>
+	</body>
+
+</html>

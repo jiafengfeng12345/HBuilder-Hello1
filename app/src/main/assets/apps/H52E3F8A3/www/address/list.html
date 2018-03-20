@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+  	<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
+<!--    <link rel="stylesheet" href="../weui/style/weui.css"/>-->
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../fonts/iconfont.css">
+ 
+    <style>
+        body {
+            color: #515151;
+        }
+        .info .name {
+            font-size: 15px;
+            height: 16px;
+            width: 100%;
+            white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+            color: #515151;
+            padding-bottom: 25px;
+        }
+        .info .name.active {
+        	    padding-bottom: 0px;
+        }
+        .info .phone {
+            font-size: 15px;
+            color: #515151;
+        }
+        .info .moren {
+            font-size: 10px;
+            padding: 1px 4px;
+            border: 1px solid #83c76d;
+            text-align: center;
+            border-radius: 3px;
+            color: #83c76d;  
+        }
+        
+        .info .address {
+            font-size: 14px;
+            color: grey;
+        }
+        .addAddress {
+            position: fixed;
+		    z-index: 0;
+		    bottom: 30px;
+		    width: 80%;
+		    left: 10%;
+		    height: 50px;
+		    line-height: 50px;
+		    text-align: center;
+		    font-size: 15px;
+		    color: #95D1C6;
+		    border: 1px solid #95D1C6;
+            display: block;
+        }
+        .info .weui-cell__ft {
+            width: 50px;
+            text-align: center;
+        }
+        .weui-cell{
+        	position: relative;
+        	width: 100%;
+        	float: left;
+        	margin-top: 8px;
+        	border-bottom: 1px solid rgba(224,224,224,0.5);
+            overflow-x: hidden;
+        }
+        .weui-cell__hd{
+        	display: inline-block;
+        	float: left;
+        	width: 18%;
+        	margin-top: 3px;
+        	margin-left: 15px;
+        }
+        .weui-cell__hd span{
+        	margin-bottom: 3px!important;
+        }
+        .weui-cell__hd p{
+        	margin-bottom: 3px!important;
+        }
+        .weui-cell__bd{
+        	display: inline-block;
+        	float: left;
+        	margin-top: 3px;
+        	margin-left: 7px;
+        	width: 65%;
+        }
+        .weui-cell__bd p{
+        	margin-bottom: 5px!important;
+        }
+        .weui-cell__ft{
+        	position: absolute;
+        	top: 25%;
+        	left: 90%;
+        	width: 10%;
+        	color: rgba(81,81,81,0.6);
+        }
+        .clearfloat:after{
+        	content: ".";
+        	height: 0;
+        	display: block;
+        	visibility: hidden;
+        	clear: both;
+        }
+
+	    .addrTips{
+		    padding: 15px;
+		    text-align: center;
+		    font-size: 14px;
+		    color: #ccc;
+	    }
+
+
+    </style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>地址列表</span>
+    </div>
+</nav>
+<div style="padding-top: 60px;width: 100%;">
+    <div class="weui-cells info clearfloat" style="width: 100%;">
+        <!--<a class="weui-cell" style="width: 100%;">
+            <div class="weui-cell__hd">
+                <p class="name active">111</p>
+                <span class="moren">默认</span>
+            </div>
+            <div class="weui-cell__bd">
+                <p class="phone">17858936127</p>
+                <p class="address">浙江大学宁波理工学院</p>
+            </div>
+            <div class="weui-cell__ft" style="padding-right: 8%;">
+                <i class="iconfont icon-bi"></i>
+            </div>
+        </a>
+        <a class="weui-cell">
+            <div class="weui-cell__hd">
+                <p class="name">测试人员</p>
+                
+            </div>
+            <div class="weui-cell__bd">
+                <p class="phone">17858936127</p>
+                <p class="address">浙江大学宁波理工学院</p>
+            </div>
+            <div class="weui-cell__ft" style="padding-right: 8%;">
+                <i class="iconfont icon-bi"></i>
+            </div>
+        </a>-->
+    </div>
+    <div class="addrTips"></div>
+    <a class="addAddress" href="javascript:goPage('add.html');">
+    		新建地址
+    </a>
+</div>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../weui/js/zepto.min.js"></script>
+<script type="text/javascript" src="../weui/js/jweixin.js"></script>
+<script src="../weui/js/weui.min.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript">
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: data,
+			createNew: isNew
+		});
+	}
+
+	// 获取地址列表
+	function getAddrList() {
+		$.ajax({
+			type:"get",
+			url:IP + "/api/receiver/list.html",
+			dataType: "json",
+			success: function(data){
+				var receiversHtml = "";
+				for(var i in data.content){
+					var item = data.content[i];
+					receiversHtml +=
+						'<a class="weui-cell" addressId="'+ item.id +'">' +
+						'<div onclick="selectAddr(this)" isDefault="'+item.isDefault+'" consignee="'+item.consignee+'" phone="'+item.phone+'" address="'+item.areaName+item.address+'" >' +
+						'<div class="weui-cell__hd">' +
+						'<p class="name active">' + item.consignee + '</p>' +
+						(item.isDefault == true ? '<span class="moren">默认</span>' : '') +
+						'</div>' +
+						'<div class="weui-cell__bd">' +
+						'<p class="phone">' + item.phone + '</p>' +
+						'<p class="address">' + item.areaName + item.address + '</p>' +
+						'</div>' +
+						'</div>' +
+						'<div class="weui-cell__ft" style="padding-right: 8%;">' +
+						'<i class="iconfont icon-bi"></i>' +
+						'</div>' +
+						'</a>';
+				}
+				$(".info").html(receiversHtml);
+			},
+			error: function(data){
+				mui.toast("网络错误");
+			}
+		});
+	}
+	getAddrList();
+
+	// 地址模式， 分选择、编辑
+	var addrMode = "default";
+	// 选择模式结果返回页面id
+	var returnWebviewId = "";
+	// 选择模式的选择回调函数
+	var returnCallbackName = "";
+
+	// 选择地址函数
+	function selectAddr(dom) {
+		var addrId = $(dom).parent().attr("addressId");
+		var isDefault = $(dom).attr("isDefault");
+		var phone = $(dom).attr("phone");
+		var address = $(dom).attr("address");
+		var consignee = $(dom).attr("consignee");
+
+		var info = {
+			addrId: addrId,
+			isDefault: isDefault,
+			phone: phone,
+			address: address,
+			consignee: consignee
+		};
+
+		if(addrMode == "select"){
+			var checkoutWebview = plus.webview.getWebviewById(returnWebviewId);
+			checkoutWebview.evalJS( returnCallbackName + '('+ JSON.stringify(info) +')');
+			var curWebview = plus.webview.currentWebview();
+			plus.webview.show(checkoutWebview, "auto", 600, function () {
+				curWebview.close("none");
+			});
+		}
+	}
+
+	// 初始化地址列表模式
+	function initAddrList() {
+		var curWebview = plus.webview.currentWebview();
+		addrMode = curWebview.addrMode;
+		returnWebviewId = curWebview.returnWebviewId;
+		returnCallbackName = curWebview.returnCallbackName;
+		if(addrMode == "select"){// 选择模式
+			// 修改操作提示
+			$(".addrTips").html("tips: 点击选择地址，长按删除地址");
+		}else{// 普通编辑查看模式
+			// 修改操作提示
+			$(".addrTips").html("tips: 长按删除地址");
+		}
+	}
+
+	function plusReady(){
+		if (mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+
+		// 初始化地址列表，分选择模式 和 普通模式
+		initAddrList();
+	}
+	document.addEventListener("plusready",plusReady,false);
+</script>
+<script>
+	$(".info").on("tap",".weui-cell__ft",function(){
+		var addressId = $(this).parent().attr("addressId");
+		goPage("edit.html", {data: addressId});
+	});
+	
+	mui.init({
+		gestureConfig:{
+			longtap:true
+		}
+	});
+	
+	$(".info").on("longtap", ".weui-cell", function(){
+		var spe = $(this);
+		var addressId = $(this).attr("addressId");
+		var btnArray = ['取消','删除'];
+		mui.confirm('确认删除么？',function(e){
+			if(e.index == 1){
+				mui.toast("删除中...");
+				$.ajax({
+					type:"get",
+					url:IP + "/api/receiver/delete.html",
+					data: {
+						id: addressId
+					},
+					dataType: "json",
+					success: function(data){
+						if(data.type == "success"){
+							mui.toast("删除成功");
+							$(spe).remove();
+						}
+						else{
+							mui.toast("删除失败");
+						}
+					},
+					error: function(data){
+						mui.toast("错误");
+					}
+				});
+			}
+			else{}
+		},'div');
+	});
+</script>
+</body>
+</html>

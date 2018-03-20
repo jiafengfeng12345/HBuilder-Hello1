@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_loadingview.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_loadingview.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_snow_black_progress.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_snow_black_progress.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_image_pick_gallery_item.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_image_pick_gallery_item.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_snow_white_progress.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_snow_white_progress.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/getui_notification.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/getui_notification.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_activity_main_market.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_activity_main_market.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_custom_notification.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_custom_notification.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_market_fragment_base.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_market_fragment_base.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_dialog.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_dialog.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_main_test_activity.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_main_test_activity.xml"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/layout/dcloud_image_pick_gallery.xml",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/layout/dcloud_image_pick_gallery.xml"
+    }
+]

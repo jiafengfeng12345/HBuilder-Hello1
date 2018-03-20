@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../fonts/iconfont.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+	<style>
+		html, body{
+			height: 100%;
+		}
+		#content{
+			padding-top: 60px;
+			height: 100%;
+			background: #fff;
+		}
+
+
+        .codeDiv{
+            margin: 50px;
+            padding: 2%;
+            height: 80%;
+            width: 78%;
+            color: #fff;
+            background: #95d1c6;
+            transform: rotate(-1.5deg);
+            border-radius: 3px;
+            box-shadow: -3px 2px 10px #a0ced1;
+        }
+        .codeDiv p{
+            color: #fff;
+        }
+
+        .codeDiv .title{
+            padding: 30px 0 10px 10px;
+            font-size: 30px;
+        }
+
+        .codeDiv .code{
+            padding-top: 60%;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .codeDiv .copy{
+            position: relative;
+            display: inline-block;
+            margin: 40% 0 0 50%;
+            padding: 8px;
+            left: -55px;
+            width: 110px;
+            font-size: 20px;
+            text-align: center;
+            border: 1px solid #fff;
+            border-radius: 3px;
+            color: #fff;
+        }
+        
+        #ewm{
+            position: absolute;
+            top: 17%;
+            left: 25%;
+	        border: 2px solid #fff;
+        }
+	</style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>邀请码</span>
+    </div>
+	<div class="share-wrapper" id="share">
+		<img src="../image/share@3x.png" class="share">
+	</div>
+</nav>
+<div id="content">
+    <div class="codeDiv">
+        <p class="title">您的邀请码是：</p>
+        <div id="ewm"></div>
+        <p class="code">inviteCode</p>
+        <a class="copy" data-clipboard-text="">点击复制</a>
+    </div>
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/plusShare.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/qrcode.min.js"></script>
+<script src="../js/clipboard.min.js"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+	var qrcode = new QRCode(document.getElementById("ewm"), {
+		width : 150,
+		height : 150,
+		colorDark : "#95d1c6",
+		colorLight : "#ffffff",
+	});
+
+	//分享
+	//分享内容，开发者可自定义
+	var shareMessage = {
+		title: "加勒比商城--邀请注册", //应用名字
+		content: "加勒比·爱宝贝，邀请您注册，像爱自己的孩子一样爱您的宝贝，愿意与您的宝贝一同健康快乐地成长！",
+		href: IP + "/mobile/inviteRegister.html", //分享出去后，点击跳转地址
+		thumbs: ["http://vverp1.oss-cn-shanghai.aliyuncs.com/zjShopIcon.png"] //分享缩略图
+	}
+	document.getElementById("share").addEventListener("click", function() {
+		
+		//调起分享
+		plusShare(shareMessage, function(res) {
+			//分享回调函数
+			if(res) {
+				// plus.nativeUI.toast("分享成功");
+			} else {
+				// plus.nativeUI.toast("分享失败");
+			}
+		})
+	});
+
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			}
+		});
+	}
+
+	$.ajax({
+		url: IP + "/api/profile/info.html",
+		type: "get",
+        dataType: "json",
+		success: function (data) {
+			var inviteCode = data.inviteCode;
+
+			$(".code").html(inviteCode);
+			$(".copy").attr("data-clipboard-text", inviteCode);
+
+			var inviteUrl = IP + "/mobile/inviteRegister.html?inviteCode=" + inviteCode;
+			shareMessage.href = inviteUrl;
+			qrcode.makeCode(inviteUrl);
+
+			new Clipboard('.copy', {
+				text: function() {
+					mui.toast("复制成功");
+					return $(".code").text();
+				}
+			});
+		},
+		error: function () {
+			mui.toast("网络繁忙, 请稍后重试");
+		}
+	});
+
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+	}
+	document.addEventListener("plusready", plusReady, false);
+</script>
+</html>

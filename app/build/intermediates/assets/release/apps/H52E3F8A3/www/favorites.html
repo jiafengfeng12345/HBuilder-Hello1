@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="weui/style/weui.min.css"/>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <title></title>
+    <style type="text/css">
+        .body {
+            padding-top: 60px;
+            margin-top: 6px;
+        }
+
+        .collection-list:last-child .collection {
+            border-bottom: none !important;
+        }
+
+        .collection-inf {
+            width: 95%;
+        }
+
+        .collection-list span {
+            font-size: 12px;
+        }
+
+        .collection-list {
+            background-color: #FFFFFF;
+        }
+
+        .collection {
+            width: 95%;
+            height: 130px;
+            margin-left: 5%;
+            border-bottom: 1px solid rgba(224, 224, 224, 0.5);
+        }
+
+        .collection-picture {
+            display: inline-block;
+            float: left;
+            padding-top: 30px;
+        }
+
+        .collection-center {
+            display: inline-block;
+            float: left;
+            width: 70%;
+            padding-top: 30px;
+            margin-left: 10px;
+        }
+
+        .collection-name {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .collection-name span {
+            font-size: 15px;
+            font-weight: 700;
+            color: rgba(51, 51, 51, 0.8);
+        }
+
+        .collection-price {
+            display: inline-block;
+            width: 30%;
+        }
+		.collection-price span {
+			font-size: 14px;
+			color: rgba(51, 51, 51, 0.8);
+		}
+        .collection-find {
+            width: 50px;
+            height: 22px;
+            line-height: 20px;
+            float: right;
+            border: 1px solid #AAAAAA;
+            border-radius: 3px;
+            -webkit-border-radius: 3px;
+            text-align: center;
+            box-shadow: 2px 2px 2px #E0E0E0;
+            box-sizing: content-box;
+        }
+
+        .collection-des {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin: 2px;
+        }
+
+        .collection-des span {
+            font-size: 13px;
+            color: #929292 !important;
+        }
+
+        .bottom {
+            margin-top: 10px;
+            background-color: #FFFFFF;
+        }
+
+        .guess-title {
+            width: 100%;
+            height: 61px;
+            padding-top: 21px;
+            font-family: PingFangSC-Regular;
+            font-size: 18px;
+            color: #333333;
+            text-align: center;
+        }
+
+        .guess-item {
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 50%;
+            background-color: #FFFFFF;
+        }
+
+        .guess-list {
+            display: inline-block;
+            overflow: auto;
+            zoom: 1;
+        }
+
+        .product-data {
+            width: 100%;
+            height: 261px;
+        }
+
+        .guess-img {
+            width: 100%;
+            height: 172px;
+        }
+
+        .guess-img img {
+            width: 100%;
+            height: 100%;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+
+        .guess-inf {
+            display: block;
+            overflow: hidden;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background: #C5DDD8;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+
+        .guess-inf span {
+            color: #669289;
+            font-size: 10px;
+        }
+
+        .guess-name {
+            margin-top: 8px;
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .guess-name span {
+            color: rgba(7, 17, 27, 0.6);
+            font-size: 16px;
+        }
+
+        .guess-price {
+            height: 20px;
+            line-height: 20px;
+            width: 100%;
+        }
+
+        .guess-price span {
+            font-size: 15px;
+            color: #B4282D;
+            text-align: left;
+            font-family: PingFangSC-Regular;
+        }
+        .no_data{
+        	position: absolute;
+        	margin-top: 150px;
+        	top: 50%;
+        	left: 40%;
+        }
+        .no_data img{
+        	width: 80px;
+        	height: 80px;
+        }
+    </style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper back-action">
+        <img src="image/left@3x.png" class="back"/>
+    </div>
+    <div class="title-wrapper">
+        <span>我的收藏</span>
+    </div>
+    <!--<div class="sort">
+        <div class="sort-goods">
+            <span>商品(2)</span>
+        </div>
+        <div class="sort-shiwu">
+            <span>心愿单</span>
+        </div>
+    </div>-->
+</nav>
+
+<div class="body mui-scroll-wrapper">
+    <div class="mui-scroll" >
+        <div id="collect">
+            <div class="collection-list">
+                <!--<div class="collection">
+                    <div class="collection-picture">
+                        <img src="image/yurongfu.png" width="75" height="75"/>
+                    </div>
+                    <div class="collection-center">
+                        <div class="pag">
+
+                        </div>
+                        <div class="collection-inf">
+                            <div class="collection-name">
+                                <span>女士超轻便携带羽绒服</span>
+                            </div>
+                            <div class="collection-des">
+                                <span>秋冬脱不掉的温暖随行</span>
+                            </div>
+                            <div class="collection-price">
+                                <span>￥209.00</span>
+                            </div>
+                            <div class="collection-find">
+                                <span>找相似</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+            <div class="collection-list">
+                <!--<div class="collection">
+                    <div class="collection-picture">
+                        <img src="image/xinglixiang.png" width="75" height="75"/>
+                    </div>
+                    <div class="collection-center">
+                        <div class="pag">
+                        </div>
+                        <div class="collection-inf">
+                            <div class="collection-name">
+                                <span>28寸 纯PC"铝框"（非全铝）拉杆箱</span>
+                            </div>
+                            <div class="collection-des">
+                                <span>109升大容量，满足全家出行</span>
+                            </div>
+                            <div class="collection-price">
+                                <span>￥439.00</span>
+                            </div>
+                            <div class="collection-find">
+                                <span>找相似</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/base.js"></script>
+<script type="text/javascript">
+    function goPage(page, data, isNew) {
+        if (isNew === true)
+            isNew = true;
+        else
+            isNew = false;
+        mui.openWindow({
+            url: page,
+            id: page,
+            extras: {
+                data: data
+            },
+            createNew: isNew
+        });
+    }
+
+    mui.init({
+        gestureConfig: {
+            longtap: true
+        }
+    });
+    mui('.mui-scroll-wrapper').scroll({
+        indicators: true,
+        deceleration: 0.0005
+    });
+
+    mui.ready(function () {
+        $.ajax({
+            type: "get",
+            url: IP + "/api/favorite/list.html",
+            dataType: "json",
+            success: function (data) {
+                var arr = data.content;
+                var html = "";
+                if(arr.length === 0){
+                	html = '<div class="no_data">' +
+								'<img src="image/no_data.png">' +
+								'<p>快去收藏吧~</p>' +
+							'</div>'; 
+                }
+                for (var i = 0; i < arr.length; i++) {
+                    html+='<div class="collection-list" dataid="'+arr[i].id+'">\n' +
+                        '                <div class="collection">\n' +
+                        '                    <div class="collection-picture">\n' +
+                        '                        <img src="'+arr[i].image+'" width="75" height="75"/>\n' +
+                        '                    </div>\n' +
+                        '                    <div class="collection-center">\n' +
+                        '                        <div class="pag">\n' +
+                        '\n' +
+                        '                        </div>\n' +
+                        '                        <div class="collection-inf">\n' +
+                        '                            <div class="collection-name">\n' +
+                        '                                <span>'+arr[i].name+'</span>\n' +
+                        '                            </div>\n' +
+                        '                            <div class="collection-des">\n' +
+                        '                                <span>'+arr[i].categoryName+'</span>\n' +
+                        '                            </div>\n' +
+                        '                            <div class="collection-price">\n' +
+                        '                                <span>￥'+arr[i].price+'</span>\n' +
+                        '                            </div>\n' +
+                        '                        </div>\n' +
+                        '                    </div>\n' +
+                        '                </div>\n' +
+                        '            </div>'
+                }
+                $("#collect").html(html);
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    })
+
+//	mui.plusReady(function(){
+//		var opener = plus.webview.currentWebview().opener();
+//		setTimeout(function(){
+//			opener.close('none');
+//		},450);
+//	})
+	
+    $("#collect").on("tap",".collection-list",function () {
+        var dataid = $(this).attr("dataid");
+        goPage("product.html",dataid);
+    });
+
+
+
+    $(".back-action").on("tap", function () {
+        mui.back();
+    });
+    $("#collect").on("longtap",".collection-list",function () {
+        var spe = $(this);
+        var btnArray = ['取消', '删除'];
+        mui.confirm('确认删除么？', function (e) {
+            if (e.index == 1) {
+                $(spe).remove();
+            }
+            else {
+            }
+        }, 'div')
+    });
+    $(".guess-item").on("tap", function () {
+        goPage("product.html");
+    });
+    $(".collection-list").on("tap", function () {
+        goPage("product.html");
+    });
+</script>
+</html>

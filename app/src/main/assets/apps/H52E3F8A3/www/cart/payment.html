@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="../weui/style/weui.css"/>
+    <link rel="stylesheet" href="../css/base.css" />
+	<link rel="stylesheet" href="../fonts/iconfont.css" />
+    <style>
+        body {
+            color: #515151;
+        }
+
+        .bottom {
+            position: fixed;
+            bottom: 0;
+            height: 60px;
+            width: 100%;
+            background-color: white;
+            border-top: 1px solid #e5e5e5;
+            line-height: 60px;
+            z-index: 999;
+        }
+
+        .paymentItem{
+	        height: 40px;
+        }
+
+	    .selectPayment{
+		    text-align: center;
+		    background: #95d1c6;
+		    color: #fff;
+	    }
+	    
+	    .paymentItemName{
+		    position: relative;
+	    }
+	    
+	    .paymentItemName img{
+		    position: absolute;
+		    width: 30px;
+	    }
+	    
+	    .paymentItemName span{
+		    margin-left: 40px;
+		    line-height: 30px;
+	    }
+    </style>
+</head>
+<body>
+    <nav class="head">
+        <div class="back-wrapper mui-action-back">
+            <img src="../image/left@3x.png" class="back">
+        </div>
+        <div class="title-wrapper">
+            <span>选择支付方式</span>
+        </div>
+    </nav>
+    <div style="padding-top: 44px; padding-bottom: 60px;width: 100%;">
+        <div class="weui-cells weui-cells_checkbox payment">
+            <div class="weui-cell paymentItem">
+                <div class="weui-cell__hd">
+		            <input type="checkbox" class="weui-check" checked="checked" data-id="alipay"/>
+		            <i class="weui-icon-checked"></i>
+                </div>
+	            <div class="weui-cell__bd paymentItemName">
+		            <img src="../image/payment/alipay.png">
+		            <span>支付宝</span>
+	            </div>
+            </div>
+            <div class="weui-cell paymentItem">
+                <div class="weui-cell__hd">
+		            <input type="checkbox" class="weui-check" data-id="wxpay"/>
+		            <i class="weui-icon-checked"></i>
+                </div>
+	            <div class="weui-cell__bd paymentItemName">
+		            <img src="../image/payment/wechat.png">
+		            <span>微信</span>
+	            </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="selectPayment">确定</div>
+    </div>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../weui/js/zepto.min.js"></script>
+    <script type="text/javascript" src="../weui/js/jweixin.js"></script>
+    <script src="../weui/js/weui.min.js"></script>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/base.js"></script>
+    <script type="text/javascript">
+		function goPage(page, data){
+			mui.openWindow({
+				url:page,
+				id:page,
+				extras: data
+			});
+		}
+
+		// 支付方式
+		var paymentTypes = {};
+
+		var orderSn;
+		var totalAmount;
+
+		function plusReady(){
+			if (mui.os.ios) {
+				plus.navigator.setStatusBarBackground("#95D1C6");
+			}
+			
+			plus.payment.getChannels(function(channels) {
+				var txt = "支付通道信息：";
+				for(var i in channels) {
+					var channel = channels[i];
+					if(channel.id == 'qhpay' || channel.id == 'qihoo') { // 过滤掉不支持的支付通道：暂不支持360相关支付
+						continue;
+					}
+					paymentTypes[channel.id] = channel;
+					txt += "id:" + channel.id + ", ";
+					txt += "description:" + channel.description + ", ";
+					txt += "serviceReady:" + channel.serviceReady + "； ";
+				}
+			}, function(e) {});
+
+			var self = plus.webview.currentWebview();
+			if(self.delOpener){
+				self.opener().close("none");
+			}
+
+			orderSn = self.orderSn;
+
+			totalAmount = self.totalAmount;
+		}
+		document.addEventListener("plusready",plusReady,false);
+
+		$(".payment").on("tap", ".paymentItem", function () {
+			$(".weui-check").each(function () {
+				$(this)[0].checked = false;
+			});
+			$(this).find(".weui-check")[0].checked = true;
+		});
+		
+		function pay() {
+			
+		}
+
+		// 发起支付
+		$(".selectPayment").on("tap", function(){
+			var paymentId = $(".weui-check:checked").attr("data-id");
+			if(paymentId == "alipay"){
+				$.ajax({
+					url: IP + "/api/payment/ali.html",
+					type: "get",
+					dataType: "json",
+					data: {
+						total: totalAmount
+					},
+					success: function (data) {
+						if(data.type == "success"){
+							var content = data.content;
+							plus.payment.request(paymentTypes[paymentId], content, function(result) {
+								plus.nativeUI.alert("支付成功", function() {
+                                    goPage("../success.html");
+								}, "通知");
+							}, function(e) {
+								plus.nativeUI.toast("支付出错");
+							});
+						}else{
+							mui.toast(data.content);
+						}
+					}
+				});
+			}else if(paymentId == "wxpay"){
+				$.ajax({
+					url: IP + "/api/payment/wechat.html",
+					type: "get",
+					dataType: "json",
+					data: {
+						total: totalAmount
+					},
+					success: function (data) {
+						if(data.type == "success"){
+							var content = data.content;
+							plus.payment.request(paymentTypes[paymentId], content, function(result) {
+								plus.nativeUI.alert("支付成功", function() {
+									goPage("../success.html");
+								}, "通知");
+							}, function(e) {
+								plus.nativeUI.toast("支付出错");
+							});
+						}else{
+							mui.toast(data.content);
+						}
+					}
+				});
+			}
+		});
+   </script>
+</body>
+</html>

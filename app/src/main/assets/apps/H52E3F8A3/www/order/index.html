@@ -1,0 +1,902 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../fonts/iconfont.css"/>
+<!--		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>var h5pullDown = true;</script>
+		<script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body,html{
+				background-color: #EEEEEE;
+			}
+			span{
+				font-size: 14px;
+			}
+			.clearfloat{
+				zoom: 1;
+			}
+			.clearfloat:after{
+				content: "";
+				height: 0;
+				display: block;
+				visibility: hidden;
+				clear: both;
+			}
+			.search-bar{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 60px;
+				background: #fff;
+				z-index: 1;
+			}
+			.search-input{
+				position: absolute;
+				top: 18px;
+				left: 20px;
+				width: 80%;
+			}
+			.search-input input{
+				border-radius: 10px!important;
+			}
+			.search-cancelled{
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				top: 24px;
+				right: 12px;
+			}
+			.search-cancelled span{
+				color: #333;
+			}
+			.history{
+				position: absolute;
+				top: 60px;
+				left: 0;
+				right: 0;
+				z-index: -1;
+				padding: 0 0 15px 20px;
+				font-size: PingFangSC-Light,helvetica,'Heiti SC';;
+				background: #fff;
+			}
+			.history-name{
+				display: inline-block;
+				width: 88%;
+				height: 20px;
+				line-height: 20px;
+				color: #999;
+				font-size: 15px;
+				padding-top: 10px;
+/*				margin-bottom: 10px;*/
+			}
+			.history span{
+				display: inline-block;
+				height: 30px;
+				width: 30px;
+				color: #999;
+			}
+			.history span i{
+				font-size: 18px;
+			}
+			.mui-content{
+				padding-top: 106px;
+			}
+			.body-top{
+				padding-top: 64px;
+				position: absolute;
+				width: 100%;
+				background-color: #fff;
+			}
+			.order-bar{
+				width: 95%;
+				margin: 0 2.5%;
+				height: 40px;
+				line-height: 40px;
+				background-color: #FFFFFF;
+			}
+			.list-t{
+				display: inline-block;
+				float: left;	
+				width: 16%;
+				margin: 0 2% 0 2%;
+				height: 39px;
+				text-align: center;
+			}
+			.list-order{
+				margin-top: 10px;
+				background-color: #FFFFFF;
+			}
+			.order-inf{
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				border-bottom: 2px solid #E0E0E0;
+			}
+			.list-order .no{
+				float: left;
+				height: 30px;
+				line-height: 30px;
+				padding-left: 17px;
+			}
+			.list-order .cancelled{
+				float: right;
+				height: 30px;
+				line-height: 30px;
+				padding-right: 17px;
+			}
+			.inf-order{
+				margin-top: 10px;
+				height: 105px;
+				border-bottom: 2px solid #E0E0E0;
+			}
+			.goods-picture{
+				display: inline-block;
+				float: left;
+				padding: 10px 17px;
+			}
+			.goods-inf{
+				float: left;
+				padding-top: 5px;
+				width:47%;
+			}
+			.pay-status{
+				float: right;
+				padding-top: 55px;
+				padding-right: 4%;
+			}
+			.goods-name{
+				display: block;
+				overflow: hidden;
+				height: 40px;
+				line-height: 40px;
+				white-space: nowrap;
+				text-overflow: ellipsis;	
+			}
+			.goods-description{
+				display: block;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				padding-top: 10px!important;
+			}
+			.price-order{
+				height: 60px;
+			}
+			.price-payable{
+				float: left;
+				margin: 14px 15px;
+				height: 35px;
+				line-height: 35px;
+			}
+			.price-pay{
+				float: right; 
+				margin: 13px 17px;
+				font-size: 14px;
+				width: 22.7%;
+				height: 34px;
+				line-height: 34px;
+				color: #fff;
+				text-align: center;
+				background-color: #b52a3a;
+				border-radius: 2px;
+				-webkit-border-radius: 2px;
+				box-shadow: 1px 1px 1px #e0e0e0;
+			}
+			.price-payable span{
+				background-color: #FAFAFA;
+			}
+			.nav-line{
+				position: absolute;
+				top: 102px;
+				font-size: 0;
+				height: 2px;
+				line-height: 2px;
+				background: #B52A3A;
+			}
+			.search-icon{
+				position: absolute;
+				top: 20px;
+				right: 10px;
+				height: 30px;
+				width: 30px;
+			}
+			.search-icon .iconfont{
+				font-size: 20px;
+				color: #fff;
+			}
+			::-webkit-input-placeholder{
+				font-size: 14px;
+			}
+			input[type="search"]{
+				font-size: 14px;
+				color: #333;
+			}
+			.history-list-item {
+	            display: inline-block;
+	            cursor: pointer;
+	            padding: 1px 7px;
+	            border: 1px solid #999;
+	            font-size: 13px;
+	            color: #333;
+	            margin-top: 10px;
+	            border-radius: 5px;
+	            margin-right: 5px;
+        	}
+	        .history-list-item:active {
+	            color: black;
+	        }
+	        
+		</style>
+	</head>
+	<body>
+		<nav class="head">
+			<div class="back-wrapper mui-action-back">
+				<img src="../image/left@3x.png" class="back"/>
+			</div>
+			<div class="title-wrapper">
+				<span style="font-size: 18px;">我的订单</span>
+			</div>
+			<div class="search-icon"><i class="iconfont icon-sousuo"></i></div>
+		</nav>
+		
+		<nav class="search-bar" id="searchbar">
+			<form class="input-group" action="" onsubmit="return false">
+				<div class="search-input mui-input-row mui-search" >
+	    			<input type="search" class="mui-input-clear" onfocus="this.placeholder='商品/订单号'" onblur="lostfocus()">
+				</div>
+			</form>
+			<div class="search-cancelled"><span>取消</span></div>
+		</nav>
+		
+		<div class="history" id="btn">
+			<p class="history-name">最近搜索</p>
+			<span><i class="iconfont icon-shanchu"></i></span>
+			<div class="history-list"></div>
+		</div>
+		
+		<div class="body-top">
+			<div class="order-bar clearfloat" id="order-bar">
+				<div class="list-t" id="list" data="all">
+					<span style="color: #B52A3A;">全部</span>
+				</div>
+				<div class="list-t" data="pending_payment">
+					<span>待付款</span>
+				</div>
+				<div class="list-t" data="pending_shipped">
+					<span>待发货</span>
+				</div>
+				<div class="list-t" data="shipped">
+					<span>已发货</span>
+				</div>
+				<div class="list-t" data="pending_evaluate">
+					<span>待评价</span>
+				</div>	
+				<div class="nav-line"></div>
+			</div>
+		</div>
+			
+		<div class="mui-content">
+			<div class="mui-slider-find" id="slider">
+				<div class="mui-slider-group mui-slider-find-group">
+					<!--第一块-->
+					<div class="mui-slider-item">
+						<div id="pullrefreshone" class="mui-scroll-wrapper one">
+							<div class="mui-scroll">
+								<div class="list-order">
+									<div class="order-inf clearfloat">
+										<div class="list-order no">
+											<span>订单编号:14310698</span>
+										</div>
+										<div class="list-order cancelled">
+											<span>取消订单</span>
+										</div>
+									</div>
+									
+									<div class="inf-order clearfloat">
+										<div class="goods-picture">
+											<img src="../image/goods.jpg"/ width="75" height="75">
+										</div>
+										<div class="goods-inf">
+											<div class="goods-name">
+												<span style="background-color: #FAFAFA;">果粒缤纷燕麦片 35克*10袋</span>
+											</div>
+											<div class="goods-description">
+												<span style="color: #929292; background-color: #FAFAFA;">350克  (35克 * 10袋)</span>
+											</div>
+										</div>
+										<div class="pay-status">
+											<span style="color: #FF0000;font-size: 15px;">待付款</span>
+										</div>
+									</div>
+																		<div class="inf-order clearfloat">
+										<div class="goods-picture">
+											<img src="../image/goods.jpg"/ width="75" height="75">
+										</div>
+										<div class="goods-inf">
+											<div class="goods-name">
+												<span style="background-color: #FAFAFA;">果粒缤纷燕麦片 35克*10袋</span>
+											</div>
+											<div class="goods-description">
+												<span style="color: #929292; background-color: #FAFAFA;">350克  (35克 * 10袋)</span>
+											</div>
+										</div>
+										<div class="pay-status">
+											<span style="color: #FF0000;font-size: 15px;">待付款</span>
+										</div>
+									</div>
+									
+									<div class="price-order clearfloat" id="price-order">
+										<div class="price-payable">
+											<span >实付: ￥38.00</span>
+										</div>
+										<div class="rebuy"><span></span></div>
+										<div class="price-pay"><span>去付款</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="mui-slider-item">
+						<div id="pullrefreshtwo" class="mui-scroll-wrapper two">
+							<div class="mui-scroll">
+								<div class="list-wrap">
+									<div class="item" style="height: 100px;width: 100%;background-color: blue;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="mui-slider-item">
+						<div id="pullrefreshthree" class="mui-scroll-wrapper three">
+							<div class="mui-scroll">
+								<div class="list-wrap">
+									<div class="item" style="height: 100px; width: 100%; background-color: yellow;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="mui-slider-item">
+						<div id="pullrefreshfour" class="mui-scroll-wrapper four">
+							<div class="mui-scroll">
+								<div class="list-wrap">
+									<div class="item" style="height: 100px; width: 100%; background-color: gray;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="mui-slider-item">
+						<div id="pullrefreshfive" class="mui-scroll-wrapper five">
+							<div class="mui-scroll">
+								<div class="list-wrap">
+									<div class="item" style="height: 100px; width: 100%; background-color: red;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+
+<script type="text/javascript">
+	//页面滑动到最左边或最右边上时禁止它继续向左或右滑动
+	mui.ready(function() {
+        var sliderEl = document.getElementById("slider");
+        sliderEl.classList.add('mui-slider');
+        mui(sliderEl).slider({
+            bounce: false
+        });
+    });
+	
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			},
+			styles:{
+				scrollIndicator: 'none'
+			}
+		});
+	};
+	
+	/**
+	 * 下拉刷新具体业务实现
+	 */
+	mui.init({
+		pullRefresh: [{
+			container: '.one',
+			down: {
+				callback: pulldownRefreshone
+			}
+		},{
+			container: '.two',
+			down: {
+				callback: pulldownRefreshtwo
+			}
+		},{
+			container: '.three',
+			down: {
+				callback: pulldownRefreshthree
+			}
+		},{
+			container: '.four',
+			down: {
+				callback: pulldownRefreshfour
+			}
+		},{
+			container: '.five',
+			down: {
+				callback: pulldownRefreshfive
+			}
+		}]
+	});
+	
+	function pulldownRefreshone(){
+		setTimeout(function(){
+			ajax();
+			mui('#pullrefreshone').pullRefresh().endPulldownToRefresh();
+			mui('#pullrefreshone').pullRefresh().refresh(true);
+		}, 1500);
+	};
+	
+	function pulldownRefreshtwo(){
+		setTimeout(function(){
+			ajax();
+			mui('#pullrefreshtwo').pullRefresh().endPulldownToRefresh();
+			mui('#pullrefreshtwo').pullRefresh().refresh(true);
+		}, 1500);
+	};
+	
+	function pulldownRefreshthree(){
+		setTimeout(function(){
+			ajax();
+			mui('#pullrefreshthree').pullRefresh().endPulldownToRefresh();
+			mui('#pullrefreshthree').pullRefresh().refresh(true);
+		}, 1500);
+	};
+
+	function pulldownRefreshfour(){
+		setTimeout(function(){
+			ajax();
+			mui('#pullrefreshfour').pullRefresh().endPulldownToRefresh();
+			mui('#pullrefreshfour').pullRefresh().refresh(true);
+		}, 1500);
+	};
+
+	function pulldownRefreshfive(){
+		setTimeout(function(){
+			ajax();
+			mui('#pullrefreshfive').pullRefresh().endPulldownToRefresh();
+			mui('#pullrefreshfive').pullRefresh().refresh(true);
+		}, 1500);
+	};
+
+	// input自动聚焦
+	var showInput = function(){
+		var nativeWebview;
+		if (mui.os.ios) {
+			nativeWebview = plus.webview.currentWebview().nativeInstanceObject();
+			nativeWebview.plusCallMethod({
+				"setKeyboardDisplayRequiresUserAction": false
+			});
+		}
+		setTimeout(function() {
+			$(".search-input input").focus();
+		}, 200);
+	}
+	
+	$(".search-icon").on("tap",function(){
+		$(".search-input input").val("");
+		if(!document.getElementById("lostfocus")){
+			$(".head").css({"visibility":"hidden","opacity":"0","transition":"all linear .4s"});
+			$(".body-top").css({"visibility":"hidden","opacity":"0","transition":"all linear .4s"});
+			$(".search-bar").css({"visibility":"visible","opacity":"1","transition":"all linear .4s"});
+			loadSearchHistory();
+			//用于让input失去焦点的div
+			var lostfocustool = "<div id='lostfocus' style='position:fixed;z-index:1000;width:100%;height:100%;top:60px;left:0;background-color:#6D6D72;opacity:.6'></div>";
+			showInput();
+			$("body").append(lostfocustool);
+		}
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#fff");
+		}
+	});
+	
+	//点击辅助div事件，使input失去焦点
+	function lost(){
+		setTimeout(function(){
+			$(".search-input input").blur();
+		},200);
+	}
+	
+	//删除搜索记录按钮
+	$(".history span").on("tap",function(){
+		deleteSearchHistory();
+	});
+	
+	//点击history区域，input不失去焦点
+	var btn = document.getElementById("btn");
+	btn.onmousedown = function(event){
+		event.preventDefault();
+	};
+	
+	// 取消
+	$(".search-cancelled").bind("tap",function () {
+        lost();
+	});
+	
+	$("body").on("tap","#lostfocus",function(){
+		lost();
+	});
+	
+	//input失去焦点事件
+	function lostfocus(){
+		$(".head").css({"visibility":"visible","opacity":"1","transition":"all linear .5s"});
+		$(".body-top").css({"visibility":"visible","opacity":"1","transition":"all linear .5s"});
+		$(".search-bar").css({"visibility":"hidden","opacity":"0","transition":"all linear .5s"});
+		$(".history").css({"z-index":"-1","visibility":"hidden","opacity":"0","transition":"all linear .5s"});
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+		setTimeout(function(){
+			$("#lostfocus").remove();
+		},100);
+	};
+	
+	// 搜索确认
+    $(".search-input input").keyup(function (event) {
+    	if($(".search-input input").val() == "" || $(".search-input input").val() == null){
+    		mui.toast("请输入关键字");
+    	}
+    	else{
+    		if (event.keyCode === 13) {
+				$(".search-input input").blur();
+				addSearchHistory($(this).val());
+				goPage("orderdetail.html");
+			}
+    	}
+	});
+	
+	var orderhistory = [];
+	
+    function loadSearchHistory() {
+        var obj = JSON.parse(plus.storage.getItem("orderhistory"));
+		if (obj !== null) {
+			orderhistory = obj.orderhistory;
+		}
+		if (orderhistory !== null && orderhistory.length !== 0) {
+			$(".history").css({"z-index":"1001","visibility":"visible","opacity":"1","transition":"all linear .1s"});
+			showSearchHistory();
+		}
+		else
+		$(".body-top").css({"visibility":"visible","opacity":"1","transition":"all linear .1s"});
+	}
+
+
+    function addSearchHistory(text) {
+    	for (var i=0; i<orderhistory.length; i++) {
+    		var item = orderhistory[i];
+    		if (item === text) {
+    			return;
+            }
+        }
+		orderhistory.push(text);
+		var obj = {
+			orderhistory: orderhistory
+		};
+		plus.storage.setItem('orderhistory', JSON.stringify(obj));
+		var history = '<a class="history-list-item">'+text+'</a>';
+		$(".history-list-item").prepend(history);
+//		$(".history").append(history);
+		// 点击历史项
+		$(".history-list-item:first-child").bind("tap", function () {
+			$(".search-input input").blur();
+			goPage("orderdetail.html");
+		});
+	}
+
+	function deleteSearchHistory(){
+		$(".history").css({"visibility":"hidden","opacity":"0","transition":"all linear .2s"});
+		$(".body-top").css({"visibility":"visible","opacity":"1","transition":"all linear .2s"});
+		var obj = {
+			orderhistory:[]
+		};
+		orderhistory = [];
+		plus.storage.setItem('orderhistory', JSON.stringify(obj));
+		showSearchHistory();
+	}
+	
+	function showSearchHistory() {
+		$(".history-list").empty();
+		var html = '';
+        for (var i = orderhistory.length-1;i >= 0;i--) {
+			html += '<a class="history-list-item">'+orderhistory[i]+'</a>';
+		}
+		$(".history-list").html(html);
+		
+		// 点击历史项
+		$(".history-list-item").bind("tap", function () {
+			$(".search-input input").blur();
+			goPage("orderdetail.html");
+		});
+	}
+	
+	//未付款页面按钮
+	function unpaid(){
+		var unpaid ="<div class='price-pay' style='background-color:#b52a3a;" +
+				    "color:#fff;box-sizing:content-box;" +
+				    "border-radius:2px;-webkit-border-radius:2px;" +
+				    "float:right;height:34px;line-height:34px;" +
+				    "text-align:center;margin:13px 17px;width:22.7%;" +
+				    "box-shadow:1px 1px 1px #e0e0e0'><span style='font-size:14px'>去付款</span></div>";
+				    
+		$(".price-pay").remove();
+		$(".rebuy").remove();
+		$(".logistics").remove();
+		$(".evaulated").remove();
+		$(".comfirm").remove();
+		$(".pay-status span").text("待付款");
+		$(".price-order").append(unpaid);
+	}
+	
+	//待发货页面按钮
+	function rebuy(){
+		var rebuy ="<div class='rebuy' style='background-color:#fff;" +
+				   "color:#515151;border:1px solid #bbb;box-sizing:content-box;" +
+				   "border-radius:2px;-webkit-border-radius:2px;" +
+				   "float:right;height:34px;line-height:34px;" +
+				   "text-align:center;margin:13px 17px;width:22.7%;" +
+				   "box-shadow:1px 1px 1px #e0e0e0'><span style='font-size:14px'>再次购买</span></div>";
+				   
+		$(".list-order .cancelled").remove();
+		$(".rebuy").remove();
+		$(".price-pay").remove();
+		$(".logistics").remove();
+		$(".evaulated").remove();
+		$(".comfirm").remove();
+		$(".pay-status span").text("待发货");
+		$(".price-order").append(rebuy);
+	}
+	
+	//已发货页面按钮
+	function shipped(){				
+		var comfirm ="<div class='comfirm' style='float:right;margin:13px 17px;" +
+					 "width:22.7%;height:34px;line-height:34px;" +
+					 "color:#b52a3a;text-align:center;" +
+					 "border-radius:2px;-webkit-border-radius:2px;" +
+					 "border:1px solid #b52a3a;box-sizing:content-box'>" +
+					 "<span style='font-size:14px'>确认收货</span></div>";
+					 
+		var logistics = "<div class='logistics' style='background-color:#fff;color:#515151;" +
+						"border:1px solid #bbb;border-radius:2px;box-sizing:content-box;" +
+						"-webkit-border-radius:2px;float:right;" +
+						"height:34px;line-height:34px;text-align:center;" +
+						"margin:13px 2px;width:22.7%;box-shadow:1px 1px 1px #e0e0e0'>" +
+						"<span style='font-size:14px'>查看物流</span></div>";
+					 
+		$(".list-order .cancelled").remove();
+		$(".price-pay").remove();
+		$(".rebuy").remove();
+		$(".logistics").remove();
+		$(".evaulated").remove();
+		$(".comfirm").remove();
+		$(".pay-status span").text("已发货");
+		$(".price-order").append(comfirm).append(logistics);
+	}
+	
+	//待评价页面按钮
+	function evaulated(){
+		var logistics = "<div class='logistics' style='background-color:#fff;color:#515151;" +
+						"border:1px solid #bbb;border-radius:2px;" +
+						"-webkit-border-radius:2px;float:right;box-sizing:content-box;" +
+						"height:34px;line-height:34px;text-align:center;" +
+						"margin:13px 2px;width:22.7%;box-shadow:1px 1px 1px #e0e0e0'>" +
+						"<span style='font-size:14px'>查看物流</span></div>";
+		
+		var evaulated = "<div class='evaulated' style='background-color:#fff;color:#515151;" +
+						"border:1px solid #bbb;border-radius:2px;" +
+						"-webkit-border-radius:2px;float:right;box-sizing:content-box;" +
+						"height:34px;line-height:34px;text-align:center;" +
+						"margin:13px 17px;width:22.7%;box-shadow:1px 1px 1px #e0e0e0'>" +
+						"<span style='font-size:14px'>去评价</span></div>";
+						
+		$(".list-order .cancelled").remove();
+		$(".price-pay").remove();
+		$(".rebuy").remove();
+		$(".logistics").remove();
+		$(".evaulated").remove();
+		$(".comfirm").remove();
+		$(".pay-status span").text("已收货");
+		$(".price-order").append(evaulated).append(logistics);
+	}
+
+	var box = document.getElementById("order-bar");
+    var left = box.getBoundingClientRect().left;
+    var right = box.getBoundingClientRect().right;
+    var result = right - left;
+    var zero = result * 0.045;
+	var type = "all"; // 展示的类型
+	
+	$(document).ready(function(){
+		var boxline = document.getElementById("list");
+		var lineright = boxline.getBoundingClientRect().right;
+		var lineleft = boxline.getBoundingClientRect().left;
+		var linecha = lineright - lineleft;
+		$(".nav-line").width(linecha);
+		$(".nav-line").css("left",zero);
+	});
+	
+	$(".list-t").on('tap',function(){
+		var index =$(this).index();
+		var line = index * result * 0.2 + zero;
+		$(this).addClass("cur");
+		$(".list-t span").css("color","#000000");
+		$(".nav-line").animate({left:line + 'px'},"fast");
+		$(".cur span").css("color","#B52A3A");
+		$(this).removeClass("cur");
+		type = $(this).attr("data");
+		mui("#slider").slider().gotoItem(index);
+		switch(index){
+            case 0 :
+	            
+	            break;
+	        case 1 :
+	            unpaid();
+	            break;
+	        case 2 :
+	            rebuy();
+	            break;
+	        case 3 :
+	            shipped();
+	            break;
+	        case 4 :
+	            evaulated();
+	            break;	
+        }
+	});
+
+	function ajax(){
+		init();
+	};
+	function init(){
+	};
+	
+	$(".inf-order").on('tap',function(){
+		goPage("orderdetail.html");
+	})
+	
+	function fireStatus(data) {
+		type = data;
+		var index = 0;
+		switch (data) {
+			case "all":
+				index = 0;
+				break;
+			case "pending_payment":
+				index = 1;
+				break;
+			case "pending_shipped":
+				index = 2;
+				rebuy();
+				break;
+			case "shipped":
+				index = 3;
+				shipped();
+				break;
+			case "pending_evaluate":
+				index = 4;
+				evaulated();
+				break;
+		}
+		var $span = $(".list-t").eq(index);
+		var line = $span.index() * result * 0.2 + zero;
+		$span.addClass("cur");
+		$(".list-t span").css("color","#000000");
+		$(".nav-line").animate({left:line + 'px'},"fast");
+		$(".cur span").css("color","#B52A3A");
+		$span.removeClass("cur");
+		
+		ajax();
+	}
+
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+		plus.webview.currentWebview().setStyle({
+			scrollIndicator: "none"
+		});
+		var self = plus.webview.currentWebview();
+		var type = self.data;
+		fireStatus(type);
+	}
+	document.addEventListener("touchmove",function(e){e.preventDefault();});
+	document.addEventListener("plusready", plusReady, false);
+	
+	//滑动页面，选项卡及下划线跟着滑动
+	document.querySelector("#slider").addEventListener('slide', function(event) {
+		if(event.detail.slideNumber === 1){
+			var line = result * 0.2 + zero;
+			$(".order-bar .list-t:nth-child(2)").addClass("cur");
+			$(".list-t span").css("color","#000");
+			$(".cur span").css("color","#B52A3A");
+			$(".nav-line").animate({left:line + 'px'},"fast");
+			$(".order-bar .list-t:nth-child(2)").removeClass("cur");
+			
+		}
+		else if(event.detail.slideNumber === 2){
+			var line = 2 * result * 0.2 + zero;
+			$(".order-bar .list-t:nth-child(3)").addClass("cur");
+			$(".list-t span").css("color","#000");
+			$(".cur span").css("color","#B52A3A");
+			$(".nav-line").animate({left:line + 'px'},"fast");
+			$(".order-bar .list-t:nth-child(3)").removeClass("cur");
+		}
+		else if(event.detail.slideNumber === 3){
+			var line = 3 * result * 0.2 + zero;
+			$(".order-bar .list-t:nth-child(4)").addClass("cur");
+			$(".list-t span").css("color","#000");
+			$(".cur span").css("color","#B52A3A");
+			$(".nav-line").animate({left:line + 'px'},"fast");
+			$(".order-bar .list-t:nth-child(4)").removeClass("cur");
+		}
+		else if(event.detail.slideNumber === 4){
+			var line = 4 * result * 0.2 + zero;
+			$(".order-bar .list-t:nth-child(5)").addClass("cur");
+			$(".list-t span").css("color","#000");
+			$(".cur span").css("color","#B52A3A");
+			$(".nav-line").animate({left:line + 'px'},"fast");
+			$(".order-bar .list-t:nth-child(5)").removeClass("cur");
+		}
+		else{
+			var line = zero;
+			$(".order-bar .list-t:first-child").addClass("cur");
+			$(".list-t span").css("color","#000");
+			$(".cur span").css("color","#B52A3A");
+			$(".nav-line").animate({left:line + 'px'},"fast");
+			$(".order-bar .list-t:first-child").removeClass("cur");
+		}
+	})
+
+	$(".price-order").on("tap",".logistics",function(){
+		goPage("./logistics.html");
+	});
+	$(".price-order").on("tap",".evaulated",function(){
+		goPage("../evaulate.html");
+	});
+	$(".price-order").on("tap",".rebuy",function(){
+		goPage("../cart/checkout.html");
+	});
+	$(".price-order").on("tap",".comfirm",function(){
+		goPage("../success.html");
+	});
+	
+</script>
+</html>

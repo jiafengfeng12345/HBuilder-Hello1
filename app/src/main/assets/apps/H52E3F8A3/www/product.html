@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="fonts/iconfont.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+        .body {
+            padding-top: 44px;
+        }
+		
+        .body .lunBo .mui-slider {
+            height: 300px;
+        }
+
+        .product-img {
+            height: 375px;
+        }
+
+        .body .info-wrapper {
+        	width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            font-family: PingFangSC-Regular;
+            font-size: 15px;
+            color: #666666;
+            background: #f9f9f9;
+        }
+
+        .body .data {
+            height: 95px;
+            background-color: white;
+            padding-top: 24px;
+        }
+
+        .data .product-name-wrapper {
+            width: 100%;
+            padding-left: 20px;
+            height: 25px;
+            line-height: 25px;
+            font-family: PingFangSC-Regular;
+            font-size: 18px;
+            color: #333333;
+        }
+
+        .data .product-name {
+            /*padding-top: 24px;*/
+        }
+
+        .data .product-price-wrapper {
+            width: 100%;
+            padding-left: 20px;
+            height: 30px;
+            line-height: 30px;
+            font-family: PingFangSC-Medium;
+            font-size: 22px;
+            color: #b4282d;
+        }
+
+        .list {
+            padding-left: 10px;
+            background-color: white;
+            margin-top: 9px;
+            border-top: 1px solid #f3f3f3;
+            border-bottom: 1px solid #f3f3f3;
+            height: 45px;
+        }
+
+        .list-item {
+            display: inline-block;
+            height: 45px;
+            width: 100%;
+            border-bottom: 1px solid #f3f3f3;
+            position: relative;
+        }
+
+        .list-item:last-child {
+            border-bottom-width: 0;
+        }
+
+        .list-item .list-name-wrapper {
+            height: 45px;
+            line-height: 45px;
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #333333;
+        }
+
+        .list-item .list-name {
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 80%;
+        }
+
+        .list-item .list-go-wrapper {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 30px;
+            height: 45px;
+        }
+
+        .list-item .list-go {
+            width: 10px;
+            height: 20px;
+            margin-top: 12px;
+        }
+
+        .comment {
+            margin-top: 9px;
+            background-color: white;
+        }
+
+        .comment .comment-more {
+            position: relative;
+            height: 55px;
+            border-bottom: 1px solid #f3f3f3;
+            padding-left: 9px;
+        }
+
+        .comment-more .name-wrapper {
+            height: 55px;
+            line-height: 55px;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .comment-more .go-wrapper {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 30px;
+            height: 55px;
+        }
+
+        .comment-more .go {
+            width: 10px;
+            height: 20px;
+            margin-top: 17px;
+        }
+
+        .comment .comment-item {
+            padding-bottom: 30px;
+        }
+
+        .comment-item .comment-info {
+            height: 50px;
+        }
+
+        .comment-info .comment-avatar-wrapper {
+            width: 52px;
+            height: 50px;
+            text-align: center;
+            float: left;
+        }
+
+        .comment-info .comment-avatar {
+            width: 34px;
+            height: 34px;
+            margin-top: 8px;
+        }
+
+        .comment-info .comment-name-wrapper {
+            height: 50px;
+            line-height: 50px;
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #333333;
+            float: left;
+        }
+
+        .comment-detail {
+            padding-left: 9px;
+            height: 17px;
+            line-height: 17px;
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #999999;
+        }
+
+        .comment-detail span:last-child {
+            padding-left: 30px;
+        }
+
+        .comment-content {
+            height: 40px;
+            padding-left: 9px;
+            padding-right: 17px;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #333333;
+            line-height: 20px;
+        }
+
+        .product-detail {
+        	width: 100%;
+/*            margin-top: 145px;*/
+            background-color: white;
+        }
+
+        .detail-head {
+            height: 60px;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        .detail-head .detail-head-inner {
+            height: 20px;
+            width: 220px;
+            margin: 0 auto;
+        }
+
+        .detail-head-inner .line {
+            border-top: 1px solid #d8d8d8;
+            height: 0;
+            float: left;
+            width: 53px;
+            margin-top: 10px;
+        }
+
+        .detail-head-inner .name {
+            margin-left: 15px;
+            margin-right: 15px;
+            font-family: PingFangSC-Medium;
+            font-size: 14px;
+            color: #333333;
+            float: left;
+        }
+
+        .detail-conent {
+            padding: 9px;
+        }
+
+        .detail-list {
+        	overflow: hidden;
+        	text-overflow: ellipsis;
+        	white-space: nowrap;
+            width: 95%;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(224, 224, 224, 0.5);
+        }
+
+        .detail-conent .detail-list:last-child {
+            border-bottom: none !important;
+        }
+
+        .detail-list span {
+            font-size: 14px;
+            font-family: PingFangSC-Regular;
+            color: #999999;
+            text-align: left;
+            margin-right: 20px;
+        }
+
+        .detail-list div {
+            display: inline-block;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #333333;
+            text-align: left;
+        }
+
+        .img-list {
+            width: 100%;
+        }
+        .img-item {
+        	margin-left: 28%;
+            width: 100%;
+            /*height: 412px;*/
+        }
+
+        .img-list img {
+        	width: 100%;
+            /*height: 412px;*/
+        }
+
+        .other-content {
+            display: inline-block;
+            overflow: auto;
+            zoom: 1;
+        }
+
+        .guess-item {
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 50%;
+            background-color: #FFFFFF;
+        }
+
+        .guess-list {
+            display: inline-block;
+            overflow: auto;
+            zoom: 1;
+        }
+
+        .product-data {
+            width: 100%;
+            height: 261px;
+        }
+
+        .guess-img {
+            width: 100%;
+            height: 172px;
+        }
+
+        .guess-img img {
+            width: 100%;
+            height: 100%;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+
+        .guess-inf {
+            display: block;
+            overflow: hidden;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            background: #C5DDD8;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+
+        .guess-inf span {
+            color: #669289;
+            font-size: 10px;
+        }
+
+        .guess-name {
+            margin-top: 8px;
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .guess-name span {
+            color: rgba(7, 17, 27, 0.6);
+            font-size: 16px;
+        }
+
+        .guess-price {
+            height: 20px;
+            line-height: 20px;
+            width: 100%;
+        }
+
+        .guess-price span {
+            font-size: 14px;
+            color: #B4282D;
+            text-align: left;
+            font-family: PingFangSC-Regular;
+        }
+
+        .detail-bottom {
+            width: 100%;
+            height: 376px;
+        }
+
+        /*规格*/
+
+        #gg-list .mui-content {
+            background-color: white;
+        }
+
+        #gg-list .gg-info {
+            padding: 25px 20px 10px 20px;
+            position: relative;
+            border-bottom: 1px solid #e3e5e9;
+        }
+
+        #gg-list .gg-img-wrapper {
+            border-radius: 3px;
+            border: 1px solid #f0f1f3;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+        }
+
+        #gg-list .gg-img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #gg-list .gg-name {
+            position: absolute;
+            top: 30px;
+            left: 110px;
+            font-size: 16px;
+            color: rgba(7, 17, 27, 0.8);
+        }
+
+        #gg-list .gg-price {
+            position: absolute;
+            bottom: 0px;
+            left: 110px;
+            color: #B4282D;
+            font-size: 22px;
+        }
+
+        #gg-list .gg-item {
+            width: 100%;
+            padding: 5px 20px;
+            margin: 0;
+        }
+
+        #gg-list .gg-item p {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(7, 17, 27, 0.7);
+            margin-bottom: 6px;
+        }
+
+        #gg-list .gg-item span {
+        	display: inline-block;
+            font-size: 11px;
+            margin-bottom: 8px;
+            border: 1px solid #e3e5e9;
+            padding: 3px 12px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        #gg-list .gg-item span.active {
+            border-color: #ab2b2b;
+            color: #ab2b2b;
+        }
+
+        .mui-numbox {
+            margin-bottom: 5px;
+            padding: 0 25px;
+            width: 80px;
+            height: 25px;
+        }
+
+        .mui-numbox [class*=btn-numbox],
+        .mui-numbox [class*=numbox-btn] {
+            width: 25px;
+        }
+
+        /*底部购物车操作*/
+
+        .op-bottom {
+            position: fixed;
+            bottom: 0;
+            height: 50px;
+            width: 100%;
+            border-top: 1px solid #e5e5e5;
+            z-index: 999;
+            background-color: white;
+        }
+
+        .op-bottom .icon {
+            display: block;
+            width: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-right: 1px solid #e5e5e5;
+            color: grey;
+        }
+
+        .op-bottom .btn_div {
+            position: absolute;
+            left: 101px;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .op-bottom .btn {
+            display: block;
+            width: 50%;
+            float: left;
+            height: 100%;
+            line-height: 50px;
+            text-align: center;
+            color: grey;
+            font-weight: 300;
+        }
+
+        .op-bottom .addCart {
+            color: white;
+            background-color: #b4282d;
+        }
+
+        .op-bottom .iconfont {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>商品详情</span>
+    </div>
+    <div class="share-wrapper" id="share">
+        <img src="image/share@3x.png" class="share">
+    </div>
+</nav>
+<div class="body mui-scroll-wrapper" style="padding-bottom: 50px;">
+    <div class="mui-scroll">
+        <div class="lunBo">
+            <div class="lunbo" id="slider">
+                <!--<div class="mui-slider-group mui-slider-loop">
+
+                <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="image/product/product1.png" /></a></div>
+                <div class="mui-slider-item"><a href="#"><img src="image/product/product1.png" /></a></div>
+                <div class="mui-slider-item"><a href="#"><img src="image/product/product1.png" /></a></div>
+                <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="image/product/product1.png" /></a></div>
+            </div>-->
+                <div class="mui-slider-indicator adListSpan">
+                    <div class="mui-indicator mui-active"></div>
+                    <div class="mui-indicator"></div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="info-wrapper">
+        <span class="info">
+            柔软亲肤／吸水速干／减少细菌滋生
+        </span>
+    </div>
+    <div class="data">
+        <div class="product-name-wrapper">
+            <span class="product-name">加勒比纯棉浴巾</span>
+        </div>
+        <div class="product-price-wrapper">
+            <span>¥29.9</span>
+        </div>
+    </div>-->
+        <div class="list operation">
+        </div>
+        <div class="comment">
+            <div class="comment-more" id="comment-more">
+                <div class="name-wrapper">
+                    <span class="name">评价(0)</span>
+                </div>
+                <div class="go-wrapper">
+                    <img class="go" src="image/xiala@3x.png">
+                </div>
+            </div>
+            <div class="comment-item">
+            <!--<div class="comment-info">
+                <div class="comment-avatar-wrapper">
+                    <img src="image/touxiang@3x.png" class="comment-avatar">
+                </div>
+                <div class="comment-name-wrapper">
+                    <span>用户1234</span>
+                </div>
+            </div>
+            <div class="comment-detail">
+                <span class="comment-date">2017-11-16</span><span class="comment-classify">颜色分类：紫罗兰[点点]</span>
+            </div>
+            <div class="comment-content">
+                两层纱布的浴巾这个价格真是太合算了，东西好，手感舒服，不掉毛，没异味，大人小孩都可用，赞一个。
+            </div>-->
+        </div>
+        </div>
+        <div class="product-detail">
+	        <!--<div class="detail-head">
+	            <div class="detail-head-inner">
+	                <div class="line"></div>
+	                <div class="name">图文详情</div>
+	                <div class="line"></div>
+	            </div>
+	        </div>
+	        <div class="detail-conent">
+	            <div class="detail-list">
+	                <span>品牌</span><div>kribbea</div>
+	            </div>
+	            <div class="detail-list">
+	                <span>颜色分类</span><div>白色，紫罗兰，浅蓝色，粉红色</div>
+	            </div>
+	        </div>-->
+	        <div class="img-list">
+	            <!--<div class="img-item">
+	                <img src="image/1@3x.png"/>
+	            </div>
+	            <div class="img-item">
+	                <img src="image/3@3x.png"/>
+	            </div>
+	            <div class="img-item">
+	                <img src="image/5@3x.png"/>
+	            </div>
+	            <div class="img-item">
+	                <img src="image/6@3x.png"/>
+	            </div>
+	            <div class="img-item">
+	                <img src="image/7@3x.png"/>
+	            </div>
+	            <div class="img-item">
+	                <img src="image/8@3x.png"/>
+	            </div>-->
+	        </div>
+    	</div>
+    </div>
+</div>
+<div id="gg-list" class="mui-popover mui-popover-bottom mui-popover-action" style="bottom: 50px;">
+    <div class="mui-content" style="height: 100%;">
+        <div class="mui-popover-content" style="height: 100%;">
+            <!--<div class="gg-info">
+	            <span class="gg-cancel"><i class="fa fa-times" aria-hidden="true"></i></span>
+	            <div class="gg-img-wrapper">
+	                <img src="image/product/product1.png" class="gg-img"/>
+	            </div>
+	            <p class="gg-name">加勒比纯棉浴巾</p>
+	            <p class="gg-price">￥99.99</p>
+        	</div>
+	        <div class="mui-noscroll-wrapper">
+	            <div class="mui-noscroll">
+	                <div class="gg-item">
+	                    <p>颜色</p>
+	                    <div class="gg-item-select">
+	                        <span >粉红</span>
+	                        <span >蓝色</span>
+	                        <span >蓝色大会上扩大可视电话静安寺</span>
+	                        <span >蓝色萨达撒大大</span>
+	                        <span >蓝色</span>
+	                        <span >蓝色</span>
+	                        <span >蓝色</span>
+	                        <span >蓝色</span>
+	                    </div>
+	                </div>
+	                <div class="gg-item">
+	                    <p>尺寸</p>
+	                    <div class="gg-item-select">
+	                        <span>一寸</span>
+	                        <span >两寸</span>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>-->
+        </div>
+    </div>
+</div>
+<div class="op-bottom">
+    <span class="shop-fl collect icon" id="collect"><i class="iconfont icon-xihuanshoucang" id="unlike"></i><i
+            class="iconfont icon-xihuanyishoucang" id="like" style="display: none;color: #f4ea2a;"></i></span>
+    <span class="shop-fl cart icon"><i class="iconfont icon-gouwuche"></i></span>
+    <div class="btn_div">
+        <span class="shop-fl buy btn">立即购买</span>
+        <span class="shop-fl addCart btn">加入购物车</span>
+    </div>
+</div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/plusShare.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/base.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var goodId;
+    var isCollect = false;
+    mui.plusReady(function () {
+        var self = plus.webview.currentWebview();
+        var dataid = self.data;
+        goodId = dataid;
+        $.ajax({
+            type: "get",
+            url: IP + "/api/goods/detail.html",
+            data: {
+                goodsId: dataid
+            },
+            dataType: "json",
+            success: function (data) {
+                console.log(JSON.stringify(data));
+                if(data.specifications.length > 0){
+                	var format = '<div class="list-item" id="select-gg">' +
+					                '<div class="list-name-wrapper">' +
+					                    '<span class="list-name">选择规格</span>' +
+					                '</div>' +
+					                '<div class="list-go-wrapper">' +
+					                    '<img class="list-go" src="image/xiala@3x.png">' +
+					                '</div>' +
+					            '</div>';
+					$(".operation").html(format);
+                }
+                var reviewCount = data.reviewCount == null ? 0 : data.reviewCount;
+                $(".comment-more .name").html("评论(" + reviewCount + ")");
+                $.ajax({
+                    type: "get",
+                    url: IP + "/api/goods/detail.html",
+                    dataType: "json",
+                    data: {
+                    	goodsId: dataid
+                    },
+                    success: function (result) {
+                        var arr = result.productImages;
+                        var htmllunbo = '<div class="mui-slider-group mui-slider-loop">';
+                        for(var i=0;i<arr.length;i++){
+                        	htmllunbo += '<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="' + arr[i].source + '" class="product-img"/></a></div>' +
+                        				 '<div class="mui-slider-item"><a href="#"><img src=" ' + arr[i].source + ' " /></a></div>';
+                        }
+                        for(var i=0;i<arr.length;i++){
+                        	htmllunbo += '<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="' + arr[i].source + '" class="product-img"/></a></div>' +
+                        				 '<div class="mui-slider-item"><a href="#"><img src=" ' + arr[i].source + ' " /></a></div>';
+                        }
+                        htmllunbo += '</div>';
+                        var gallery = document.getElementById("slider");
+                        $("#slider").html(htmllunbo);
+                        gallery.classList.add('mui-slider');
+                        mui('#slider').slider({
+                            interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+                        });
+                    },
+                    error: function (result) {
+                        mui.toast("轮播图错误");
+                    }
+
+                });
+                var html1 = 
+//              	'<div class="info-wrapper" productId="' + data.defaultProduct.id + '">' +
+//                  '<span class="info">' + data.introduction + '</span>' +
+//                  '</div>' +
+                    '<div class="data">' +
+                    '<div class="product-name-wrapper">' +
+                    '<span class="product-name">' + data.name + '</span>' +
+                    '</div>' +
+                    '<div class="product-price-wrapper">' +
+                    '<span>¥' + data.defaultProduct.price + '</span>' +
+                    '</div>' +
+                    '</div>';
+
+                // 评论html
+	            var review = data.review;
+	            var html2 = '';
+	            if(review != null){
+	            	var guigeHtml = '';
+	            	for(var i in review.specification){
+	            		var item = review.specification[i];
+	            		guigeHtml += item.value + ' ';
+		            }
+	            	html2 =
+			            
+				            '<div class="comment-info">' +
+					            '<div class="comment-avatar-wrapper">' +
+					                '<img src="' + review.userPhoto + '" onerror="this.src=\'image/touxiang@3x.png\'" class="comment-avatar">' +
+					            '</div>' +
+					            '<div class="comment-name-wrapper">' +
+			                        '<span>' + review.name + '</span>' +
+					            '</div>' +
+				            '</div>' +
+				            '<div class="comment-detail">' +
+				                '<span class="comment-date">' + review.date + '</span><span class="comment-classify">' + guigeHtml + '</span>' +
+				            '</div>' +
+				            '<div class="comment-content">' + review.content + '</div>' ;
+			            
+	            }
+                var html3 = '<div class="product-detail">' +
+			                    '<div class="detail-head">' +
+			                    	'<div class="detail-head-inner">' +
+					                    '<div class="line"></div>' +
+					                    '<div class="name">图文详情</div>' +
+					                    '<div class="line"></div>' +
+				                    '</div>' +
+			                    '</div>' +
+			                    '<div class="detail-conent">' +
+				                    '<div class="detail-list">' +
+				                    	'<span>品牌</span><div>kribbea</div>' +
+				                    '</div>' +
+				                    '<div class="detail-list">';
+				for(var i = 0; i < data.specifications.length; i++) {
+					html3 += '<span>' + data.specifications[i].name + '</span>';
+					for(var j = 0; j < data.specifications[i].options.length; j++) {
+						html3 += '<div>' + data.specifications[i].options[j] + '&nbsp&nbsp</div>';
+					}
+				}
+				                    	
+				                    	
+				    html3 +=    '</div>' +
+			                    '</div>' +
+			                    '<div class="img-list">' +
+				                    '<div class="img-item">' +
+				                    	'<span>' + data.introduction + '</span>' +
+				                    '</div>' +
+				//                  '<div class="img-item">' +
+				//                  '<img src="image/3@3x.png"/>' +
+				//                  '</div>' +
+				//                  '<div class="img-item">' +
+				//                  '<img src="image/5@3x.png"/>' +
+				//                  '</div>' +
+				//                  '<div class="img-item">' +
+				//                  '<img src="image/6@3x.png"/>' +
+				//                  '</div>' +
+				//                  '<div class="img-item">' +
+				//                  '<img src="image/7@3x.png"/>' +
+				//                  '</div>' +
+				//                  '<div class="img-item">' +
+				//                  '<img src="image/8@3x.png"/>' +
+				//                  '</div>' +
+			                    '</div>' +
+                    		'</div>';
+
+                var html4 = '<div class="gg-info">' +
+                    '<span class="gg-cancel"><i class="fa fa-times" aria-hidden="true"></i></span>' +
+                    '<div class="gg-img-wrapper">' +
+                    '<img src="' + data.image + '" class="gg-img"/>' +
+                    '</div>' +
+                    '<p class="gg-name">' + data.name + '</p>' +
+                    '<p class="gg-price">￥' + data.defaultProduct.price + '</p>' +
+                    '</div>' +
+                    '<div class="mui-noscroll-wrapper">' +
+                    '<div class="mui-noscroll">';
+
+                for (var i = 0; i < data.specifications.length; i++) {
+                    html4 += '<div class="gg-item">' +
+                        '<p>' + data.specifications[i].name + '</p>' +
+                        '<div class="gg-item-select">';
+                    for (var j = 0; j < data.specifications[i].options.length; j++) {
+                        html4 += '<span class="checkbox">' + data.specifications[i].options[j] + '</span>';
+                    }
+                    html4 += '</div>' +
+                        '</div>';
+                }
+                html4 += '<div class="gg-item">' +
+                    		'<p>数量</p>' +
+		                    '<div class="gg-item-select">' +
+			                    '<div class="mui-numbox" data-numbox-min="1">' +
+				                    '<button class="mui-btn mui-numbox-btn-minus" type="button">-</button>' +
+				                    '<input class="mui-numbox-input" type="number" />' +
+			                    '<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>' +
+			                    '</div>' +
+		                    '</div>' +
+                    	 '</div>' +
+                    '</div>' +
+                    '</div>';
+
+                $(".lunBo").append(html1);
+                $(".comment-item").html(html2);
+                $(".mui-scroll").append(html3);
+                $(".mui-popover-content").html(html4);
+                mui(".mui-numbox").numbox();
+            },
+            error: function (data) {
+                mui.toast("失败");
+            }
+        });
+        $.ajax({
+            type: "get",
+            url: IP + "/api/favorite/list.html",
+            dataType: "json",
+            success: function (data) {
+                var goods=data.content;
+                var count=data.total;
+                for(var i=0;i<count;i++){
+                    var onegoodid=goods[i].id;
+                    if(onegoodid==goodId){
+                        isCollect=true;
+                    }
+                }
+                if(isCollect){
+                    $("#like").show();
+                    $("#unlike").hide();
+                }
+            },
+            error: function (data) {
+                mui.toast("错误");
+            }
+        });
+        if(self.flag == 1){
+        	if(isCollect == true){
+        		mui.toast("已收藏");
+        	} else{
+        		$(".collect").trigger("tap");
+        	}
+        }
+    });
+
+    function goPage(page, data, isNew) {
+        if (isNew === true)
+            isNew = true;
+        else
+            isNew = false;
+        mui.openWindow({
+            url: page,
+            id: page,
+            extras: data,
+            createNew: isNew
+        });
+
+    }
+
+    function goPageWithOutAnimate(page) {
+        mui.openWindow({
+            url: page,
+            id: page,
+            show: {
+                aniShow: "none"
+            }
+        });
+    }
+
+    function plusReady() {
+        if (mui.os.ios) {
+            plus.navigator.setStatusBarBackground("#95D1C6");
+        }
+    }
+
+    document.addEventListener("plusready", plusReady, false);
+
+    //分享
+	document.getElementById("share").addEventListener("click", function() {
+	    //分享内容，开发者可自定义
+	    var shareMessage = {
+	        title: "加勒比商城", //应用名字
+	        content: "加勒比·爱宝贝，像爱自己的孩子一样爱您的宝贝，愿意与您的宝贝一同健康快乐地成长！",
+	        href: IP + "/download.html", //分享出去后，点击跳转地址
+	        thumbs: ["http://vverp1.oss-cn-shanghai.aliyuncs.com/zjShopIcon.png"] //分享缩略图
+	    }
+	    //调起分享
+	    plusShare(shareMessage, function(res) {
+	        //分享回调函数
+	        if(res) {
+	            // plus.nativeUI.toast("分享成功");
+	        } else {
+	            // plus.nativeUI.toast("分享失败");
+	        }
+	    })
+	});
+
+    $("#comment-more").bind("tap", function () {
+        goPage("comment/list.html", {goodsId: goodId});
+    });
+</script>
+<script>
+    //是否收藏
+    mui('.mui-scroll-wrapper').scroll({
+        indicators: true,
+        deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+    });
+    var target = "";
+    //收藏
+    $(".collect").bind("tap", function () {
+        console.log(goodId);
+        if (!isCollect) {
+            $.ajax({
+                type: "get",
+                url: IP + "/api/favorite/add.html",
+                data: {
+                    goodsId: goodId,
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.type == "warn") {
+                    	if(data.content == "用户没有登录"){
+                    		target = "product";
+                    		goPage("account/login.html", {data: target, goodId: goodId});
+                    		setTimeout(function(){
+                    			plus.webview.currentWebview().close('none');
+                    		},500);
+                    	}else{
+                    		console.log(data.content);
+                    	}
+                    } else {
+                        if (!isCollect) {
+                            isCollect = true;
+                            $("#like").show();
+                            $("#unlike").hide();
+                            mui.toast("收藏成功");
+                        }
+                    }
+                },
+                error: function (data) {
+                	console.log(JSON.stringify(data));
+                    mui.toast("错误");
+                }
+            });
+        } else {
+            $.ajax({
+                type: "get",
+                url: IP + "/api/favorite/delete.html",
+                data: {
+                    id: goodId,
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (isCollect) {
+                        isCollect = false;
+                        $("#unlike").show();
+                        $("#like").hide();
+                    }
+                },
+                error: function (data) {
+                    mui.toast("错误");
+                }
+            });
+        }
+    });
+
+    //购物车
+    $(".cart").on("tap", function () {
+		var flag = 1;
+        goPage("cart/index.html", {data: flag});
+    });
+
+    //立即购买
+    $(".buy").bind("tap", function () {
+        $.ajax({
+            type: "get",
+            url: IP + "/api/user/check.html",
+            dataType: "json",
+            success: function (data) {
+                if (data == false) {
+                    target = "back";
+                    goPage("account/login.html", {data: target});
+                    setTimeout(function(){
+                    	plus.webview.currentWebview().close('none');
+                    },500);
+                } else {
+                	if ($(".checkbox").hasClass("active")) {
+                		$.ajax({
+                			url: IP + '/api/order/checkout2.html',
+                			type: 'get',
+                			dataType: 'json',
+                			data: {
+                				productId: productid
+                			},
+                			success:function(data){
+                				var content = {
+                					lei: data,
+                					spe: 1
+                				}
+                				goPage("cart/checkout.html", {data: content});
+                			},
+                			error: function(e){
+                				mui.toast('网络错误');
+                			}
+                		})
+                	}else{
+                		mui.toast("请选择商品规格");
+                		mui('#gg-list').popover('show');
+                	}
+                    
+                }
+            },
+            error: function (data) {
+				
+            }
+        });
+    });
+
+    //加入购物车
+    $(".addCart").bind("tap", function () {
+        mui('#gg-list').popover('show');
+        var account = mui(".mui-numbox").numbox().getValue();
+        if ($(".checkbox").hasClass("active")) {
+            if (account != 0) {
+                $.ajax({
+                    type: "get",
+                    url: IP + "/api/cart/add.html",
+                    data: {
+                        productId: productid,
+                        quantity: account
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.type == "success") {
+                            mui.toast("加入购物车成功");
+                        } else {
+
+                        }
+                    },
+                    error: function (data) {
+                        mui.toast("错误");
+                    }
+                });
+            } else {
+                mui.toast("请选择商品数量");
+            }
+
+        } else {
+            mui.toast("请选择商品规格");
+        }
+
+    });
+
+    //选择规格
+    $(".operation").on("tap", "#select-gg", function () {
+        mui('#gg-list').popover('toggle');
+    });
+
+    var productid = "";
+    $("#gg-list").on("tap", ".checkbox", function () {
+        var checkbox = $(this).text();
+        var self = plus.webview.currentWebview();
+        var dataid = self.data;
+        $.ajax({
+            type: "get",
+            url: IP + "/api/goods/detail.html",
+            data: {
+                goodsId: dataid
+            },
+            dataType: "json",
+            success: function (data) {
+                for (var i = 0; i < data.products.length; i++) {
+                    for (var j = 0; j < data.products[i].specificationValues.length; j++) {
+                        if (checkbox == data.products[i].specificationValues[j].value) {
+                            $(".gg-price").text('￥' + data.products[i].price);
+                            $(".product-price-wrapper span").text('￥' + data.products[i].price);
+                            productid = data.products[i].id;
+                        }
+                    }
+
+                }
+            },
+            error: function (data) {
+                mui.toast("错误");
+            }
+        });
+        $(this).siblings().removeClass("active");
+        $(this).addClass("active");
+
+        $("#select-gg .list-name").html(getSelect());
+    });
+
+    function getSelect() {
+        var str = "已选择：";
+        $("#gg-list .gg-item-select span.active").each(function (index) {
+            str += $(this).html() + "; ";
+        });
+        return str;
+    }
+</script>
+
+</html>

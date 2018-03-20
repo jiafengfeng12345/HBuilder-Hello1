@@ -1,0 +1,105 @@
+body,html {
+	background-color: #f8f8f8;
+}
+
+/*导航栏*/
+nav.head {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	background-color: #95d1c6;
+	z-index: 999;
+}
+nav.head .back-wrapper {
+	width: 36px;
+	height: 60px;
+	text-align: center;
+}
+nav.head .back {
+	margin-top: 20px;
+	width: 12px;
+	height: 20px;
+}
+nav.head .title-wrapper {
+	position: absolute;
+	top: 0;
+	left: 44px;
+	right: 44px;
+	height: 60px;
+	line-height: 60px;
+	font-family:PingFangSC-Regular;
+	font-size:18px;
+	color:#ffffff;
+	text-align: center;
+}
+nav.head .share-wrapper {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+}
+nav.head .share {
+	width: 20px;
+	height: 20px;
+	margin-top: 20px;
+}
+nav.head .edit-wrapper {
+	position: absolute;
+	right: 0;
+	width: 60px;
+	height: 60px;
+	top: 0;
+	line-height: 60px;
+	text-align: center;
+	font-size: 13px;
+	color: white;
+}
+
+/*底部栏*/
+nav.bottom {
+	position: fixed;
+	z-index: 10;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	height: 49px;
+	background-color: #f9f9f9;
+	border-top: 1px solid #e9e4e4;
+}
+nav.bottom .bottom-item {
+	width: 33%;
+	float: left;
+}
+nav.bottom .bottom-item .bottom-img-wrapper {
+	width: 100%;
+	height: 24px;
+	margin-top: 6px;
+	text-align: center;
+}
+nav.bottom .bottom-img-wrapper img {
+	width: 24px;
+	height: 100%;
+}
+nav.bottom .bottom-item .bottom-name-wrapper {
+	width: 100%;
+	height: 13px;
+	line-height: 13px;
+	font-family:PingFangSC-Regular;
+	font-size:9px;
+	color:#84b099;
+	text-align: center;
+}
+
+       
+/*基本样式*/
+.shop-fl {
+	float: left;
+}
+.shop-fr {
+	float: right;
+}

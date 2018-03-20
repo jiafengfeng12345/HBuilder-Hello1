@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../fonts/iconfont.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+	<style>
+		#content{
+			padding-top: 60px
+		}
+
+		.mui-input-group .mui-input-row {
+			height: 60px;
+		}
+		.mui-input-group .mui-input-row input{
+			height: 60px;
+		}
+		.mui-input-row label {
+			padding: 21px 15px;
+			width: 30%;
+		}
+		.mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea {
+			width: 70%;
+		}
+		.mui-input-row .mui-input-clear~.mui-icon-clear, .mui-input-row .mui-input-password~.mui-icon-eye, .mui-input-row .mui-input-speech~.mui-icon-speech {
+			top: 20px;
+		}
+
+		.withdrawBtn{
+			display: inline-block;
+			margin: 20px 5%;
+			width: 90%;
+			height: 50px;
+			line-height: 50px;
+			font-size: 20px;
+			text-align: center;
+			border-radius: 5px;
+			background: #E0E0E0;
+			color: #999;
+		}
+		
+		.withdrawBtn.active{
+			background: #95d1c6;
+			color: #fff;
+		}
+		
+		.withdrawMsg{
+			display: none;
+			height: 40px;
+			line-height: 40px;
+			text-indent: 15px;
+			font-size: 15px;
+			color: orange;
+		}
+	</style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>佣金提现</span>
+    </div>
+</nav>
+<div id="content">
+	<div class="mui-input-group profile-form" style="margin-top: 5px;">
+		<div class="mui-input-row">
+			<label>可提现：</label>
+			<input type="text" class="amount mui-input-clear" placeholder="最多可提现：0.00">
+		</div>
+	</div>
+	<p class="withdrawMsg"></p>
+	<a class="withdrawBtn">提现</a>
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+	var canUseAmount = 0;
+
+	function setErrorMsg(msg) {
+		$(".withdrawMsg").html("消息提示: " + msg).show();
+		$(".withdrawBtn").removeClass("active");
+	}
+	function clearErrorMsg() {
+		$(".withdrawMsg").hide();
+		$(".withdrawBtn").addClass("active");
+	}
+
+	$(".amount").on("keyup", function () {
+		var amount = $(this).val();
+
+		if(amount.trim() == "" || isNaN(amount)){
+			setErrorMsg("请输入正确的数字类型");
+			return false;
+		}
+
+		if(Number(amount) < 0){
+			setErrorMsg("提现金额不能为负数");
+			return false;
+		}
+
+		if(Number(amount) > canUseAmount){
+			setErrorMsg("超过可提现总金额, 最高可提现 " + canUseAmount + " 元");
+			return false;
+		}
+
+		if(canUseAmount <= 0){
+			setErrorMsg("没有可提现的佣金");
+			return false;
+		}
+
+		// 一切正常
+		clearErrorMsg();
+	});
+
+	$.ajax({
+		url: IP + "/api/distributionBrokerage/canUseInfo.html",
+		type: "get",
+		dataType: "json",
+		success: function (re) {
+			if(re.result == "error"){
+				alert(re.content);
+				return false;
+			}
+			canUseAmount = re.canUseAmount;
+			$(".amount").attr("placeholder", "最多可提现：" + Number(re.canUseAmount).toFixed(2));
+		},
+		error: function () {
+			console.log("withdraw net error");
+		}
+	});
+
+	$(".withdrawBtn").click(function () {
+		if(!$(this).hasClass("active")){
+			return false;
+		}
+
+		var amount = $(".amount").val();
+		if(amount > canUseAmount){
+			mui.toast("提现不可大于可提现余额");
+			return false;
+		}
+
+		$.ajax({
+			url: IP + "/api/distributionBrokerage/withdraw.html",
+			type: "get",
+			dataType: "json",
+			data: {
+				amount: amount
+			},
+			success: function (re) {
+				if(re.result == "success"){
+					$(".canUseAmount").val(canUseAmount - amount);
+					if(canUseAmount - amount == 0){
+						$(".withdrawBtn").removeClass("active");
+					}
+					alert("提现申请已提交，请耐心等候审核，并留意电话、短信通知");
+					plus.webview.getWebviewById("commission.html").evalJS("initCommission();");
+					mui.back();
+				}
+			},
+			error: function () {
+				console.log("withdraw error");
+			}
+		});
+	});
+
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			}
+		});
+	}
+
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+	}
+	document.addEventListener("plusready", plusReady, false);
+
+</script>
+</html>

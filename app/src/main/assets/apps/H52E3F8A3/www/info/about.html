@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../fonts/iconfont.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+	<style>
+		#content{
+			padding-top: 60px
+		}
+	</style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>关于APP</span>
+    </div>
+</nav>
+<div id="content">
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript" charset="utf-8">
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			}
+		});
+	}
+
+	$.ajax({
+		url: IP + "/api/app/about.html",
+		type: "get",
+		dataType: "json",
+		success: function (data) {
+			var content = data.content;
+			$("#content").html(content);
+		},
+		error: function () {
+			mui.toast("网络繁忙, 请稍后重试");
+		}
+	});
+
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+	}
+	document.addEventListener("plusready", plusReady, false);
+
+</script>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.body{
+				padding-top: 65px;
+			}
+			.message-data{
+				width: 30%;
+				height: 20px;
+				line-height: 20px;
+				margin: 15px auto;
+				text-align: center;
+				background: #C9C9C9;
+				border-radius: 2px;
+				-webkit-border-radius: 2px;
+				-moz-border-radius: 2px;
+			}
+			.message-data span{
+				font-size: 12px;
+				color: #fff;
+			}
+			.message-content{
+				width: 90%;
+				margin: 0 auto;
+				background-color: #fff;
+			}
+			.message-title{
+				width: 90%;
+				margin: 0 auto;
+				padding: 10px 0;
+				border-bottom: 1px solid #DFDFDF;
+			}
+			.message-title span{
+				font-size: 15px;
+				color: #333;
+			}
+			.message-img{
+				width: 90%;
+				margin: 10px auto;
+			}
+			img{
+				width: 100%;
+			}
+	        .no_data{
+	        	position: absolute;
+	        	top: 40%;
+	        	left: 40%;
+	        }
+	        .no_data img{
+	        	width: 80px;
+	        	height: 80px;
+	        }
+		</style>
+	</head>
+	<body>
+		<nav class="head">
+			<div class="back-wrapper mui-action-back">
+				<img src="image/left@3x.png" class="back"/>
+			</div>
+			<div class="title-wrapper">
+				<span style="font-size: 18px;">消息中心</span>
+			</div>
+		</nav>
+		<div id="messages">
+			<!--<div class="body">
+				<div class="message-data">
+					<span>2018.01.02 &nbsp;20:00</span>
+				</div>
+
+				<div class="message-content" topage="">
+					<div class="message-title">
+						<span>【遇见2018】4月份新年好礼满就送!</span>
+					</div>
+					<div class="message-img">
+						<img src="image/newsimg.png"/>
+					</div>
+					<div style="height: 20px;"></div>
+				</div>
+			</div>
+
+			<div class="body">
+				<div class="message-data">
+					<span>2018.01.02 &nbsp;20:00</span>
+				</div>
+
+				<div class="message-content">
+					<div class="message-title">
+						<span>【遇见2018】4月份新年好礼满就送!</span>
+					</div>
+					<div class="message-img">
+						<img src="image/newsimg.png"/>
+					</div>
+					<div style="height: 20px;"></div>
+				</div>
+
+			</div>-->
+		</div>
+
+	</body>
+	<script src="js/base.js"></script>
+	<script type="text/javascript">
+		mui.ready(function () {
+            $.ajax({
+                type: "get",
+                url: IP + "/api/message/list.html",
+                dataType: "json",
+                success: function (data) {
+                    var arr=data.content;
+                    var html="";
+					for(var i=0;i<arr.length;i++){
+					    html+='' +
+							'<div class="body">\n' +
+                            '\t\t\t\t<div class="message-data">\n' +
+                            '\t\t\t\t\t<span>'+arr[i].date+'</span>\n' +
+                            '\t\t\t\t</div>\n' +
+                            '\n' +
+                            '\t\t\t\t<div class="message-content" topage="'+arr[i].path+'">\n' +
+                            '\t\t\t\t\t<div class="message-title">\n' +
+                            '\t\t\t\t\t\t<span>'+arr[i].title+'</span>\n' +
+                            '\t\t\t\t\t</div>\n' +
+                            '\t\t\t\t\t<div class="message-img">\n' +
+                            '\t\t\t\t\t\t<img src="'+arr[i].img+'"/>\n' +
+                            '\t\t\t\t\t</div>\n' +
+                            '\t\t\t\t\t<div style="height: 20px;"></div>\n' +
+                            '\t\t\t\t</div>\n' +
+                            '\t\t\t</div>'
+					}
+					if(arr.length == 0){
+						html +=
+							'<div class="no_data">' +
+								'<img src="./image/no_data.png">' +
+								'<p>暂无消息哦~</p>' +
+							'</div>';
+					}
+					$("#messages").html(html)
+                },
+                error: function () {
+                    console.log("error");
+                }
+            });
+        })
+
+		$("#messages").on("tap",".message-content",function () {
+			var path=this.attr("topage");
+			goPage(path);
+        })
+
+		function goPage(page,data,isNew){
+			if(isNew === true)
+				isNew = true;
+			else
+				isNew = false;
+			mui.openWindow({
+				url: page,
+				id: page,
+				extras: {
+					data: data
+				},
+				createNew: isNew
+			});
+		}
+		
+		function goPageWithOutAnimate(page){
+			mui.openWindow({
+				url: page,
+				id: page,
+				show: {
+					aniShow: "none"
+				},
+				styles: {
+					scrollerIndicator: "none"
+				}
+			});
+		}
+		
+		$(".message-content").on("tap",function(){
+			goPage("rte.html");
+		})
+		
+//		mui.plusReady(function(){
+//			var opener = plus.webview.currentWebview().opener();
+//			setTimeout(function(){
+//				opener.close('none');
+//			},450);
+//		})
+	</script>
+</html>

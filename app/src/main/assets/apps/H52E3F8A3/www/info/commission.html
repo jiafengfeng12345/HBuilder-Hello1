@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../fonts/iconfont.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+	<style>
+		#content{
+			padding-top: 60px
+		}
+
+		.goWithdraw{
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding-right: 10px;
+			width: 44px;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			color: #fff;
+		}
+
+		.commissionHeader{
+
+		}
+
+		.commissionHeader .total{
+			height: 100px;
+		}
+		.commissionHeader .total .totalAmount{
+			height: 80px;
+			line-height: 110px;
+			text-align: center;
+			font-size: 40px;
+			color: #a0ced1;
+		}
+		.commissionHeader .total .totalAmountDesc{
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			color: #777;
+		}
+
+		.commissionHeader .amountDetail{
+			position: relative;
+			height: 100px;
+		}
+		.commissionHeader .amountDetail .canUse{
+			position: absolute;
+			top: 0;
+			left: 22px;
+		}
+		.commissionHeader .amountDetail .canUse .canUseDesc{
+			height: 60px;
+			line-height: 70px;
+			color: #777;
+		}
+		.commissionHeader .amountDetail .canUse .canUseAmount{
+			font-size: 20px;
+			color: #333;
+		}
+
+		.commissionHeader .amountDetail .centerLine{
+			position: absolute;
+			top: 15px;
+			left: 50%;
+			width: 0;
+			height: 70px;
+			border-right: 2px solid #ddd;
+		}
+
+		.commissionHeader .amountDetail .freeze{
+			position: absolute;
+			right: 20px;
+		}
+		.commissionHeader .amountDetail .freeze .freezeDesc{
+			height: 60px;
+			line-height: 70px;
+			color: #777;
+		}
+		.commissionHeader .amountDetail .freeze .freezeDesc .wenhao{
+			width: 20px;
+			height: 20px;
+			vertical-align: sub;
+		}
+		.commissionHeader .amountDetail .freeze .freezeAmount{
+			font-size: 20px;
+			color: #333;
+			text-align: right;
+		}
+
+
+		.detailListTitle{
+			height: 40px;
+			line-height: 42px;
+			border-top: 1px solid #ddd;
+			border-bottom: 1px solid #ddd;
+			background: #f0f0f0;
+			text-indent: 20px;
+			font-size: 18px;
+		}
+
+		.detailList{
+			position: absolute;
+			left: 0;
+			top: 300px;
+			bottom: 0;
+			width: 100%;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.detailList .noMoreData{
+			height: 45px;
+			line-height: 45px;
+			text-align: center;
+			color: #888;
+		}
+
+		.detailList .detailItem{
+			position: relative;
+			width: 100%;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.detailList .detailItem .firstLine{
+			position: relative;
+			margin-top: 8px;
+			width: 100%;
+			height: 35px;
+			line-height: 35px;
+			font-size: 20px;
+		}
+		.detailList .detailItem .firstLine .title{
+			position: absolute;
+			left: 20px;
+		}
+		.detailList .detailItem .firstLine .amount{
+			position: absolute;
+			right: 20px;
+		}
+		.detailList .detailItem .firstLine .amount.add{
+			color: #0BB20C;
+		}
+		.detailList .detailItem .firstLine .amount.sub{
+			color: #b4282d;
+		}
+
+		.detailList .detailItem .firstLine .amount.add.pendingSettled{
+			color: #FFA500;
+		}
+
+		.detailList .detailItem .firstLine .amount.canceled{
+			color: #888;
+			text-decoration: line-through;
+		}
+
+		.detailList .detailItem .secondLine{
+			position: relative;
+			margin-bottom: 8px;
+			width: 100%;
+			height: 25px;
+			line-height: 25px;
+			font-size: 16px;
+			color: #888;
+		}
+		.detailList .detailItem .secondLine .date{
+			position: absolute;
+			left: 20px;
+		}
+		.detailList .detailItem .secondLine .status{
+			position: absolute;
+			right: 20px;
+		}
+	</style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>我的佣金</span>
+    </div>
+	<div class="goWithdraw">提现</div>
+</nav>
+<div id="content">
+	<div class="commissionHeader">
+		<div class="total">
+			<div class="totalAmount">0.00</div>
+			<div class="totalAmountDesc">总佣金(￥)</div>
+		</div>
+		<div class="amountDetail">
+			<div class="canUse">
+				<div class="canUseDesc">可提现佣金(￥)</div>
+				<div class="canUseAmount">0.00</div>
+			</div>
+			<div class="centerLine"></div>
+			<div class="freeze">
+				<div class="freezeDesc"><img class="wenhao" src="../image/wenhao.png">待结算佣金(￥)</div>
+				<div class="freezeAmount">0.00</div>
+			</div>
+		</div>
+	</div>
+	<div class="detailListTitle">收支明细</div>
+	<div class="detailList">
+		<div class="noMoreData">无更多记录</div>
+
+		<div class="detailItem">
+			<div class="firstLine">
+				<div class="title">sdfsfds</div>
+				<div class="amount sub canceled"><span>12.34</span></div>
+			</div>
+			<div class="secondLine">
+				<div class="date">2012-01-01 00:00:00</div>
+				<div class="status">已提现</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+	$(".wenhao").click(function () {
+		mui.alert("在下级分销客收货10天后，待结算佣金会转成可提现佣金。若10天内下级分销客退货，则佣金会作废。", "加勒比商城");
+	});
+
+	$(".goWithdraw").click(function () {
+		goPage("withdraw.html");
+	});
+
+	var pageNumber = 1;
+	function appendDetailList() {
+		$.ajax({
+			url: IP + "/api/distributionBrokerage/list.html",
+			type: "get",
+			dataType: "json",
+			data: {
+				pageSize: 10,
+				pageNumber: pageNumber
+			},
+			success: function (re) {
+
+				$(".totalAmount").html(Number(re.totalAmount).toFixed(2));
+				$(".canUseAmount").html(Number(re.canUseAmount).toFixed(2));
+				$(".freezeAmount").html(Number(re.freezeAmount).toFixed(2));
+
+				var list = re.page.content;
+				$(".noMoreData").remove();
+				if(list.length == 0 || re.page.pageNumber < pageNumber){
+					$(".detailList").append('<div class="noMoreData">无更多记录</div>');
+					return false;
+				}
+
+				// 页数自增
+				pageNumber++;
+
+				var statusText = {
+					pendingSettled: "待结算",
+					arrived: "已到账",
+					canceled: "客户退款",
+
+					pendingReview: "待审核",
+					completed: "已提现",
+					refused: "审核不通过"
+				};
+				
+				var itemHtml = "";
+				for(var i = 0; i < list.length; i++){
+					var item = list[i];
+					itemHtml +=
+						'<div class="detailItem">' +
+							'<div class="firstLine">' +
+								'<div class="title">' + item.title + '</div>' +
+								'<div class="amount ' + item.type + ' ' + item.status + '">' + (item.type == 'sub' ? '' : '+') + '' + Number(item.amount).toFixed(2) + '</div>' +
+							'</div>' +
+							'<div class="secondLine">' +
+								'<div class="date">' + item.date + '</div>' +
+								'<div class="status">' + statusText[item.status] + '</div>' +
+							'</div>' +
+						'</div>';
+				}
+				$(".detailList").append(itemHtml);
+			},
+			error: function () {
+				console.log("err");
+			}
+		});
+	}
+	
+	function initCommission(){
+		pageNumber = 1;
+		$(".detailList").html("");
+		appendDetailList();
+	}
+	initCommission();
+
+	// 滚动到底部时拉取下一页
+	$(".detailList").scroll(function(){
+		var scrollTop = $(this).scrollTop();
+		var scrollHeight = $(this)[0].scrollHeight;
+		var windowHeight = $(this).height();
+		if(scrollTop + windowHeight == scrollHeight){
+			appendDetailList();
+		}
+	});
+	
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			}
+		});
+	}
+
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+	}
+	document.addEventListener("plusready", plusReady, false);
+
+</script>
+</html>

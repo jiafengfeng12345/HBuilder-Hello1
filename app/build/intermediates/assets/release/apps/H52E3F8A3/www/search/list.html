@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../fonts/iconfont.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <style>
+
+        .body {
+            padding-top: 60px;
+            padding-bottom: 52px;
+        }
+        .body .classify {
+            margin-top: 9px;
+            width: 100%;
+        }
+        .classify .classify-name-wrapper {
+            width: 100%;
+            height: 61px;
+            padding-top: 21px;
+            font-family:PingFangSC-Regular;
+            font-size:18px;
+            color:#333333;
+            text-align: center;
+        }
+        .classify .classify-list {
+            display: inline-block;
+            width: 100%;
+            background-color: white;
+        }
+        .classify .classify-item {
+            width: 50%;
+            float: left;
+        }
+        .classify .classify-item:nth-child(odd) {
+            padding-left: 10px;
+            padding-right: 5px;
+        }
+        .classify .classify-item:nth-child(even) {
+            padding-left: 5px;
+            padding-right: 10px;
+        }
+        .classify-item .product-data {
+            width: 100%;
+            height: 261px;
+        }
+        .product-data .product-img-wrapper {
+            width: 100%;
+            height: 172px;
+        }
+        .product-data .product-img {
+            width: 100%;
+            height: 100%;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+        .product-data .product-info-wrapper {
+            width: 100%;
+            overflow: hidden;
+            height: 36px;
+            background: #c5ddd8;
+            line-height: 36px;
+            text-align: center;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+        .product-data .product-info {
+            font-family:PingFangSC-Regular;
+            font-size:10px;
+            color:#669289;
+        }
+        .product-data .product-name-wrapper {
+            margin-top: 8px;
+            height: 25px;
+            line-height: 25px;
+            color: RGBA(7,17,27,0.6);
+            font-size: 16px;
+        }
+        .product-data .product-price-wrapper {
+            height: 20px;
+            width: 100%;
+            line-height: 20px;
+            font-family:PingFangSC-Regular;
+            font-size:14px;
+            color:#b4282d;
+            text-align:left;
+        }
+        .no_data{
+        	position: absolute;
+        	margin-top: 150px;
+        	top: 50%;
+        	left: 40%;
+        }
+        .no_data img{
+        	width: 80px;
+        	height: 80px;
+        }
+    </style>
+</head>
+<body>
+<nav class="head">
+    <div class="back-wrapper back-action">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>搜索结果</span>
+    </div>
+</nav>
+<div class="body mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <div class="classify">
+            <div class="classify-list">
+                <!--<div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="../image/product/product1.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="../image/product/product2.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="classify-item">
+                    <div class="product-data">
+                        <div class="product-img-wrapper">
+                            <img src="../image/product/product1.png" class="product-img">
+                        </div>
+                        <div class="product-info-wrapper">
+                            <span class="product-info">柔软亲肤／吸水速干／减少细菌滋生</span>
+                        </div>
+                        <div class="product-name-wrapper">
+                            <span class="product-price">加勒比纯棉浴巾</span>
+                        </div>
+                        <div class="product-price-wrapper">
+                            <span class="product-price">￥29.9</span>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/base.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	function goPageWithOutAnimate(page) {
+		var thisId = plus.webview.currentWebview().id;
+		mui.openWindow({
+			url: page,
+			id: page,
+			show:{
+				aniShow:"none"
+			},
+			styles:{
+				scrollIndicator: 'none'
+			},
+			extras: {
+				"preId": thisId
+			}
+		});
+	}
+	function plusReady() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+		var self = plus.webview.currentWebview();
+		var name = self.data;
+		var html = "";
+		$.ajax({
+			url: IP + '/api/goods/search.html',
+			type: 'get',
+			dataType: 'json',
+			data: {
+				pageNumber: 1,
+				pageSize: 4,
+				"name": name
+			},
+			success: function(data){
+				if(!data.content.length){
+					html = '<div class="no_data">' +
+								'<img src="../image/no_data.png">' +
+								'<p>没有搜索结果哦~</p>' +
+							'</div>';
+				}
+				console.log(JSON.stringify(data));
+				for(var i = 0; i < data.content.length; i++){
+					html +=  '<div class="classify-item" dataid = "'+ data.content[i].id + '">' +
+			                    '<div class="product-data">' +
+			                        '<div class="product-img-wrapper">' +
+			                            '<img src="' + data.content[i].image + '" class="product-img">' +
+			                        '</div>' +
+			                        '<div class="product-info-wrapper">' +
+			                            '<span class="product-info">' + data.content[i].caption + '</span>' +
+			                        '</div>' +
+			                        '<div class="product-name-wrapper">' +
+			                            '<span class="product-price">' + data.content[i].name + '</span>' +
+			                        '</div>' +
+			                        '<div class="product-price-wrapper">' +
+			                            '<span class="product-price">￥' + data.content[i].price + '</span>' +
+			                        '</div>' +
+			                    '</div>' +
+			                '</div>';
+				}
+				$(".classify-list").html(html);
+			},
+			error: function(){
+				mui.toast('网络错误1');
+			}
+		});
+	}
+
+	window.addEventListener("init", function() {
+		if(mui.os.ios) {
+			plus.navigator.setStatusBarBackground("#95D1C6");
+		}
+	});
+	document.addEventListener("plusready", plusReady, false);
+
+	$(".back-action").bind("tap",function () {
+        var preId = plus.webview.currentWebview().preId;
+		var id = plus.webview.getWebviewById(preId);
+		mui.fire(id,"init");
+		mui.back();
+	});
+
+
+</script>
+<script>
+	mui('.mui-scroll-wrapper').scroll({
+		indicators: true,
+		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+	});
+	$(".classify-list").on("tap", ".classify-item", function () {
+		var dataid = $(this).attr("dataid");
+		goPage("../product.html",dataid);
+	});
+</script>
+</html>
+

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/drawable-mdpi-v4/push.png",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/drawable-mdpi/push.png"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/drawable-mdpi-v4/splash.png",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/drawable-mdpi/splash.png"
+    },
+    {
+        "merged": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/build/intermediates/res/merged/release/drawable-mdpi-v4/icon.png",
+        "source": "/Users/qianjiafeng/离线打包sdk/Android-SDK@1.9.9.42938_20180314/HBuilder-Hello1/app/src/main/res/drawable-mdpi/icon.png"
+    }
+]

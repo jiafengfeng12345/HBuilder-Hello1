@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../css/base.css" rel="stylesheet"/>
+    <style>
+        .mui-content {
+            margin: 100px 40px 0px 40px;
+        }
+
+        button,
+        .mui-btn {
+            height: 40px;
+            background-color: #DDDDDD;
+            color: white;
+            border: none;
+        }
+
+        input[type=text],
+        input[type=password],
+        input[type=number] {
+            padding: 50px 0px 15px 0px;
+            line-height: 16px;
+            font-size: 16px;
+            color: black;
+            border: none;
+            border-bottom: #D7D7D7 1px solid;
+            border-radius: 0px;
+        }
+
+        .mui-input-row .mui-input-password ~ .mui-icon-eye,
+        .mui-input-row .mui-input-clear ~ .mui-icon-clear {
+            top: 37px;
+        }
+
+        .mui-input-row .mui-input-clear ~ .mui-icon-clear.mui-active,
+        .mui-input-row .mui-input-password ~ .mui-icon-eye.mui-active {
+            color: black;
+        }
+
+        .mui-input-row {
+            background-color: #f8f8f8;
+        }
+
+        input[type=text], input[type=password], input[type=number] {
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="head">
+    <div class="back-wrapper mui-action-back">
+        <img src="../image/left@3x.png" class="back">
+    </div>
+    <div class="title-wrapper">
+        <span>修改密码</span>
+    </div>
+</nav>
+
+<div class="mui-content">
+    <div class="mui-input-row">
+        <input id="password1" type="password" class="mui-input-password" placeholder="请输入密码">
+        <p class="passwordP">密码由6~25个字母、数字、符号组成</p>
+    </div>
+    <div class="mui-input-row">
+        <input id="password2" type="password" class="mui-input-password" placeholder="请再次输入密码">
+        <p class="passwordP">请再次输入密码</p>
+    </div>
+    <div style="background-color: #f8f8f8">
+        <button id="submit" type="button" class="mui-btn mui-disabled" style="width: 100%;margin-top: 20px;">确认</button>
+    </div>
+</div>
+
+
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../js/base.js"></script>
+<script type="text/javascript">
+
+    function goPage(page, data, isNew) {
+        if(isNew === true)
+            isNew = true;
+        else
+            isNew = false;
+        mui.openWindow({
+            url: page,
+            id: page,
+            extras: {
+                data: data
+            },
+            createNew: isNew
+        });
+    }
+    mui.init();
+    //对安卓的不行
+    $('header').css({
+        "padding-top": "20px",
+        "height": "64px"
+    });
+    $('.mui-bar-nav~.mui-content').css("padding-top", "64px");
+
+    var flag = [false, false];
+    var pw1;
+    var pw2, phone;
+    $('#password1').bind('input propertychange', function () {
+        rePassword();
+        submitCSS();
+    });
+
+    $('#password2').bind('input propertychange', function () {
+        rePassword();
+        submitCSS();
+    });
+
+    $("#submit").on('tap', function () {
+        pw1 = $("#password1").val();
+        pw2 = $("#password2").val();
+        phone = plus.storage.getItem("imShopPhone");
+        console.log(phone)
+        if (pw1.length == 0) {
+            mui.alert("请填写密码！");
+        } else if (pw1.length < 6) {
+            mui.alert("密码不能小于6位！");
+        } else if (pw1.length > 25) {
+            mui.alert("密码不能大于25位！");
+        } else {
+            if (pw1 === pw2) {
+                $.ajax({
+                    type: "get",
+                    url: IP + "/api/user/resetPasssword.html",
+                    data: {
+                        phone: phone,
+                        newPassword: pw1
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.type == 'success') {
+                            mui.alert("密码设置成功！");
+                            goPage("../index.html");
+                        } else {
+                            mui.alert("密码设置失败！");
+                            console.log(phone);
+                            console.log(data.content);
+                        }
+                    },
+                    error: function () {
+                        console.log("error");
+                    }
+                });
+            } else {
+                mui.alert("两次密码输入不一致！")
+            }
+        }
+    });
+
+    //验证密码 是否为空
+    function rePassword() {
+        pw1 = $("#password1").val();
+        pw2 = $("#password2").val();
+        if (pw1.length === 0) {
+            flag[0] = false;
+        } else {
+            flag[0] = true;
+        }
+        if (pw2.length === 0) {
+            flag[1] = false;
+        } else {
+            flag[1] = true;
+        }
+    }
+
+    //按钮样式
+    function submitCSS() {
+        if (flag[0] === true && flag[1] === true) {
+            $("#submit").css("background-color", "#95D1C6");
+            $("#submit").removeClass("mui-disabled");
+
+        } else {
+            $("#submit").css("background-color", "#DDDDDD");
+            $("#submit").addClass("mui-disabled");
+        }
+    }
+
+    function plusReady() {
+        plus.webview.currentWebview().setStyle({
+            softinputMode: "adjustResize"
+        });
+    }
+
+    document.addEventListener("plusready", plusReady, false);
+</script>
+</body>
+
+</html>

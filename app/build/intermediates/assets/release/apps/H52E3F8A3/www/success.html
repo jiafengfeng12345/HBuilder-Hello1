@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.body{
+				padding-top: 60px;
+				background: #fff;
+				font-size: 15px;
+			}
+			.success-title{
+				height: 200px;
+				background-image: url(image/background@3x.png);
+				background-size: cover;
+			}
+			.success-title span{
+				color: #fff;
+				display: block;
+			}
+			.success-title span:first-child{
+				font-size: 16px;
+				padding-top: 70px;
+				padding-left: 50px;
+			}
+			.success-title span:last-child{
+				font-size: 14px;
+				padding-left: 50px;
+			}
+			.success-list{
+				padding-top: 8px;
+				height: 60px;
+			}
+			.success-item{
+				display: inline-block;
+				width: 40%;
+				height: 35px;
+				line-height: 35px;
+				box-sizing: content-box;
+				margin-top: 10px;
+				margin-left: 29%;
+				text-align: center;
+				border: 2px solid #E1E1E1;
+				border-radius: 2px;
+				-webkit-border-radius: 2px;
+				-moz-border-radius: 2px;
+			}
+			.success-item span{
+				color: #333;
+			}
+			.bottom{
+				margin-top: 10px;
+				background-color: #FFFFFF;
+			}
+			.guess-title{
+				width: 90%;
+				/*height: 61px;*/
+				margin: 25px auto;
+				margin-top: 45px!important;
+				height: 1px;
+				border-top: 1px solid #ddd;
+				font-family: PingFangSC-Regular;
+				font-size: 18px;
+				color: #333333;
+				text-align: center;
+			}
+			.guess-title span{
+				position: relative;
+				top: -13px;
+				background: #fff;
+				padding: 0 20px;
+			}
+			.guess-item{
+				float: left;
+				padding-left: 10px;
+				padding-right: 10px;
+				width: 50%;
+				background-color: #FFFFFF;
+			}
+			.guess-list{
+				display: inline-block;
+				overflow: auto;
+				zoom: 1;
+			}
+			.product-data{
+				width: 100%;
+				height: 261px;
+			}
+			.guess-img{
+				width: 100%;
+				height: 172px;
+			}
+			.guess-img img{
+				width: 100%;
+				height: 100%;
+				border-bottom-left-radius: 2px;
+				border-bottom-right-radius: 2px;
+			}
+			.guess-inf{
+				display: block;
+				overflow: hidden;
+				height: 36px;
+				line-height: 36px;
+				text-align: center;
+				background: #C5DDD8;
+				border-bottom-left-radius: 2px;
+				border-bottom-right-radius: 2px;
+			}
+			.guess-inf span{
+				color: #669289;
+				font-size: 10px;
+			}
+			.guess-name{
+				margin-top: 8px;
+				height: 25px;
+				line-height: 25px;
+			}
+			.guess-name span{
+				color: rgba(7,17,27,0.6);
+				font-size: 16px;
+			}
+			.guess-price{
+				height: 20px;
+				line-height: 20px;
+				width: 100%;
+			}
+			.guess-price span{
+				font-size: 14px;
+				color: #B4282D;
+				text-align: left;
+				font-family: PingFangSC-Regular;
+			}
+			.checked img{
+				margin-top: 10px;
+				margin-left: 36%;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="head">
+
+			<div class="title-wrapper">
+				<span style="font-size: 18px;">支付成功</span>
+			</div>
+		</nav>
+		
+		<div class="body mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="success-title">
+					<span>支付成功</span>
+					<span>卖家将会收到您的付款！</span>
+				</div>
+				
+				<div class="checked">
+					<img src="image/sign-check-icon.png"/ width="100" height="100">
+				</div>
+				
+				<div class="success-list">
+					<div class="success-item evaulated">
+						<span>返回首页</span>
+					</div>
+				</div>
+				
+
+				<!--<div class="bottom">
+					<div class="guess-title">
+						<span>猜你喜欢</span>
+					</div>
+					<div class="guess-list">
+						<div class="guess-item">
+							<div class="product-data">
+								<div class="guess-img">
+									<img src="image/product/product1.png"/>
+								</div>
+								<div class="guess-inf">
+									<span>柔软亲肤／吸水速干／减少细菌滋生</span>
+								</div>
+								<div class="guess-name">
+									<span>加勒比纯棉浴巾</span>
+								</div>
+								<div class="guess-price">
+									<span>￥329</span>
+								</div>
+							</div>	
+						</div>
+						
+						<div class="guess-item">
+							<div class="product-data">
+								<div class="guess-img">
+									<img src="image/product/product2.png"/>
+								</div>
+								<div class="guess-inf">
+									<span>柔软亲肤／吸水速干／减少细菌滋生</span>
+								</div>
+								<div class="guess-name">
+									<span>加勒比纯棉浴巾</span>
+								</div>
+								<div class="guess-price">
+									<span>￥329</span>
+								</div>
+							</div>	
+						</div>
+						
+						<div class="guess-item">
+							<div class="product-data">
+								<div class="guess-img">
+									<img src="image/product/product1.png"/>
+								</div>
+								<div class="guess-inf">
+									<span>柔软亲肤／吸水速干／减少细菌滋生</span>
+								</div>
+								<div class="guess-name">
+									<span>加勒比纯棉浴巾</span>
+								</div>
+								<div class="guess-price">
+									<span>￥329</span>
+								</div>
+							</div>	
+						</div>
+						
+						<div class="guess-item">
+							<div class="product-data">
+								<div class="guess-img">
+									<img src="image/product/product2.png"/>
+								</div>
+								<div class="guess-inf">
+									<span>柔软亲肤／吸水速干／减少细菌滋生</span>
+								</div>
+								<div class="guess-name">
+									<span>加勒比纯棉浴巾</span>
+								</div>
+								<div class="guess-price">
+									<span>￥329</span>
+								</div>
+							</div>	
+						</div>
+						
+					</div>
+				</div>-->
+			</div>
+		</div>
+	</body>
+	
+<script type="text/javascript">
+	function goPage(page, data, isNew) {
+		if(isNew === true)
+			isNew = true;
+		else
+			isNew = false;
+		mui.openWindow({
+			url: page,
+			id: page,
+			extras: {
+				data: data
+			},
+			createNew: isNew
+		});
+	}
+	$(".back-action").on("tap", function () {
+        mui.back();
+	});
+	mui('.mui-scroll-wrapper').scroll({
+		indicators: true,
+		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+	});
+	$(".evaulated").on("tap",function(){
+		goPage("index.html");
+	});
+	$(".inf").on("tap",function(){
+		goPage("order/orderdetail.html");
+	});
+	$(".guess-item").on("tap",function () {
+        goPage("product.html");
+	});
+</script>
+</html>

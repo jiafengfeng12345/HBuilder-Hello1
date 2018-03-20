@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+        <link rel="stylesheet" href="fonts/iconfont.css"/>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/mui.min.js"></script>
+		<title></title>
+		<style type="text/css">
+			body,html{
+				height: 100%;
+			    margin: 0px;
+			    padding: 0px;
+			    overflow-x: hidden;
+			    overflow-y: auto;
+			    -webkit-touch-callout: none;
+			    -webkit-user-select: none;
+			}
+			.body{
+				padding-top: 60px;
+                /*background-color: #ffffff;*/
+			}
+			span{
+				font-size: 15px;
+				color: #333333;
+			}
+			.release{
+				position: absolute;
+				top: 25px;
+				right: 15px;
+			}
+            .content{
+                width: 95%;
+                margin: 0 auto;
+                border-bottom: 1px solid #dfdfdf;
+            }
+			textarea{
+				border: none;
+				outline: none;
+				resize: none;
+				color: #666464;
+				font-size: 14px;
+				background-color: transparent;
+			}
+            .goods-star{
+                height: 65px;
+                line-height: 65px;
+                border-bottom: 1px solid #dfdfdf;
+            }
+            .goods-picture{
+                display: inline-block;
+                float: left;
+                margin: 8px 5px 5px 15px;
+                height: 50px;
+            }
+            .match{
+                float: left;
+                margin-left: 10px;
+            }
+            .star{
+                float: left;
+                margin-left: 8px;
+            }
+            .addpic{
+                width: 70px;
+                height: 70px;
+                margin-left: 15px;
+                border: 1px dashed #dfdfdf!important;
+            }
+            .upload{
+                margin: 0 0 13px 10px;
+                width: 60px;
+                height: 60px;
+                text-align: center;
+                border: 1px dashed #DFDFDF;
+            }
+            .comment{
+                width: 90%;
+                height: 25px;
+                line-height: 25px;
+                margin: 10px auto;
+            }
+            .comment span{
+                display: inline-block;
+                float: left;
+            }
+            .star .icon-iconfontwujiaoxing{
+            	font-size: 20px;
+                color: #dfdfdf;
+                padding-left: 7px;
+            }
+            .addimg{
+            	height: 30px;
+            	width: 48px;
+            	color: #888888;
+            	font-size: 10px;
+            }
+            .mui-input-row{
+            	display: inline-block;
+            	height: 35px;
+            	line-height: 35px;
+            	margin-top: 5px;
+            	width: 31%;
+            }
+            .mui-checkbox input[type=checkbox]:checked:before{
+            	color: #95d1c6;
+            }
+            .comment .icon-dianpu{
+            	float: left;
+            	font-size: 20px;
+            	margin-right: 10px;
+            }
+            ::-webkit-input-placeholder{
+            	font-size: 13px;
+            }
+            .addtext{
+            	float: right;
+            	width: 62%;
+            	margin: 12px 5px;
+            }
+            .all-evaulate{
+            	height: 200px;
+            	border-top: 5px solid #F7F7F7;
+            }
+            .upload .icon-xiangji{
+            	display: block;
+            	margin-top: 10px;
+            	font-size: 22px;
+            	color: #AAAAAA;
+            }
+
+			.submitBox{
+				height: 50px;
+				text-align: right;
+			}
+
+			.submitBtn{
+				margin: 10px 20px;
+				padding: 0 15px;
+				height: 30px;
+				line-height: 30px;
+				display: inline-block;
+				background: #95d1c6;
+				color: #fff;
+				border-radius: 3px;
+			}
+
+			.goods-evaulate{
+				margin-top: 15px;
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="head">
+			<div class="back-wrapper back-action">
+				<img src="image/left@3x.png" class="back"/>
+			</div>
+			<div class="title-wrapper">
+				<span style="font-size: 18px;color: #fff;">评价</span>
+			</div>
+			<!--<div class="release">-->
+				<!--<span style="color: #FFFFFF;">发布</span>-->
+			<!--</div>-->
+		</nav>
+		
+		<div class="body">
+			<div class="goods-evaulate">
+				<div class="goods-star">
+                    <div class="goods-picture">
+                        <img src="image/bag.png" style="height: 50px; width: 50px"/>
+                    </div>
+                    <div class="match">
+                        <span>描述相符</span>
+                    </div>
+					<div class="star" id="star-des">
+						<i class="iconfont icon-iconfontwujiaoxing"></i>
+                        <i class="iconfont icon-iconfontwujiaoxing"></i>
+                        <i class="iconfont icon-iconfontwujiaoxing"></i>
+                        <i class="iconfont icon-iconfontwujiaoxing"></i>
+                        <i class="iconfont icon-iconfontwujiaoxing"></i>
+					</div>
+					<span class="level-des" style="font-size: 13px; color: #888888; margin-left: 10px;"></span>
+				</div>
+				<div class="content">
+					<textarea rows="4" placeholder="宝贝满足你的期待么？说说你的使用心得,分享给想买的他们吧"></textarea>
+                    <div class="upload">
+                    	<i class="iconfont icon-xiangji"></i>
+                        <span class="addimg">添加图片</span>
+                    </div>
+				</div>
+
+				<div class="submitBox">
+					<span class="submitBtn">发布</span>
+				</div>
+
+				<!--<div class="anonymous">-->
+					<!--<div class="mui-input-row mui-checkbox mui-left">-->
+  						<!--<label style="font-size: 13px;color: #333;">匿名</label>-->
+  						<!--<input name="checkbox1" value="Item 1" type="checkbox" checked onclick="checkboxOnClick(this)">-->
+					<!--</div>-->
+					<!--<div class="addtext">-->
+						<!--<span style="font-size: 13px;color: #666464;">您写的评价将会以匿名的形式展示</span>-->
+					<!--</div>-->
+					<!---->
+				<!--</div>-->
+			</div>
+			
+			<!--<div class="all-evaulate">-->
+				<!--<div class="comment"><i class="iconfont icon-dianpu"></i><span>店铺评分</span></div>-->
+                <!--<div class="comment">-->
+                    <!--<span>物流服务</span>-->
+                    <!--<div class="star" id="star-logistics">-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                    <!--</div>-->
+                    <!--<span class="level-logistics" style="font-size: 13px; color: #888888; margin-left: 15px;"></span>-->
+                <!--</div>-->
+                <!--<div class="comment">-->
+                    <!--<span>服务态度</span>-->
+                    <!--<div class="star" id="star-attitude">-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                        <!--<i class="iconfont icon-iconfontwujiaoxing"></i>-->
+                    <!--</div>-->
+                    <!--<span class="level-attitude" style="font-size: 13px; color: #888888; margin-left: 15px;"></span>-->
+                <!--</div>-->
+			<!--</div>-->
+		</div>
+	</body>
+	<script src="js/base.js"></script>
+    <script type="text/javascript">
+	    // 聚焦时滚动到屏幕中间
+	    var focusEvent;
+	    $(window).resize(function () {
+	    	if(focusEvent){
+			    focusEvent.target.scrollIntoView(false);
+		    }
+	    });
+	    $(".body").on("focus", "textarea", function (event) {
+		    focusEvent = event;
+	    });
+
+	    function initReview(orderSn) {
+		    $.ajax({
+			    url: IP + "/api/order/view.html",
+			    type: "get",
+			    dataType: "json",
+			    data: {
+			    	sn: orderSn
+			    },
+			    success: function (data) {
+			    	alert(JSON.stringify(data));
+			    	var orderItems = data.orderItems;
+			    	var html = "";
+			    	for(var i in orderItems) {
+			    		var item = orderItems[i];
+			    		var review = item.review;
+			    		var starNum = review == null ? 0 : review.score;
+			    		var contentStr = review == null ? "" : review.content;
+
+				        html +=
+						    '<div class="goods-evaulate" data-id="' + item.id + '" data-productid="' + item.productId + '" data-done="' + (review == null ? 'false' : 'true') + '">' +
+							    '<div class="goods-star">' +
+								    '<div class="goods-picture">' +
+								        '<img src="' + item.thumbnail + '" style="height: 50px; width: 50px"/>' +
+								    '</div>' +
+								    '<div class="match">' +
+								        '<span>描述相符</span>' +
+								    '</div>' +
+								    '<div class="star star-des" data-star="' + starNum + '">' +
+									    '<i class="iconfont icon-iconfontwujiaoxing" style="color: ' + (starNum > 0 ? '#95D1C6' : '#DFDFDF' ) + '"></i>' +
+									    '<i class="iconfont icon-iconfontwujiaoxing" style="color: ' + (starNum > 1 ? '#95D1C6' : '#DFDFDF' ) + '"></i>' +
+									    '<i class="iconfont icon-iconfontwujiaoxing" style="color: ' + (starNum > 2 ? '#95D1C6' : '#DFDFDF' ) + '"></i>' +
+									    '<i class="iconfont icon-iconfontwujiaoxing" style="color: ' + (starNum > 3 ? '#95D1C6' : '#DFDFDF' ) + '"></i>' +
+									    '<i class="iconfont icon-iconfontwujiaoxing" style="color: ' + (starNum > 4 ? '#95D1C6' : '#DFDFDF' ) + '"></i>' +
+								    '</div>' +
+						            '<span class="level-des" style="font-size: 13px; color: #888888; margin-left: 10px;"></span>' +
+							    '</div>' +
+							    '<div class="content">' +
+							        '<textarea rows="4" placeholder="宝贝满足你的期待么？说说你的使用心得,分享给想买的他们吧" ' + (review == null ? '' : 'readonly') + '>' + contentStr + '</textarea>' +
+							        '<div class="upload">' +
+				                    	'<i class="iconfont icon-xiangji"></i>' +
+				                        '<span class="addimg">添加图片</span>' +
+				                    '</div>' +
+							    '</div>' +
+					            (review == null ?
+							    '<div class="submitBox">' +
+							        '<span class="submitBtn">发布</span>' +
+							    '</div>' : '') +
+						    '</div>';
+				    }
+				    $(".body").html(html);
+			    	var starDomList = $(".star-des");
+			    	for(var i = 0; i < starDomList.length; i++){
+			    		var starDom = $(starDomList[i]);
+			    		var index = Number(starDom.attr("data-star"));
+					    starDom.find(".star .icon-iconfontwujiaoxing:lt("+(index+1)+")").css("color","#95D1C6");
+					    starDom.find(".star .icon-iconfontwujiaoxing:gt("+index+")").css("color","#DFDFDF");
+				    }
+			    }
+		    });
+	    }
+
+	    // 发布按钮点击
+	    $(".body").on("tap", ".submitBtn", function () {
+		    var reviewDom = $(this).parent().parent();
+		    var orderItemId = Number(reviewDom.attr("data-id"));
+		    var productId = Number(reviewDom.attr("data-productid"));
+		    var starNum = Number(reviewDom.find(".star-des").attr("data-star"));
+		    var content = reviewDom.find("textarea").val();
+
+		    if(starNum == 0){
+		    	mui.toast("请选择评分星星数");
+			    return false;
+		    }
+		    if(content == ""){
+			    mui.toast("请输入评价内容");
+			    return false;
+		    }
+
+		    alert(JSON.stringify({
+			    orderItemId: orderItemId,
+			    productId: productId,
+			    score: starNum,
+			    content: content
+		    }));
+
+		    // return false;
+		    var submitBtn = $(this);
+
+		    $.ajax({
+			    url: IP + "/api/review/save.html",
+			    type: "get",
+			    dataType: "json",
+			    data: {
+				    orderItemId: orderItemId,
+			    	productId: productId,
+				    score: starNum,
+				    content: content
+			    },
+			    success: function (data) {
+			    	alert(JSON.stringify(data));
+			    	if(data.type == "success"){
+			    		mui.toast(data.content);
+					    submitBtn.parent().remove();
+				    }else{
+			    		mui.toast(data.content);
+				    }
+			    },
+			    error: function () {
+			    	mui.toast("网络繁忙");
+			    }
+		    });
+	    });
+
+
+		//评价五角星
+        $(".star icon-iconfontwujiaoxing").css("color","#95D1C6");
+        $(".body").on('tap', '.star-des .icon-iconfontwujiaoxing', function () {
+        	var starDom = $(this).parent().parent();
+        	var reviewDom = starDom.parent();
+        	if(reviewDom.attr("data-done") == "true"){
+        		return false;
+	        }
+
+            var index = $(this).index();
+
+            // 记录星星数
+            $(this).parent().attr("data-star", index+1);
+
+            starDom.find(".star .icon-iconfontwujiaoxing:lt("+(index+1)+")").css("color","#95D1C6");
+            starDom.find(".star .icon-iconfontwujiaoxing:gt("+index+")").css("color","#DFDFDF");
+
+            var des = starDom.find(".level-des");
+            switch(index){
+            	case 0 :
+		            des.text("非常差");
+	            	break;
+	            case 1 :
+		            des.text("差");
+	            	break;
+	            case 2 :
+		            des.text("一般");
+	            	break;
+	            case 3 :
+		            des.text("好");
+	            	break;
+	            case 4 :
+		            des.text("非常好");
+	            	break;
+            }
+        });
+        $("#star-logistics .icon-iconfontwujiaoxing").on('tap', function () {
+            var index = $(this).index();
+            $("#star-logistics .icon-iconfontwujiaoxing:lt("+(index+1)+")").css("color","#95D1C6");
+            $("#star-logistics .icon-iconfontwujiaoxing:gt("+index+")").css("color","#DFDFDF");
+            switch(index){
+            	case 0 :
+	            	$(".level-logistics").text("非常差");
+	            	break;
+	            case 1 :
+	            	$(".level-logistics").text("差");
+	            	break;
+	            case 2 :
+	            	$(".level-logistics").text("一般");
+	            	break;
+	            case 3 :
+	            	$(".level-logistics").text("好");
+	            	break;
+	            case 4 :
+	            	$(".level-logistics").text("非常好");
+	            	break;	
+            }
+        });
+        $("#star-attitude .icon-iconfontwujiaoxing").on('tap', function () {
+            var index = $(this).index();
+            $("#star-attitude .icon-iconfontwujiaoxing:lt("+(index+1)+")").css("color","#95D1C6");
+            $("#star-attitude .icon-iconfontwujiaoxing:gt("+index+")").css("color","#DFDFDF");
+            switch(index){
+            	case 0 :
+	            	$(".level-attitude").text("非常差");
+	            	break;
+	            case 1 :
+	            	$(".level-attitude").text("差");
+	            	break;
+	            case 2 :
+	            	$(".level-attitude").text("一般");
+	            	break;
+	            case 3 :
+	            	$(".level-attitude").text("好");
+	            	break;
+	            case 4 :
+	            	$(".level-attitude").text("非常好");
+	            	break;	
+            }
+        });
+        
+        function createUpload(path, dst) {
+			plus.uploader.clear();
+			var task = plus.uploader.createUpload(IP + "/api/uploadFile/uploadFile.html", {
+					method: "POST",
+					blocksize: 204800,
+					priority: 100
+				},
+				function(t, status) {
+					plus.nativeUI.closeWaiting();
+					// 上传完成
+					if(status == 200) {
+						var vverpResponse = JSON.parse(t.responseText);
+						if(vverpResponse.message.type == "success"){
+							var url = vverpResponse.url;
+						}
+						$(".upload").attr("src", path);
+						mui.toast("上传成功");
+					} else {
+						mui.toast("上传失败");
+					}
+				}
+			);
+			task.addFile(dst, {
+				key: "file"
+			});
+			task.addData("id", $("input[name=id]").val());
+			task.start();
+		}
+        
+        //添加图片        
+        $(".upload").click(function() {
+			plus.nativeUI.actionSheet({
+				cancel: "取消",
+				buttons: [{
+					title: "相册"
+				}, {
+					title: "拍照"
+				}]
+			}, function(e) {
+				if(e.index == 1) {
+					plus.nativeUI.showWaiting();
+					plus.gallery.pick(function(path) {
+						/**测试**/
+						$(".upload").attr("src", path);
+//						plus.nativeUI.closeWaiting();
+//						return;
+//						/**测试**/
+						var fileName = path.substring(path.lastIndexOf(".") + 1).toLowerCase();
+						if(fileName !== 'gif' && fileName !== 'jpeg' && fileName !== 'jpg' && fileName !== 'png' && fileName !== 'svg') {
+							plus.nativeUI.showWaiting();
+							mui.toast("文件格式不对");
+						} else {
+							var dst = "_doc/" + Date.parse(new Date()) + "." + fileName;
+							compressImage(path, dst);
+						}
+					}, function(e) {
+						plus.nativeUI.closeWaiting();
+						mui.toast("取消选择图片");
+					}, {
+						filter: "image"
+					});
+				} else if(e.index == 2) {
+					var cmr = plus.camera.getCamera();
+					var res = cmr.supportedImageResolutions[0];
+					var fmt = cmr.supportedImageFormats[0];
+					console.log("Resolution: " + res + ", Format: " + fmt);
+					plus.nativeUI.showWaiting();
+					cmr.captureImage(function(path) {
+							plus.io.resolveLocalFileSystemURL(path, function(entry) {
+	
+	                            $(".upload").attr("src",entry.toLocalURL());
+//	                            /**测试**/
+//	                            plus.nativeUI.closeWaiting();
+//	                            return;
+//								/**测试**/
+	
+								var dst = "_doc/" + Date.parse(new Date()) + "." + fmt;
+								compressImage(entry.toLocalURL(), dst);
+							}, function(e) {
+								plus.nativeUI.closeWaiting();
+								mui.toast("读取失败");
+							});
+	
+						},
+						function(error) {
+							plus.nativeUI.closeWaiting();
+							mui.toast(error.message);
+						}, {
+							resolution: res,
+							format: fmt
+						}
+					);
+				}
+			});
+		});
+//		压缩图片
+		function compressImage(src, dst) {
+			console.log(src);
+			console.log(dst);
+			plus.zip.compressImage({
+	            src: src,
+	            dst: dst,
+	            quality: 100,
+	            width: "100px",
+	            height: "100px"
+	        },
+	        function() {
+	            createUpload(src, dst);
+	        },
+	        function(error) {
+	            plus.nativeUI.closeWaiting();
+	            mui.toast("压缩失败");
+	        });
+		};
+		
+        function checkboxOnClick(checkbox){
+        	if(checkbox.checked == true)
+        		$(".addtext span").text("您写的评价将会以匿名的形式展示");
+        	else
+        		$(".addtext span").text("您的评价将会帮助其他小伙伴哟");
+        }
+        $(".back-action").on("tap", function () {
+        	mui.back();
+		});
+		
+		var relase = $(".release").val();
+		$(".release").on("tap",function(){
+			if(relase==null || relase==""){
+				mui.toast("请至少填写一条评论");
+			}
+		});
+		
+//		$('textarea').each(function () {
+//		  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+//		}).on('input', function () {
+//		  this.style.height = 'auto';
+//		  this.style.height = (this.scrollHeight) + 'px';
+//		});
+
+		$('textarea').on('input', function () {
+		  this.style.height = 'auto';
+		  this.style.height = (this.scrollHeight) + 'px';
+		});
+		
+		function plusReady() {
+			var self = plus.webview.currentWebview();
+			var orderSn = self.orderSn;
+			initReview(orderSn);
+
+			self.setStyle({
+				scrollIndicator: "none"
+			});
+		}
+		document.addEventListener("touchmove",function(e){e.preventDefault();});
+		document.addEventListener("plusready", plusReady, false);
+    </script>
+</html>
