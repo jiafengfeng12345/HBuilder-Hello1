@@ -10,7 +10,7 @@
         android:resizeable="true"
         android:smallScreens="true" />
 
-    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk android:minSdkVersion="19" />
     <!-- HBuilder Runtime 基础权限   begin -->
     <!-- 联网 -->
     <uses-permission android:name="android.permission.INTERNET" />
